@@ -35,7 +35,7 @@
     "morgan": "^1.9.1",
     "mysql2": "^1.5.3",
     "pluralize": "^7.0.0",
-    "sequelize": "^5.7.6",
+    "sequelize": "^5.15.1",
     "url": "^0.11.0",
     "websocket": "^1.0.29",
     "winston": "^3.2.1"
