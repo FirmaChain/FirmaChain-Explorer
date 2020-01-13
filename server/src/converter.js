@@ -1,5 +1,10 @@
 import BigNumber from 'bignumber.js';
 
+import {
+  requestAccountTotalFunds,
+  requestTotalSupply
+} from './utils/requester';
+
 export const blockConverter = (data) => {
   try {
     return ({
@@ -84,14 +89,19 @@ export const stakingConverter = (data) => {
   }
 };
 
-export const totalSupplyConverter = (data) => {
+export const totalSupplyConverter = async (data) => {
   try {
+    const accountFunds = await requestAccountTotalFunds();
+    const totalFunds = await requestTotalSupply();
+
     const notBonded = new BigNumber(data.not_bonded_tokens);
     const bonded = new BigNumber(data.bonded_tokens);
+    
     return {
       notBondedTokens: data.not_bonded_tokens,
       bondedTokens: data.bonded_tokens,
-      totalSupply: notBonded.plus(bonded).toString(),
+      accountsTotal: accountFunds.data,
+      totalSupply: totalFunds.toString(),
     };
   } catch (e) {
     return null;

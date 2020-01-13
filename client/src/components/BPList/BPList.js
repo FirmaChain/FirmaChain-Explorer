@@ -23,7 +23,7 @@ const mappedBPs = (BPs = [], page, totalSupply, bondedTokens) => {
     const BP = bpMapper(preBP);
     BP.Ranking = (page - 1) * bpsInPage + i + 1;
     BP.voteRate = `${divider(BP.votes, [bondedTokens / 100], 2)}%`;
-    BP.votes = `${divider(BP.votes, [10 ** 6], 2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')} MED`;
+    BP.votes = `${BP.votes} FIRMA`;
     BPList.push(BP);
   });
   return BPList;

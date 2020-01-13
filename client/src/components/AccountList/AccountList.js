@@ -15,7 +15,7 @@ const mappedAccounts = (accs, totalSupply) => {
   const accList = [];
   accs.forEach((acc) => {
     const convertedAcc = accountMapper(acc);
-    convertedAcc.Percentage = `${(convertedAcc.Balance.replace(/\s|,|MED/g, '') / totalSupply * 100).toFixed(5)}%`;
+    convertedAcc.Percentage = `${(convertedAcc.Balance.replace(/\s|,|FIRMA/g, '') / totalSupply * 100).toFixed(5)}%`;
     accList.push(convertedAcc);
   });
   return accList;

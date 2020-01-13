@@ -1,20 +1,16 @@
 // export const NODE_ENDPOINT = '/api/v1';
-export const NODE_ENDPOINT = 'http://localhost:3000/api/v1';
+export const NODE_ENDPOINT = 'http://localhost:4000/api/v1';
 
 
 
 // SNS
-export const sns = ['telegram', 'twitter', 'fb', 'medium', 'brunch', 'medi'];
+export const sns = ['telegram', 'twitter', 'medium', 'github', 'firma'];
 export const snsLink = {
-  telegram_en: 'https://t.me/medibloc',
-  telegram_ko: 'https://t.me/mediblockoreachat',
-  telegram_zh: 'https://t.me/medibloc_china',
-  telegram_ja: 'https://t.me/mediblocjapan',
-  twitter: 'https://twitter.com/_MediBloc',
-  fb: 'https://www.facebook.com/medibloc/',
-  medium: 'https://medium.com/@medibloc',
-  brunch: 'https://brunch.co.kr/@medibloc/',
-  medi: 'https://medibloc.org/',
+  telegram_en: 'https://t.me/firmachain_announcement',
+  twitter: 'https://twitter.com/firmachain',
+  medium: 'https://medium.com/firmachain',
+  github: 'https://github.com/firmachain',
+  firma: 'https://firmachain.org/',
 };
 
 export const privacyPolicyLink = {

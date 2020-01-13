@@ -9,7 +9,7 @@ export default db.define('transactions', {
   blockHeight: { allowNull: false, type: Sequelize.INTEGER },
   data,
   executed: { type: Sequelize.BOOLEAN },
-  fromAccount: { allowNull: false, type: Sequelize.STRING },
+  fromAccount: { allowNull: true, type: Sequelize.STRING },
   id,
   onChain: { type: Sequelize.BOOLEAN },
   toAccount: { type: Sequelize.STRING },

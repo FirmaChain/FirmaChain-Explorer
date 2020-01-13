@@ -9,7 +9,7 @@ import {
   requestBlockByHeight,
   requestMedState,
   requestTransactionsByHeight,
-  requestTotalSupply,
+  requestPoolData,
 } from '../utils/requester';
 
 import { handleBlocksResponse, getBlocks, getLastBlock } from '../block/handler';
@@ -47,14 +47,14 @@ TOPICS.newTailBlock.onEvent = async (block, onReset) => {
   // compare previous block due to Tendermint engine's characteristics
   if (+lastHeight + 2 < +block.height) return onReset();
 
-  logger.debug('[T1] start to get MED price');
+  logger.debug('[T1] start to get FIRMA price');
   const medxPrice = await requestMedXPrice();
-  logger.debug('[T1] success to get MED price');
+  logger.debug('[T1] success to get FIRMA price');
   logger.debug('[T1] start to get block detail from blockchain');
   const detailedBlock = await requestBlockByHeight(block.height - 1);
   logger.debug('[T1] success to get block detail from blockchain');
   logger.debug('[T1] start to get total supply from blockchain');
-  const supplyData = await requestTotalSupply();
+  const supplyData = await requestPoolData();
   logger.debug('[T1] success to get total supply from blockchain');
   MEM_FIELDS.notBondedTokens = supplyData.notBondedTokens;
   MEM_FIELDS.bondedTokens = supplyData.bondedTokens;

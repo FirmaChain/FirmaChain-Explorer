@@ -15,6 +15,10 @@ export const updateTxToAccounts = async (rawTx, t) => {
   const {
     fromAccount: from, toAccount: to, executed,
   } = rawTx;
+  console.log(from);
+  if(from == null) {
+    return [];
+  }
   const fromAccount = await getAccountFromDB(from, t);
   const fromAccountBalance = await requestAccountBalance(from);
   const fromAccountStakingBalance = await requestAccountStakingBalance(from);

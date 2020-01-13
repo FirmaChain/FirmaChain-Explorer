@@ -72,3 +72,9 @@ export const listQueryWithCount = (model, ...args) => {
     pagination: { count: rows.length, offset, total: count },
   }));
 };
+
+export const sumData = (model, column) => {
+  return model.sum(column).then((sum) => ({
+    data: sum
+  }));
+}

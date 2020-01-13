@@ -1,29 +1,13 @@
 # MediBloc Blockchain Explorer
 
-MediBloc Explorer works with [panacea-core](https://github.com/medibloc/panacea-core).
-
-## Prerequisites
-
-To run MediBloc Explorer following resources are required.
-
-- Node.js v10.13.0 or higher (<https://nodejs.org/>)
-
-- Yarn v1.9.2 (<https://yarnpkg.com/en/docs/install>)
-
-- panacea-core v1.0.0 (<https://github.com/medibloc/panacea-core>) - You need to follow all instructions in the [document](https://medibloc.gitbook.io/panacea-core/).
-
-  ```
-  git clone https://github.com/medibloc/panacea-core.git
-  cd panacea-core
-  make
-  ```
+MediBloc Explorer works with [firmachain](https://github.com/firmachain/firmachain).
 
 ## Installation
 
 - Clone the MediBloc Explorer repository and run.
 
   ```
-  git clone https://github.com/medibloc/explorer.git
+  git clone https://github.com/firmachain/explorer.git
   cd explorer
   cd client && npm install
   cd ../server && npm install

@@ -108,7 +108,7 @@ class Pages extends Component {
                     </Switch>
                   </Layout>
                 </Switch>
-                <Footer />
+                <Footer/>
               </Fragment>
             )
           }

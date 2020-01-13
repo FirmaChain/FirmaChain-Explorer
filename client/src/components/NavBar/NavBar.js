@@ -78,7 +78,7 @@ const NavBar = ({
           mode === 0 && (
             <div className="navBarLogo">
               <NavLink to={`/${lang}/`}>
-                <img src={`/image/icon/logo${mode === 0 ? '-white' : ''}.svg`} alt="logo" />
+                <img src="http://firmachain.org/static/logo.svg" alt="logo" />
               </NavLink>
             </div>
           )

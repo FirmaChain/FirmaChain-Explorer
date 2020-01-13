@@ -2,7 +2,7 @@ import cx from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { privacyPolicyLink, sns, snsLink } from '../../config';
+import {  sns, snsLink } from '../../config';
 
 import './Footer.scss';
 
@@ -15,33 +15,24 @@ const Footer = ({ language, mode }) => (
   <div className={cx('footer', { mobile: mode === 2, tablet: mode >= 1 })}>
     <div className="footerContent">
       <div className="footerLogo">
-        <img src="/image/icon/logo-footer.svg" alt="footerLogo" />
+        <img src="http://firmachain.org/static/logo.svg" alt="footerLogo" />
       </div>
       {
         mode === 0 && (
           <div className="footerRights">
-            ©2018 MediBloc. All Rights Reserved.
+            <p>©2018 MediBloc. All Rights Reserved.</p>
           </div>
         )
       }
       { mode === 0 && (
         <div className="footerPrivacyPolicy">
-          <a
-            href={privacyPolicyLink[language === 'ko' ? 'ko' : 'en']}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Privacy Policy
-          </a>
+          Modified By FirmaChain.
         </div>
       )}
       <div className="footerSNS">
         {
           sns.map((service) => {
             let snsRef = snsLink[service];
-            if (service === 'telegram') {
-              snsRef = snsLink[`${service}_${language}`];
-            }
             return (
               <a
                 href={snsRef}
@@ -64,13 +55,7 @@ const Footer = ({ language, mode }) => (
       </div>
     </div>
     <div className="privacyPolicy">
-      <a
-        href={privacyPolicyLink[language === 'ko' ? 'ko' : 'en']}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Privacy Policy
-      </a>
+    Modified By FirmaChain.
     </div>
   </div>
 );
