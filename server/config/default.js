@@ -25,7 +25,7 @@ const config = {
     },
   },
   DB: {
-    database: 'firmachain',
+    database: 'explorer',
     dialect: 'mysql',
     host: '127.0.0.1',
   },

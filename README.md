@@ -1,10 +1,10 @@
-# MediBloc Blockchain Explorer
+# FirmaChain Blockchain Explorer
 
-MediBloc Explorer works with [firmachain](https://github.com/firmachain/firmachain).
+FirmaChain Explorer works with [firmachain](https://github.com/firmachain/firmachain).
 
 ## Installation
 
-- Clone the MediBloc Explorer repository and run.
+- Clone the FirmaChain Explorer repository and run.
 
   ```
   git clone https://github.com/firmachain/explorer.git
@@ -15,7 +15,7 @@ MediBloc Explorer works with [firmachain](https://github.com/firmachain/firmacha
 
 ## Start(Server)
 
-MediBloc Explorer Server uses Mysql as Backend Storage
+FirmaChain Explorer Server uses Mysql as Backend Storage
 
 Install & Configure Mysql
 
@@ -23,7 +23,7 @@ General : https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/
 
 Mac : https://github.com/rajivkanaujia/alphaworks/wiki/Install-MySQL-using-Homebrew
 
-Default database name is "medi_explorer". You can change database name or host in `server/config/default.js`. Create this database with mysql command-line.
+Default database name is "explorer". You can change database name or host in `server/config/default.js`. Create this database with mysql command-line.
 
 And then, You must configure ENVIRONMNET VARIABLES with your DB username & password
 
@@ -37,11 +37,11 @@ Then,
 
 ## Configuration(Server)
 
-The `server/config/default.js` file contains configuration settings for MediBloc Explorer Server.
+The `server/config/default.js` file contains configuration settings for FirmaChain Explorer Server.
 
 #### Blockchain endpoint
 
-To connect with custom MediBloc blockchain, blockchain.url should be set.
+To connect with custom FirmaChain blockchain, blockchain.url should be set.
 ```
 // you can set this endpoint to your blockchain.
 const endpoint = 'localhost';
@@ -49,9 +49,9 @@ const endpoint = 'localhost';
 
 ## Start(Client)
 
-MediBloc Explorer Client is using Webpack.
+FirmaChain Explorer Client is using Webpack.
 
-If you want to watch all the changes of the code in real time, run the following command. It will run the MediBloc Explorer on the port 3000(<http://localhost:3000>).
+If you want to watch all the changes of the code in real time, run the following command. It will run the FirmaChain Explorer on the port 3000(<http://localhost:3000>).
 
 `yarn start`
 
