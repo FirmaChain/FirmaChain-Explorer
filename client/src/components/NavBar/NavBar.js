@@ -78,7 +78,7 @@ const NavBar = ({
           mode === 0 && (
             <div className="navBarLogo">
               <NavLink to={`/${lang}/`}>
-                <img src="http://firmachain.org/static/logo.svg" alt="logo" />
+                <img src="/image/icon/white_logo.svg" alt="logo" />
               </NavLink>
             </div>
           )
@@ -128,7 +128,7 @@ const NavBar = ({
             <Fragment>
               <div className="navBarLogo">
                 <NavLink to={`/${lang}/`}>
-                  <img src="/image/icon/logo.svg" alt="logo" />
+                  <img src="/image/icon/white_logo.svg" alt="logo" />
                 </NavLink>
               </div>
               <button

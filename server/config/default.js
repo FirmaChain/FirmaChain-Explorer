@@ -9,7 +9,7 @@ const config = {
       ws: `ws://${endpoint}:26657/websocket`,
     },
     SERVER_URL: {
-      http: `http://${endpoint}:1317`,
+      http: `http://lcd.augutus-1.firmachain.org`,
       local: `http://localhost:4000/api/v1`,
     },
     COINMARKETCAP_URL: 'https://api.coinmarketcap.com/v2/ticker/4953/',

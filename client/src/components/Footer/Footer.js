@@ -15,7 +15,7 @@ const Footer = ({ language, mode }) => (
   <div className={cx('footer', { mobile: mode === 2, tablet: mode >= 1 })}>
     <div className="footerContent">
       <div className="footerLogo">
-        <img src="http://firmachain.org/static/logo.svg" alt="footerLogo" />
+        <img src="public/image/icon/black_logo.svg" alt="footerLogo" />
       </div>
       {
         mode === 0 && (
