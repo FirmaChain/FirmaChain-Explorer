@@ -180,6 +180,10 @@ $tablet_width: 1200px;
 .navBarLogo {
   display: flex;
   align-items: center;
+
+  img {
+    width: 180px;
+  }
 }
 
 

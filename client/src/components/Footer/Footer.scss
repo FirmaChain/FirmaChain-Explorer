@@ -20,17 +20,17 @@ $footer-mobile-margin-height: 80px;
 
     display: flex;
 
+    .footerLogo {
+      img {
+        width: 140px;
+      }
+    }
+
     & > div {
       display: flex;
       align-items: center;
     }
 
-    .footerLogo {
-      // margin-right: 40px;
-      img {
-        filter: invert(1);
-      }
-    }
 
     .footerRights {
       margin-left: 40px;

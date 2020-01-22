@@ -4,6 +4,11 @@ $desktop-width: 1200px;
 $footer_height: 100px;
 $footer-margin-height: 50px;
 
+.logoLabel {
+  margin-left: 5px;
+  font-weight: bold;
+  font-size: 20px;
+}
 .layout {
   width: 100%;
   min-height: calc(100vh - 235px);
