@@ -1,7 +1,13 @@
+import { divider } from './bigNumCalculator';
+
 const txMapper = (tx) => {
   if(tx.amount === null || tx.amount === undefined)
     tx.amount = 0;
-  const Amount = `${tx.amount} FIRMA`;
+  
+  const tempAmount = divider(tx.amount, [10 ** 6], 6).split('.');
+  tempAmount[0] = tempAmount[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  const Amount = `${tempAmount.join('.')} FIRMA`;
+  
 
   return {
     'Block Height': tx.blockHeight,

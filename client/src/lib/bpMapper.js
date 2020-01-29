@@ -1,3 +1,5 @@
+import { divider } from './bigNumCalculator';
+
 const bpMapper = (bp) => {
   const additionalInfo = {
     url: null,
@@ -20,7 +22,7 @@ const bpMapper = (bp) => {
     Address: bp.address,
     Account: bp.address,
     votes: bp.votes,
-    Votes: `${bp.votes} FIRMA`,
+    Votes: `${divider(bp.votes, [10 ** 6], 2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')} FIRMA`,
     'Consensus PublicKey': bp.consensusPubKey,
     'Consensus Address': bp.consensusAddr,
     Jailed: bp.jailed ? 'Yes' : 'No',

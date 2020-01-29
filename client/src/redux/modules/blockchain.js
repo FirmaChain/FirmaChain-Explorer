@@ -81,7 +81,7 @@ const reducer = handleActions({
   [GET_MED_STATE]: (state, action) => ({
     ...state,
     medState: action.payload,
-    totalSupply: action.payload.supply.totalSupply,
+    totalSupply: divider(action.payload.supply.totalSupply, [10 ** 6]),
     bondedTokens: action.payload.supply.bondedTokens,
   }),
 
@@ -132,7 +132,7 @@ const reducer = handleActions({
       ...state,
       liveTxs,
       tailBlock: action.payload,
-      totalSupply: action.payload.supply.totalSupply,
+      totalSupply: divider(action.payload.supply.totalSupply, [ 10 ** 6]),
       bondedTokens: action.payload.supply.bondedTokens,
       blocks: sorter([...state.blocks, action.payload], 'height')
         .slice(0, 5),

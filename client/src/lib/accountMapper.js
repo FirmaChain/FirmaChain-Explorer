@@ -1,9 +1,11 @@
 import { divider } from './bigNumCalculator';
 
 const accountMapper = (account, totalSupply = undefined) => {
-  const Balance = `${account.balance} FIRMA`;
+  const tempAmount = divider(account.balance, [10 ** 6], 6).split('.');
+  tempAmount[0] = tempAmount[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  const Balance = `${tempAmount.join('.')} FIRMA`;
 
-  const Staking = account.staking ? `${account.staking} FIRMA` : null;
+  const Staking = account.staking ? `${divider(account.staking, [10 ** 6], 6).replace(/\B(?=(\d{3})+(?!\d))/g, ',')} FIRMA` : null;
 
   return {
     Account: account.address,
