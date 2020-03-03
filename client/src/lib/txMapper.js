@@ -3,14 +3,12 @@ const txMapper = (tx) => {
     tx.amount = 0;
   const Amount = `${tx.amount} FIRMA`;
 
+  console.log(tx);
   return {
     'Block Height': tx.blockHeight,
     'Transaction Hash': tx.txHash,
     Status: tx.executed ? 'Success' : 'Fail',
     From: tx.fromAccount,
-    To: tx.toAccount,
-    Type: tx.type ? tx.type.split('/')[1] : '',
-    Amount,
     Message: tx.memo,
     // Nonce: tx.nonce,
     // Signature: tx.sign,

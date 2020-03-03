@@ -12,13 +12,18 @@ const Account = ({ location }) => {
   const AccountWrapper = <AccountContainer address={subject} />;
 
   return (
-    <div className="account">
+    <div className="account content">
       <div className="accountDetail">
-        <PageInfo title="account-detail" />
+        <div className="listTitle">
+          <PageInfo title="account-detail" />
+        </div>
         { AccountWrapper }
       </div>
       <div className="blockDetailTx">
-        <PageInfo title="transactions-list" />
+        <div className="listTitle">
+          <PageInfo title="transactions-list" />
+          <Navigation type="account" />
+        </div>
         <TxList type="account" address={subject} />
       </div>
       <div className="contentNavigation">

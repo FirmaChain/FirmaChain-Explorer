@@ -20,7 +20,7 @@ const Block = ({ location }) => {
   }
 
   return (
-    <div className="block">
+    <div className="block content">
       <div className="blockDetail">
         <PageInfo title="block-detail-info" />
         { BlockWrapper }

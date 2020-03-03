@@ -10,7 +10,7 @@ const Account = ({ location }) => {
   const BPWrapper = <BPContainer address={subject} />;
 
   return (
-    <div className="account">
+    <div className="account content">
       <div className="bpDetail">
         <PageInfo title="bp-detail" />
         { BPWrapper }

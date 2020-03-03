@@ -17,7 +17,6 @@ const titlize = (string) => {
 // title : block-list
 const PageInfo = ({ mode, title }) => (
   <div className={cx('pageInfo', { mobile: mode === 2 })}>
-    <img src={`/image/icon/ico-${title}.svg`} alt={title} />
     <FormattedMessage id={titlize(title)} />
   </div>
 );

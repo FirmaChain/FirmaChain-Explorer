@@ -1,11 +1,14 @@
+@import '../../variable';
+
 .pageInfo {
   align-self: flex-start;
   font-size: 24px;
-  font-weight: 500;
-  color: #0b0b0b;
-  letter-spacing: -1px;
-  margin-top: 50px;
-  margin-bottom: 20px;
+  font-weight: 600;
+  font-family: $title_font;
+  color: #d8d8d8;
+  margin-top: 120px;
+  margin-bottom: 26px;
+  text-transform: uppercase;
 
   display: flex;
   align-items: center;

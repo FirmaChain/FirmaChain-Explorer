@@ -6,15 +6,16 @@ import PageInfo from '../components/PageInfo';
 
 
 const Blocks = props => (
-  <Fragment>
-    <PageInfo title="block-list" />
+  <div className="content">
+    <div className="listTitle">
+      <PageInfo title="block-list" />
+      <Navigation type="blocks" />
+    </div>
     <div className="blocksContents">
       <BlockList {...props} />
     </div>
-    <div className="blocksNavigation">
-      <Navigation type="blocks" />
-    </div>
-  </Fragment>
+    <Navigation type="blocks" />
+  </div>
 );
 
 export default Blocks;

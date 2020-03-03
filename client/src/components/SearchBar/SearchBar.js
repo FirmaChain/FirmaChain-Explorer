@@ -3,11 +3,13 @@ import React from 'react';
 
 import SimpleWrapper from '../SimpleWrapper';
 import { GlobalActions } from '../../redux/actionCreators';
+import { injectIntl, intlShape } from 'react-intl';
 
 import './SearchBar.scss';
 
 
 const SearchBar = ({
+  intl,
   focus = false,
   search,
   searchFrom,
@@ -21,7 +23,7 @@ const SearchBar = ({
       <div className="searchBarSearch">
         <input
           autoFocus={focus} // eslint-disable-line
-          placeholder="검색 (블록, 거래, 주소, 생성자)"
+          placeholder={intl.formatMessage({id: 'searchLabel'})}
           onClick={() => {
             if (type === 'side') GlobalActions.openModal({ modalType: 'Search' });
           }}
@@ -55,6 +57,7 @@ const SearchBar = ({
 };
 
 SearchBar.propTypes = {
+  intl: intlShape.isRequired,
   focus: PropTypes.bool,
   searchFrom: PropTypes.string.isRequired,
   searchResult: PropTypes.array,
@@ -67,4 +70,4 @@ SearchBar.defaultProps = {
   type: null,
 };
 
-export default SearchBar;
+export default injectIntl(SearchBar);

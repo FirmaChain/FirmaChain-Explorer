@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, {Fragment} from 'react';
 
 import TxList from '../components/TxList';
 import Navigation from '../components/Navigation';
@@ -6,15 +6,18 @@ import PageInfo from '../components/PageInfo';
 
 
 const Txs = () => (
-  <Fragment>
-    <PageInfo title="transactions-list" />
+  <div className="content">
+    <div className="listTitle">
+      <PageInfo title="transactions-list" />
+      <Navigation type="txs" />
+    </div>
     <div className="txsContents">
       <TxList type="txs" />
     </div>
     <div className="txsNavigation">
       <Navigation type="txs" />
     </div>
-  </Fragment>
+  </div>
 );
 
 export default Txs;

@@ -27,12 +27,12 @@ class Tx extends Component {
     const { tx, language, mode } = this.props;
 
     return tx && (
-      <DetailWrapper
-        data={txMapper(tx)}
-        lang={language}
-        mode={mode}
-        type="tx"
-      />
+        <DetailWrapper
+          data={txMapper(tx)}
+          lang={language}
+          mode={mode}
+          type="tx"
+        />
     );
   }
 }

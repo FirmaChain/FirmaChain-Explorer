@@ -10,7 +10,7 @@ const Tx = ({ location }) => {
   const TxWrapper = <TxContainer hash={subject} />;
 
   return (
-    <div className="tx">
+    <div className="tx content">
       <div className="txDetail">
         <PageInfo title="transaction-detail-info" />
         { TxWrapper }

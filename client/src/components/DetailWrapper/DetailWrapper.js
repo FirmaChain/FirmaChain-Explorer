@@ -1,18 +1,18 @@
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
-import { NavLink } from 'react-router-dom';
+import {FormattedMessage} from 'react-intl';
+import {NavLink} from 'react-router-dom';
 
 import QrButton from '../QrButton';
 
-import { timezoneMatcher, titleConverter } from '../../lib';
-import { detailWrapperConfig } from '../../config';
+import {timezoneMatcher, titleConverter} from '../../lib';
+import {detailWrapperConfig} from '../../config';
 
 import './DetailWrapper.scss';
 
 
-const DetailWrapperKey = ({ titleList }) => (
+const DetailWrapperKey = ({titleList}) => (
   <div className="detailWrapperKey">
     {
       titleList.map(title => (
@@ -25,8 +25,8 @@ const DetailWrapperKey = ({ titleList }) => (
 );
 
 const DetailWrapperValue = ({
-  titleList, linkList, data, lang,
-}) => (
+                              titleList, linkList, data, lang,
+                            }) => (
   <div className="detailWrapperValue">
     {
       titleList.map((title) => {
@@ -37,19 +37,29 @@ const DetailWrapperValue = ({
             return (
               <span key={title}>
                 {
-                  (['From', 'To'].indexOf(title) !== -1 && data[title]) && (<QrButton modalData={data[title]} />)
-                }
-                {
                   title === 'url'
-                    ? (<a href={data[title]}>{ data[title] }</a>)
-                    : (<NavLink to={linkTo}>{ data[title] }</NavLink>)
+                    ? (<a href={data[title]}>{data[title]}</a>)
+                    : (<NavLink to={linkTo}>{data[title]}</NavLink>)
                 }
+                {/*{*/}
+                {/*  (['From', 'To'].indexOf(title) !== -1 && data[title]) && (<QrButton modalData={data[title]} />)*/}
+                {/*}*/}
               </span>
             );
           }
         }
+
+        let classNames = {
+          message: title === 'Message',
+          success: title === 'Status' && data[title] === 'Success',
+          failure: title === 'Status' && data[title] !== 'Success'
+        }
+
+        if (title === 'Status')
+          classNames[data[title] === 'Success' ? 'success' : 'failure'] = true;
+
         return (
-          <span key={title} className={cx({ message: title === 'Message' })}>
+          <span key={title} className={cx(classNames)}>
             {
               title === 'Time Stamp'
                 ? timezoneMatcher(data[title])
@@ -63,13 +73,13 @@ const DetailWrapperValue = ({
 );
 
 const DetailWrapper = ({
-  data, lang, mode, type,
-}) => {
+                         data, lang, mode, type,
+                       }) => {
   const titleList = type ? detailWrapperConfig.titles[type] : [];
   const linkList = type ? detailWrapperConfig.linkTo[type] : [];
 
   return (
-    <div className={cx('detailWrapper', { mobile: mode === 2 })}>
+    <div className={cx('detailWrapper', {mobile: mode === 2})}>
       <DetailWrapperKey titleList={titleList} />
       <DetailWrapperValue titleList={titleList} linkList={linkList} data={data} lang={lang} />
     </div>

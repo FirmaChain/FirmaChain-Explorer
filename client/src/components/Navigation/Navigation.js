@@ -68,12 +68,12 @@ class Navigation extends Component {
       <div className="navigation">
         <NavLink to={`${path}?page=1`}>
           <button onClick={() => moveToPage(1)} type="button">
-            {'<<'}
+            <img src="/image/icon/arrow_quick_prev.svg" alt="<<"/>
           </button>
         </NavLink>
         <NavLink to={`${path}?page=${qpage <= 1 ? 1 : qpage - 1}`}>
           <button onClick={() => moveToPage(page - 1)} type="button" disabled={page === 1}>
-            {'<'}
+            <img src="/image/icon/arrow_prev.svg" alt="<"/>
           </button>
         </NavLink>
         {
@@ -81,12 +81,12 @@ class Navigation extends Component {
         }
         <NavLink to={`${path}?page=${qpage === lastPage ? lastPage : qpage + 1}`}>
           <button onClick={() => moveToPage(page + 1)} type="button" disabled={page === lastPage}>
-            {'>'}
+            <img src="/image/icon/arrow_next.svg" alt=">"/>
           </button>
         </NavLink>
         <NavLink to={`${path}?page=${lastPage}`}>
           <button onClick={() => moveToPage(lastPage)} type="button">
-            {'>>'}
+            <img src="/image/icon/arrow_quick_next.svg" alt=">>"/>
           </button>
         </NavLink>
       </div>

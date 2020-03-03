@@ -6,15 +6,18 @@ import PageInfo from '../components/PageInfo';
 
 
 const Accounts = props => (
-  <Fragment>
-    <PageInfo title="account-list" />
+  <div className="content">
+    <div className="listTitle">
+      <PageInfo title="account-list" />
+      <Navigation type="accounts" />
+    </div>
     <div className="accountsContents">
       <AccountList {...props} />
     </div>
     <div className="accountsNavigation">
       <Navigation type="accounts" />
     </div>
-  </Fragment>
+  </div>
 );
 
 export default Accounts;

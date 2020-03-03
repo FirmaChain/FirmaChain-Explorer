@@ -74,7 +74,7 @@ export const bpListConfig = {
 export const detailWrapperConfig = {
   titles: {
     block: ['Block Height', 'Time Stamp', 'Block Hash', 'Prev Hash', 'Amount', 'No.Tx', 'BP'],
-    tx: ['Transaction Hash', 'Block Height', 'Status', 'Type', 'From', 'To', 'Amount', 'Message'],
+    tx: ['Block Height', 'Transaction Hash', 'Status', 'From', 'Message'],
     account: ['Account', 'Balance', 'Staking', 'Transactions'],
     bp: [
       'Address', 'Consensus PublicKey', 'Consensus Address', 'Votes', 'url', 'Alias',

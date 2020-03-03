@@ -1,37 +1,26 @@
 .navigation {
   display: flex;
 
-
   a > button {
-    min-width: 24px;
+    min-width: 30px;
     height: 40px;
     font-size: 14px;
-    color: #397ff4;
-    border: 1px solid #dddddd;
-    border-left: none;
+    border: none;
     text-align: center;
     padding-left: 3px;
     padding-right: 3px;
     outline: none;
     cursor: pointer;
-  }
+    user-select: none;
+    color: #616161;
+    transition: all 0.1s linear;
 
-  a button.active {
-    background: #397ff4;
-    color: #ffffff;
-  }
-
-  a:first-child {
-    button {
-      border-radius: 8px 0 0 8px;
-      border-left: solid 1px #dddddd;
+    &:hover {
+      color: #979797;
     }
-  }
 
-  a:last-child {
-    button {
-      border-radius: 0 8px 8px 0;
-      border-right: solid 1px #dddddd;
+    &.active {
+      color: #ffffff;
     }
   }
 }

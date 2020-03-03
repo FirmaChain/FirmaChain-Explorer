@@ -23,6 +23,24 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
+    .content {
+      width: 100%;
+      max-width: $content_max_width;
+      padding: 0 20px;
+
+      .listTitle {
+        display: flex;
+        align-items: flex-end;
+        margin-top: 120px;
+        margin-bottom: 26px;
+
+        >.pageInfo {
+          flex: 1;
+          margin: 0;
+        }
+      }
+    }
   }
 }
 
@@ -109,7 +127,7 @@
 
   .content {
     width: 100%;
-    max-width: 1140px;
+    max-width: $content_max_width;
     z-index: 2;
     padding: 0 20px;
     margin-bottom: 80px;

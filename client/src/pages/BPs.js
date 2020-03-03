@@ -6,15 +6,18 @@ import PageInfo from '../components/PageInfo';
 
 
 const BPs = props => (
-  <Fragment>
-    <PageInfo title="block-producer-list" />
+  <div className="content">
+    <div className="listTitle">
+      <PageInfo title="block-producer-list" />
+      <Navigation type="bps" />
+    </div>
     <div className="bpsContents">
       <BPList {...props} />
     </div>
     <div className="bpsNavigation">
       <Navigation type="bps" />
     </div>
-  </Fragment>
+  </div>
 );
 
 export default BPs;
