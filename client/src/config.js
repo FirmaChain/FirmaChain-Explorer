@@ -1,16 +1,14 @@
 // export const NODE_ENDPOINT = '/api/v1';
-export const NODE_ENDPOINT = 'http://localhost:4000/api/v1';
-
-
+export const NODE_ENDPOINT = 'http://api.testnet.firmachain.org/api/v1';
 
 // SNS
-export const sns = ['telegram', 'twitter', 'medium', 'github', 'firma'];
+export const sns = ['duite', 'telegram', 'medium', 'twitter', 'github'];
 export const snsLink = {
-  telegram_en: 'https://t.me/firmachain_announcement',
-  twitter: 'https://twitter.com/firmachain',
+  duite: 'https://duite.io',
+  telegram: 'https://t.me/firmachain_announcement',
   medium: 'https://medium.com/firmachain',
+  twitter: 'https://twitter.com/firmachain',
   github: 'https://github.com/firmachain',
-  firma: 'https://firmachain.org/',
 };
 
 export const privacyPolicyLink = {
@@ -29,11 +27,10 @@ export const subscribeMaxResponse = 4;
 export const navigationDisplay = 5;
 
 // LANGUAGE
-export const countryList = ['ko', 'en', 'ja', 'zh'];
+export const countryList = ['ko', 'en', 'zh'];
 export const countryName = {
   ko: '한국어',
   en: 'English',
-  ja: '日本語',
   zh: '中文',
 };
 

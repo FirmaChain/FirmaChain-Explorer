@@ -1,6 +1,4 @@
-$footer-height: 100px;
-$footer-margin-height: 50px;
-$footer-mobile-margin-height: 80px;
+@import '../../variable';
 
 .footer {
   border-top: 1px solid rgba(0, 0, 0, 0.2);
@@ -11,6 +9,7 @@ $footer-mobile-margin-height: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #000000;
 
   .footerContent {
     max-width: 1200px;
@@ -23,6 +22,7 @@ $footer-mobile-margin-height: 80px;
     .footerLogo {
       img {
         width: 140px;
+        opacity: 0.4;
       }
     }
 
@@ -33,25 +33,55 @@ $footer-mobile-margin-height: 80px;
 
 
     .footerRights {
-      margin-left: 40px;
+      flex: 1;
+      margin-left: 36px;
       font-size: 14px;
       font-weight: 300;
-      color: #3c3e41;
+      color: #373737;
       margin-right: 15px;
+
       p {
-        margin:0;
+        margin: 0;
+      }
+    }
+
+    .footerLang {
+      flex: 1;
+      color: #393939;
+      font-size: 16px;
+      margin: 0 70px;
+
+      > div {
+        padding: 0 8px;
+        cursor: pointer;
+
+        &:hover, &.on {
+          color: #b6b6b6
+        }
+
+        &:first-child {
+          color: #414141;
+          padding-right: 16px;
+          border-right: 1px solid #222222;
+          margin-right: 8px;
+          cursor: default;
+        }
       }
     }
 
     .footerSNS {
-      flex: 1 1 auto;
-      justify-content: flex-end;
+      align-items: center;
 
-      img {
+      a {
         width: 30px;
         height: 30px;
-        object-fit: contain;
         margin-left: 10px;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
         cursor: pointer;
       }
 

@@ -27,14 +27,6 @@ const NavBarSideContent = ({
     <div className="navBarSideNavList">
       <NavList pages={navBarPages} currentUrl={currentUrl} lang={lang} />
     </div>
-    <div className="navBarSideMenu">
-      <img src="/image/icon/ico-language.svg" alt="language" />
-      Language
-    </div>
-    <div className="navBarSideNavList">
-      <LanguageBox />
-    </div>
-    <ScrollLock isActive={navBarOpen} />
   </div>
 );
 
@@ -88,9 +80,8 @@ const NavBar = ({
             <Fragment>
               <div className="navNavigator">
                 <NavList pages={navBarPages} currentUrl={currentUrl} lang={lang} />
+                <SearchBar className={cx({ fullWidth: mode !== 0 })} type="top" />
               </div>
-              <SearchBar className={cx({ fullWidth: mode !== 0 })} type="top" />
-              <Language />
             </Fragment>
           ) : (
             <Fragment>

@@ -1,6 +1,6 @@
 $desktop-width: 1200px;
-$navBar-height: 85px;
-$navBar-side-width: 400px;
+$navBar-height: 80px;
+$navBar-side-width: 380px;
 $navBar-border-bottom: 1px;
 $mobile-navbar-height: 55px;
 $tablet_width: 1200px;
@@ -17,24 +17,22 @@ $tablet_width: 1200px;
 .navBar {
   width: 100%;
   height: $navBar-height;
-  background-color: #4f8df3;
+  background-color: #1e1e1e;
   display: flex;
   justify-content: center;
   align-items: center;
   border-bottom: none;
 
   &.home {
-    background-color: rgba(0, 0, 0, 0.1);
     border-bottom: none;
-    .navNavigator {
-      a {
-        color: white;
-      }
-    }
 
     .language {
       & > button {
-        color: white;
+        color: #808080;
+
+        &:hover {
+          color: white;
+        }
       }
 
       & > img {
@@ -58,11 +56,16 @@ $tablet_width: 1200px;
       align-items: center;
       justify-content: flex-end;
 
-      a {
-        color: white;
+      > div > a {
+        color: #808080;
+        font-size: 16px;
+
+        &:hover {
+          color: white;
+        }
       }
 
-      div {
+      >div {
         margin-left: 20px;
         margin-right: 20px;
       }

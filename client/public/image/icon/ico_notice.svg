@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="15px" height="14px" viewBox="0 0 15 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon/announcement">
+            <g id="Group">
+                <path d="M12.5,5 C13.6045695,5 14.5,5.8954305 14.5,7 C14.5,8.06512059 13.6673867,8.93577392 12.6175152,8.99660487 L12.5,9 L12.5,5 Z" id="Path" fill="#616161"></path>
+                <path d="M10.5748664,12.0433752 L3.32200234,9.34951982 C3.22506336,9.31259068 3.14456277,9.24764716 3.08829693,9.1660022 C3.03203109,9.08435724 3,8.98601084 3,8.88227595 L3,5.11772405 C3,5.01398916 3.03203109,4.91564276 3.08829693,4.8339978 L10.3220023,1.98381352 C10.4510282,1.93466082 10.5877622,1.94245945 10.704528,1.99480272 C10.7996855,2.03745955 10.8815814,2.10969998 10.9352364,2.2048091 L11,11.5489426 C11,11.6870138 10.9440356,11.8120138 10.8535534,11.902496 C10.7797455,11.9763039 10.6829696,12.0271439 10.5748664,12.0433752 Z" id="Rectangle" stroke="#616161"></path>
+                <line x1="1" y1="4.5" x2="1" y2="9.5" id="Path-3" stroke="#616161" stroke-linecap="round"></line>
+                <line x1="11" y1="0.5" x2="11" y2="13.5" id="Path-3-Copy" stroke="#616161" stroke-linecap="round"></line>
+            </g>
+        </g>
+    </g>
+</svg>

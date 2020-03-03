@@ -1,14 +1,11 @@
-$mobile_width: 800px;
-$navBar_height: 85px;
-$desktop-width: 1200px;
-$footer_height: 100px;
-$footer-margin-height: 50px;
+@import '../variable';
 
 .logoLabel {
   margin-left: 5px;
   font-weight: bold;
   font-size: 20px;
 }
+
 .layout {
   width: 100%;
   min-height: calc(100vh - 235px);
@@ -20,22 +17,12 @@ $footer-margin-height: 50px;
 
   .layoutInner {
     box-sizing: border-box;
-    max-width: 1260px;
     width: 100%;
-    padding-left: 30px;
-    padding-right: 30px;
 
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-  }
-
-  &.mobile {
-    .layoutInner {
-      padding-left: 20px;
-      padding-right: 20px;
-    }
   }
 }
 
@@ -45,7 +32,7 @@ $footer-margin-height: 50px;
   }
 }
 
-@media (max-width: $mobile-width) {
+@media (max-width: $desktop-width) {
   .homeLive {
     display: flex;
     flex-direction: column;
@@ -62,88 +49,192 @@ $footer-margin-height: 50px;
 
   display: flex;
   flex-direction: column;
+  align-items: center;
 
-  .homeTokenInfo {
-    max-width: 1100px;
+  .top {
     width: 100%;
-    margin: 20px auto auto;
-    overflow: hidden;
-    -ms-overflow: hidden;
-
-    display: flex;
-    justify-content: space-around;
-
-    .bg {
-      position: absolute;
-      z-index: -2;
-      top: $navBar_height;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 250px;
-
-      background-size: cover;
-      background: url("https://i.imgur.com/P1k5vK1.jpg") no-repeat center;
-    }
-
-    .verticalLine {
-      margin-top: auto;
-      margin-bottom: auto;
-    }
-  }
-
-  .homeSearchBar {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    position: relative;
-
-    display: flex;
-    justify-content: center;
-
-    .blur {
-      top: 20px;
-      left: -50vw;
-      position: absolute;
-      z-index: -1;
-      height: 500px;
-      width: 200vw;
-      background: white;
-    }
-
-    .searchBarSearch input::placeholder {
-      color: #ffffff;
-    }
-
-    & > hr {
-      position: absolute;
-      z-index: -1;
-      bottom: 20px;
-      left: -50%;
-      height: 1px;
-      width: 200%;
-      border: 0;
-      background: rgba(0, 0, 0, 0.2);
-    }
-  }
-
-  .homeLive {
-    width: 100%;
-
+    height: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: white;
+    position: relative;
+    background: #171718;
 
-    & > div {
-
+    .logoBg {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      background: url(/image/bg/img_logo_bg.svg) no-repeat top center;
     }
 
-    .verticalLine {
-      margin: 40px 40px 0px 40px;
-      height: 500px;
+    .content {
+      width: 100%;
+      text-align: center;
+      z-index: 1;
+      margin-bottom: 30px;
+
+      .title {
+        font-size: 48px;
+        font-weight: 600;
+        line-height: 1;
+        font-family: $title_font;
+        margin-bottom: 42px;
+      }
+
+      .notice {
+        max-width: 550px;
+        font-size: 14px;
+        color: #616161;
+        display: flex;
+        transition: all 0.1s linear;
+        cursor: pointer;
+        margin: 0 auto;
+
+        img {
+          padding: 0 24px;
+        }
+
+        span {
+          flex: 1;
+        }
+
+        &:hover {
+          color: white;
+        }
+      }
+    }
+  }
+
+  .content {
+    width: 100%;
+    max-width: 1140px;
+    z-index: 2;
+    padding: 0 20px;
+    margin-bottom: 80px;
+
+    > .chartWrapper {
+      display: flex;
+      width: 100%;
+      margin-top: -120px;
+
+      .card {
+        height: 260px;
+        flex: 1;
+        padding: 22px 40px;
+        background: #111111;
+        margin-right: 8px;
+        border-radius: 8px;
+
+        &:hover {
+          background-color: #1e1e1e;
+
+          > .name {
+            color: #b6b6b6;
+          }
+        }
+
+        &:last-child {
+          margin-right: 0;
+        }
+
+        .name {
+          font-size: 16px;
+          color: #808080;
+          margin-bottom: 20px;
+        }
+
+        .chart {
+          width: 100%;
+          height: 100%;
+
+          canvas {
+            width: 100%;
+          }
+        }
+      }
     }
 
-    .contentWrapperLinker {
-      height: 100px;
+    > .homeLive {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      color: #b6b6b6;
+
+
+      .divider {
+        min-width: 40px;
+        flex: 1;
+        position: relative;
+        padding-top: 54px;
+
+        &::after {
+          content: ' ';
+          position: absolute;
+          width: 1px;
+          height: calc(100% - 54px);
+          left: calc(50% - 1px);
+          background-color: #222222;
+        }
+      }
+    }
+  }
+
+  .banner {
+    width: 100%;
+
+    &.wallet {
+      height: 200px;
+      background-color: #0d0d0d;
+      display: flex;
+      align-items: center;
+
+      >img {
+        height: 100%;
+      }
+      > div:nth-child(2) {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: #b6b6b6;
+        line-height: 1;
+        font-family: $title_font;
+        padding: 0 20px;
+
+        > :first-child {
+          font-size: 20px;
+          font-weight: 600;
+          margin-bottom: 12px;
+        }
+
+        > :last-child {
+          display: flex;
+
+          > span {
+            flex: 1;
+            font-size: 14px;
+            color: #616161;
+          }
+
+          >div {
+            font-family: 'Poppins', sans-serif;
+
+            >span {
+              margin-left: 24px;
+              color: #393939;
+              transition: all 0.1s linear;
+              cursor: pointer;
+
+              &:hover {
+                color: #808080;
+              }
+            }
+          }
+        }
+
+      }
     }
   }
 }
@@ -174,6 +265,7 @@ $footer-margin-height: 50px;
 .accountsContents {
   width: 100%;
 }
+
 .accountsNavigation {
   margin-top: 30px;
   display: flex;

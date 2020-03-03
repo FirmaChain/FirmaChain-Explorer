@@ -13,16 +13,6 @@ const titleConverter = (title) => {
   return convertedTitle;
 };
 
-const ContentWrapperIcon = ({ type, height }) => (
-  <div className="contentWrapperIcon">
-    <img src={`/image/icon/ico-${type}.svg`} alt="contentWrapperIcon" />
-    <img src={`/image/icon/ico-${type}-on.svg`} alt="contentWrapperIcon" />
-    <span>
-      { height }
-    </span>
-  </div>
-);
-
 const ContentWrapperTitle = ({ mode, titles }) => (
   <div className={cx('contentWrapperInfoTitle', { mobile: mode === 2 })}>
     {
@@ -66,21 +56,11 @@ const ContentWrapper = ({
   return (
     <NavLink to={url} className={cx('contentWrapperLinker', { special: isTopRanker, mobile: mode === 2 })}>
       <div className="contentWrapper">
-        { mode === 0 && <ContentWrapperIcon type={type} height={height} /> }
         <ContentWrapperTitle mode={mode} titles={titles} />
         <ContentWrapperContent titles={titles} data={data} />
       </div>
     </NavLink>
   );
-};
-
-ContentWrapperIcon.propTypes = {
-  type: PropTypes.string.isRequired,
-  height: PropTypes.number,
-};
-
-ContentWrapperIcon.defaultProps = {
-  height: 0,
 };
 
 ContentWrapperTitle.propTypes = {

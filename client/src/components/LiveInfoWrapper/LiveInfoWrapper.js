@@ -16,19 +16,9 @@ const LiveInfoWrapper = ({
 }) => (
   <div className={cx('liveInfoWrapper', { mobile: true })}>
     <div className="liveInfoWrapperInfo">
-      <span>
-        {title}
-      </span>
+      <span>{title}</span>
       <NavLink to={`/${lang}/${type}s`}>
-        <button type="button">
-          {
-            mode === 2 ? (
-              <img src="/image/icon/add.svg" alt="more" />
-            ) : (
-              <FormattedMessage id="viewAll" />
-            )
-          }
-        </button>
+        <img src="/image/icon/arrow_notice.svg" alt=""/>
       </NavLink>
     </div>
     <div className="liveInfoWrapperContentBox">

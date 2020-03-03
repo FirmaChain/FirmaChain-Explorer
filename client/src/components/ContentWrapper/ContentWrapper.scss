@@ -10,9 +10,7 @@ $mobile_width: 800px;
   text-decoration: none;
 
   &:hover {
-    background-color: rgba(255, 255, 255, 0.5);
-    border: 1px solid #ed6664 !important;
-    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.05);
+    background-color: #171718;
 
     .contentWrapperIcon {
       span {
@@ -26,6 +24,10 @@ $mobile_width: 800px;
       img:first-child {
         display: none;
       }
+    }
+
+    .contentWrapperInfoContent {
+      color: white !important;
     }
   }
 
@@ -52,11 +54,12 @@ $mobile_width: 800px;
   width: 100%;
   overflow: hidden;
   box-sizing: border-box;
-  padding: 15px;
+  padding: 15px 24px;
 
   display: flex;
   flex-direction: row;
   align-items: center;
+  border-bottom: 1px dashed #393939;
 
 
   & > div {
@@ -92,10 +95,8 @@ $mobile_width: 800px;
   }
 
   .contentWrapperInfoTitle {
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 1.43;
-    color: #0b0b0b;
+    font-size: 13px;
+    color: #616161;
     margin-right: 20px;
 
     @media (max-width: $mobile_width) {
@@ -110,11 +111,12 @@ $mobile_width: 800px;
 
   .contentWrapperInfoContent {
     font-size: 12px;
-    line-height: 1.67;
+    line-height: 1.8;
     color: #75777b;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    transition: all 0.1s linear;
 
     @media (max-width: $mobile_width) {
       margin-right: 0px;
@@ -127,7 +129,7 @@ $mobile_width: 800px;
     }
 
     .special {
-      color: #0b0b0b;
+      color: #808080;
     }
   }
 }

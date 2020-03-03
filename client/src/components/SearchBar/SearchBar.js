@@ -21,7 +21,7 @@ const SearchBar = ({
       <div className="searchBarSearch">
         <input
           autoFocus={focus} // eslint-disable-line
-          placeholder="Enter Address, Tx hash, Block Height"
+          placeholder="검색 (블록, 거래, 주소, 생성자)"
           onClick={() => {
             if (type === 'side') GlobalActions.openModal({ modalType: 'Search' });
           }}
@@ -40,7 +40,7 @@ const SearchBar = ({
                 alt="backBtn"
                 onClick={GlobalActions.closeModal}
               />
-              : <img src={`/image/icon/ico-search-s${type === 'main' ? '' : '-black'}.svg`} alt="searchLogo" />
+              : <div alt="searchLogo" />
           }
         </div>
       </div>

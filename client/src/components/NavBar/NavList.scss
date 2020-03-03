@@ -1,11 +1,9 @@
 .navListBtn {
-  font-size: 18px;
-  font-weight: 400;
-  color: #3c3e41;
   text-decoration: none;
   cursor: pointer;
+  transition: all 0.1s linear;
 }
 
 .navSelected {
-  color: #b8e986 !important;
+  color: white !important;
 }
