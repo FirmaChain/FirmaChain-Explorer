@@ -1,4 +1,7 @@
 const timezoneMatcher = (utc) => {
+  if(!utc)
+    return;
+
   const offset = new Date().getTimezoneOffset();
 
   let date = new Date(utc);

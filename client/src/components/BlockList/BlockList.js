@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import ListWrapper from '../ListWrapper';
 import TableWithIcon from '../TableWithIcon';
 import { BlockchainActions, GlobalActions, WidgetActions as w } from '../../redux/actionCreators';
-import { blockListConfig, contentsInPage } from '../../config';
+import {blockListConfig, txCopyList} from '../../config';
 import { blockMapper, ranger, spaceMapper } from '../../lib';
 
 import './BlockList.scss';
@@ -31,13 +31,18 @@ class BlockList extends Component {
     const { props } = this;
     if (props.mode !== nextProps.mode) return true;
     if (props.page !== nextProps.page) return true;
+    if (props.countPerPage !== nextProps.countPerPage) return true;
     if (props.blockList !== nextProps.blockList) return true;
     return false;
   }
 
   componentWillUpdate(nextProps) {
-    const { location: { search } } = this.props;
+    const { countPerPage, location: { search } } = this.props;
     if (nextProps.location.search !== search) {
+      this.getBlocks(nextProps);
+    }
+
+    if(countPerPage !== nextProps.countPerPage) {
       this.getBlocks(nextProps);
     }
   }
@@ -51,7 +56,7 @@ class BlockList extends Component {
     const { location: { search } } = props;
     const { page = 1 } = qs.parse(search);
     const { medState: { height } } = props;
-    const { from, to } = ranger(page, height, contentsInPage);
+    const { from, to } = ranger(page, height, props.countPerPage);
     w.loader(
       BlockchainActions
         .getBlocks({ from, to }),
@@ -70,6 +75,8 @@ class BlockList extends Component {
           spacing={spaceMapper(blockListConfig.spaces)}
           linkTo={blockListConfig.linkTo}
           centerList={blockListConfig.centerList}
+          rightList={blockListConfig.rightList}
+          copyList={blockListConfig.copy}
         />
       ) : (
         <div className="blockList">
@@ -91,6 +98,7 @@ BlockList.propTypes = {
   mode: PropTypes.number.isRequired,
   page: PropTypes.number.isRequired,
   location: PropTypes.object.isRequired,
+  countPerPage: PropTypes.number.isRequired
 };
 
 export default BlockList;

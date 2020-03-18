@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
-import React, { Component, Fragment } from 'react';
+import React, {Component, Fragment} from 'react';
 import ReactGA from 'react-ga';
-import { connect } from 'react-redux';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import {connect} from 'react-redux';
+import {Router, Route, Switch} from 'react-router-dom';
+import history from '../history';
 
 // Language Setting
-import { IntlProvider, addLocaleData } from 'react-intl';
+import {IntlProvider, addLocaleData} from 'react-intl';
 import en from 'react-intl/locale-data/en'; // English
 import ja from 'react-intl/locale-data/ja'; // Japanese
 import ko from 'react-intl/locale-data/ko'; // Korean
@@ -27,7 +28,7 @@ import Footer from '../components/Footer';
 import Modal from '../components/Modal';
 import NavBar from '../components/NavBar';
 
-import { countryList } from '../config';
+import {countryList} from '../config';
 import {
   BlockchainActions,
   GlobalActions,
@@ -66,7 +67,8 @@ class Pages extends Component {
       BlockchainActions
         .getMedState()
         .then(() => TickerActions.getMedxPrice())
-        .then(() => BlockchainActions.getInitialBlocks({ from: 0, to: 4 }))
+        .then(() => TickerActions.getAnalytics())
+        .then(() => BlockchainActions.getInitialBlocks({from: 0, to: 4}))
         .then(() => BlockchainActions.subscribe())
         .then(() => GlobalActions.closeModal()),
     );
@@ -85,7 +87,7 @@ class Pages extends Component {
         messages={locale[language]}
         textComponent={React.Fragment}
       >
-        <BrowserRouter>
+        <Router history={history}>
           {
             isFirstLoad ? (
               <Modal />
@@ -108,11 +110,11 @@ class Pages extends Component {
                     </Switch>
                   </Layout>
                 </Switch>
-                <Footer/>
+                <Footer />
               </Fragment>
             )
           }
-        </BrowserRouter>
+        </Router>
       </IntlProvider>
     );
   }
@@ -125,7 +127,7 @@ Pages.propTypes = {
   mode: PropTypes.number.isRequired,
 };
 
-const mapStateToProps = ({ global, widget }) => ({
+const mapStateToProps = ({global, widget}) => ({
   language: global.language,
   mode: global.mode,
 

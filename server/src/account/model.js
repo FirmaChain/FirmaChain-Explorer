@@ -13,4 +13,7 @@ export default db.define('accounts', {
   id,
   totalTxs: { defaultValue: 0, type: Sequelize.INTEGER },
   staking: { ...value },
+}, {
+  charset: 'utf8mb4',
+  collate: 'utf8mb4_general_ci',
 });

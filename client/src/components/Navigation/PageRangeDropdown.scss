@@ -1,0 +1,93 @@
+.Dropdown-root {
+  position: relative;
+  margin-right: 15px;
+}
+
+.Dropdown-control {
+  width: 100px;
+  position: relative;
+  overflow: hidden;
+  font-size: 12px;
+  background-color: #222222;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: #b6b6b6;
+  cursor: default;
+  outline: none;
+  padding: 10px 32px 10px 10px;
+  transition: all 200ms ease;
+  text-align: center;
+  line-height: 1;
+}
+
+.Dropdown-control:hover {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+}
+
+.Dropdown-arrow {
+  background-image: url("/image/icon/arrow_down.svg");
+  content: ' ';
+  display: block;
+  position: absolute;
+  right: 10px;
+  top: calc(50% - 3px);
+  width: 11px;
+  height: 6px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.is-open {
+  .Dropdown-control {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+
+.Dropdown-menu {
+  width: 100%;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+  box-sizing: border-box;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  margin-top: -1px;
+  max-height: 200px;
+  background-color: #222222;
+  overflow: hidden;
+  position: absolute;
+  font-size: 12px;
+  color: #616161;
+  z-index: 1000;
+  -webkit-overflow-scrolling: touch;
+  text-align: center;
+}
+
+.Dropdown-menu .Dropdown-group > .Dropdown-title{
+  padding: 8px 10px;
+  color: rgba(51, 51, 51, 1);
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.Dropdown-option {
+  box-sizing: border-box;
+  color: rgba(51, 51, 51, 0.8);
+  cursor: pointer;
+  display: block;
+  padding: 10px 10px;
+  border-top: 1px dashed #393939;
+  line-height: 1;
+}
+
+.Dropdown-option:last-child {
+  border-bottom-right-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+
+.Dropdown-option:hover {
+  color: #b6b6b6;
+}
+
+.Dropdown-option.is-selected {
+  color: #b6b6b6;
+}

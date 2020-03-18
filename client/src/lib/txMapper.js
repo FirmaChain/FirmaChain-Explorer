@@ -3,13 +3,21 @@ const txMapper = (tx) => {
     tx.amount = 0;
   const Amount = `${tx.amount} FIRMA`;
 
-  console.log(tx);
+  let type = 'Unknown';
+  if(tx.msgs && tx.msgs.length > 0) {
+    type = tx.msgs[0].type.replace('cosmos-sdk/', '')
+  }
+
   return {
     'Block Height': tx.blockHeight,
     'Transaction Hash': tx.txHash,
+    'Time Stamp': tx.timestamp,
     Status: tx.executed ? 'Success' : 'Fail',
     From: tx.fromAccount,
-    Message: tx.memo,
+    Memo: tx.memo,
+    Fee: tx.fee,
+    Messages: tx.msgs,
+    Type: type
     // Nonce: tx.nonce,
     // Signature: tx.sign,
   };

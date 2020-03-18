@@ -1,4 +1,4 @@
-import { createAction, handleActions } from 'redux-actions';
+import {createAction, handleActions} from 'redux-actions';
 
 import {
   accDetailGetter,
@@ -13,8 +13,8 @@ import {
   txGetter,
   txsGetter,
 } from '../helpers/blockchain';
-import { divider, sorter } from '../../lib';
-import { bpsInPage, contentsInPage } from '../../config';
+import {divider, sorter} from '../../lib';
+import {bpsInPage, contentsInPage} from '../../config';
 
 
 // ACTION TYPES
@@ -90,20 +90,20 @@ const reducer = handleActions({
       ...action.payload.account,
       totalTxs: action.payload.account.totalTxs,
     };
-    return { ...state, account };
+    return {...state, account};
   },
-  [GET_ACCOUNTS]: (state, action) => ({ ...state, accountList: sorter(action.payload.accounts, 'balance') }),
+  [GET_ACCOUNTS]: (state, action) => ({...state, accountList: sorter(action.payload.accounts, 'balance')}),
   [GET_ACCOUNT_DETAIL]: (state, action) => {
     const txs = [];
     action.payload.transactions.forEach(res => txs.push(res.data));
-    return ({ ...state, txs: sorter(txs, 'receipt.timestamp') });
+    return ({...state, txs: sorter(txs, 'receipt.timestamp')});
   },
 
-  [GET_BLOCK]: (state, action) => ({ ...state, block: action.payload.block.data }),
+  [GET_BLOCK]: (state, action) => ({...state, block: action.payload.block.data}),
   [GET_BLOCKS]: (state, action) => {
     const blockList = [];
     action.payload.blocks.forEach(res => blockList.push(res.data));
-    return ({ ...state, blockList: sorter(blockList, 'height') });
+    return ({...state, blockList: sorter(blockList, 'height')});
   },
   [GET_INITIAL_BLOCKS]: (state, action) => {
     const blockList = [];
@@ -122,7 +122,7 @@ const reducer = handleActions({
     };
   },
   [GET_TAIL_BLOCK]: (state, action) => {
-    let { liveTxs } = state;
+    let {liveTxs} = state;
     liveTxs = sorter(
       [...liveTxs, ...(action.payload.transactions || [])],
       'receipt.timestamp',
@@ -147,13 +147,18 @@ const reducer = handleActions({
     const tx = {
       ...action.payload.transactions[0].data,
       block_height: action.payload.transactions[0].blockHeight,
+      timestamp: action.payload.transactions[0].timestamp,
     };
-    return { ...state, tx };
+    return {...state, tx};
   },
   [GET_TXS]: (state, action) => {
     const txList = [];
-    action.payload.transactions.forEach(res => txList.push(res.data));
-    return ({ ...state, txList });
+    action.payload.transactions.forEach(res => txList.push({
+      ...res.data,
+      timestamp: res.timestamp
+    }));
+
+    return ({...state, txList});
   },
   [SET_TXS_FROM_BLOCK]: (state, action) => ({
     ...state,
@@ -169,31 +174,31 @@ const reducer = handleActions({
     bpList: sorter(action.payload.candidates, 'vote_power'),
   }),
 
-  [SUBSCRIBE]: state => ({ ...state, subscribe: true }),
+  [SUBSCRIBE]: state => ({...state, subscribe: true}),
 
-  [ERROR]: (state, action) => ({ ...state, error: action.payload }),
+  [ERROR]: (state, action) => ({...state, error: action.payload}),
 }, initialState);
 
 // ACTION CREATORS
 export const getAccount = address => dispatch => accGetter(dispatch, GET_ACCOUNT, ERROR, address);
-export const getAccountDetail = ({ address, from, to }) => dispatch => accDetailGetter(
+export const getAccountDetail = ({address, from, to}) => dispatch => accDetailGetter(
   dispatch,
   GET_ACCOUNT_DETAIL,
   ERROR,
-  { address, from, to },
+  {address, from, to},
 );
-export const getAccounts = ({ from, to }) => dispatch => accsGetter(
+export const getAccounts = ({from, to}) => dispatch => accsGetter(
   dispatch,
   GET_ACCOUNTS,
   ERROR,
-  { from, to },
+  {from, to},
 );
 export const getBlock = hash => dispatch => blockGetter(dispatch, GET_BLOCK, ERROR, hash);
-export const getBlocks = ({ from, to }) => dispatch => blocksGetter(
+export const getBlocks = ({from, to}) => dispatch => blocksGetter(
   dispatch,
   GET_BLOCKS,
   ERROR,
-  { from, to },
+  {from, to},
 );
 export const getBP = txHash => dispatch => bpGetter(
   dispatch,
@@ -201,33 +206,33 @@ export const getBP = txHash => dispatch => bpGetter(
   ERROR,
   txHash,
 );
-export const getBPs = ({ from, to }) => dispatch => bpsGetter(
+export const getBPs = ({from, to}) => dispatch => bpsGetter(
   dispatch,
   GET_BPS,
   ERROR,
-  { from, to },
+  {from, to},
 );
-export const getInitialBlocks = ({ from, to }) => (dispatch) => {
+export const getInitialBlocks = ({from, to}) => (dispatch) => {
   blocksGetter(
     dispatch,
     GET_INITIAL_BLOCKS,
     ERROR,
-    { from, to },
+    {from, to},
   );
   txsGetter(
     dispatch,
     GET_INITIAL_TXS,
     ERROR,
-    { from: 0, to: 4 },
+    {from: 0, to: 4},
   );
 };
 export const getMedState = () => dispatch => medStateGetter(dispatch, GET_MED_STATE, ERROR);
 export const getTx = hash => dispatch => txGetter(dispatch, GET_TX, ERROR, hash);
-export const getTxs = ({ from, to }) => dispatch => txsGetter(
+export const getTxs = ({from, to}) => dispatch => txsGetter(
   dispatch,
   GET_TXS,
   ERROR,
-  { from, to },
+  {from, to},
 );
 export const setTxsFromBlock = createAction(SET_TXS_FROM_BLOCK);
 export const subscribe = () => dispatch => subscriber(dispatch, subsribeTypes, ERROR);

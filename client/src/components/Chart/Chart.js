@@ -2,7 +2,23 @@ import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import ChartJs from 'chart.js';
 
-const initChart = (ref, xData, yData) => {
+const initChart = (ref, target, data) => {
+  let xData = data.map(x => {
+    let d = new Date(x.timestamp * 1000);
+    return `${d.getMonth() + 1}/${d.getDate()}`
+  });
+
+  let yData = data.map(x => {
+    let value = x[target];
+
+    if(target === 'price') {
+      value = value.toFixed(2);
+    }
+
+    return value;
+  });
+
+
   const ctx = ref.getContext('2d');
   const chart = new ChartJs(ctx, {
     type: 'line',
@@ -26,11 +42,10 @@ const initChart = (ref, xData, yData) => {
         callbacks: {
           title(item) {
             if (item.length > 0)
-              return item[0].label
+              return item[0].value + `${target === 'price' ? ' USD' : ''}`
           },
           label(item) {
-            console.log(item)
-            return item.value
+            return item.label
           }
         }
       },
@@ -65,11 +80,11 @@ const initChart = (ref, xData, yData) => {
   });
 };
 
-const Chart = ({id, xData, yData}) => {
+const Chart = ({id, target, data}) => {
   let ref = null;
 
   useEffect(() => {
-    initChart(ref);
+    initChart(ref, target, data);
   });
 
   return (
@@ -85,6 +100,8 @@ const Chart = ({id, xData, yData}) => {
 
 Chart.propTypes = {
   id: PropTypes.string.isRequired,
+  key: PropTypes.string,
+  data: PropTypes.array
 };
 
 export default Chart;

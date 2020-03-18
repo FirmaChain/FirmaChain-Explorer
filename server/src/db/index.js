@@ -8,7 +8,6 @@ const env = dotenv.config().parsed;
 
 const USERNAME = env.EXPLORER_DB_USERNAME;
 const PASSWORD = env.EXPLORER_DB_PASSWORD;
-
 const connect = ({
   database, dialect, host, password, user,
 }) => {

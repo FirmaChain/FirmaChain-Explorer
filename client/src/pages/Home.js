@@ -1,5 +1,6 @@
 import React from 'react';
-import {injectIntl, intlShape} from 'react-intl';
+import PropTypes from 'prop-types';
+import {FormattedMessage, injectIntl, intlShape} from 'react-intl';
 
 import LiveBlocks from '../components/LiveBlocks';
 import LiveInfoWrapper from '../components/LiveInfoWrapper';
@@ -7,9 +8,10 @@ import LiveTxs from '../components/LiveTxs';
 
 import './pages.scss';
 import Chart from "../components/Chart/Chart";
+import {connect} from "react-redux";
 
 
-const Home = ({intl}) => (
+const Home = ({intl, analytics}) => (
   <div className="homeContentWrapper">
     <div className="top">
       <div className="logoBg" />
@@ -25,21 +27,27 @@ const Home = ({intl}) => (
     <div className="content">
       <div className="chartWrapper">
         <div className="card">
-          <div className="name">FIRMA 가격</div>
+          <div className="name">
+            <FormattedMessage id="firmaPrice" />
+          </div>
           <div className="chart">
-            <Chart id="priceChart" />
+            <Chart id="priceChart" target="price" data={analytics} />
           </div>
         </div>
         <div className="card">
-          <div className="name">블록 수</div>
+          <div className="name">
+            <FormattedMessage id="blockCount" />
+          </div>
           <div className="chart">
-            <Chart id="blockChart" />
+            <Chart id="blockChart" target="block" data={analytics} />
           </div>
         </div>
         <div className="card">
-          <div className="name">거래 수</div>
+          <div className="name">
+            <FormattedMessage id="txCount" />
+          </div>
           <div className="chart">
-            <Chart id="txChart" />
+            <Chart id="txChart" target="tx" data={analytics} />
           </div>
         </div>
       </div>
@@ -73,6 +81,14 @@ const Home = ({intl}) => (
 
 Home.propTypes = {
   intl: intlShape.isRequired,
+  analytics: PropTypes.array
 };
 
-export default injectIntl(Home);
+const mapStateToProps = ({ticker}) => {
+  return {
+    analytics: ticker.analytics
+  };
+};
+
+
+export default connect(mapStateToProps)(injectIntl(Home))

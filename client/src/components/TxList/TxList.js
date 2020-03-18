@@ -5,7 +5,7 @@ import ListWrapper from '../ListWrapper';
 import { BlockchainActions, GlobalActions, WidgetActions as w } from '../../redux/actionCreators';
 import TableWithIcon from '../TableWithIcon';
 import { listMapper, ranger, spaceMapper } from '../../lib';
-import { contentsInPage, txSpaceList, txTitleList } from '../../config';
+import {txCenterList, txCopyList, txLinkTo, txRightList, txSpaceList, txTitleList} from '../../config';
 
 import './TxList.scss';
 
@@ -22,11 +22,15 @@ class TxList extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { account, page, type } = this.props;
+    const { account, page, type, countPerPage } = this.props;
     if (page !== prevProps.page) {
-      if (type === 'txs') this.getTxs();
-      if (type === 'account' && account) this.getAccTxs();
+      this.getList(type, account);
     }
+
+    if(countPerPage !== prevProps.countPerPage) {
+      this.getList(type, account);
+    }
+
     if (prevProps.account !== account) this.getAccTxs();
   }
 
@@ -34,15 +38,20 @@ class TxList extends Component {
     GlobalActions.movePage(1);
   }
 
+  getList(type, account) {
+    if (type === 'txs') this.getTxs();
+    if (type === 'account' && account) this.getAccTxs();
+  }
+
   getTxs() {
-    const { page, medState: { numTx } } = this.props;
-    const { from, to } = ranger(page, numTx, contentsInPage);
+    const { page, countPerPage, medState: { numTx } } = this.props;
+    const { from, to } = ranger(page, numTx, countPerPage);
     w.loader(BlockchainActions.getTxs({ from, to }));
   }
 
   getAccTxs() {
-    const { account, page } = this.props;
-    const { from, to } = ranger(page, account.totalTxs, contentsInPage);
+    const { account, countPerPage, page } = this.props;
+    const { from, to } = ranger(page, account.totalTxs, countPerPage);
     w.loader(BlockchainActions.getAccountDetail({
       address: account.address,
       from,
@@ -58,10 +67,11 @@ class TxList extends Component {
       txs,
       type,
       lang,
+      countPerPage
     } = this.props;
     const titles = txTitleList[type];
     const spaces = txSpaceList[type];
-    const { from, to } = ranger(page, txs.length, contentsInPage);
+    const { from, to } = ranger(page, txs.length, countPerPage);
 
     return (
       <div className="txList">
@@ -72,9 +82,10 @@ class TxList extends Component {
               titles={titles}
               data={listMapper(type === 'block' ? txs.slice(from, to) : txs, 'tx')}
               spacing={spaceMapper(spaces)}
-              linkTo={['tx/hash', 'account/from', 'account/to']}
-              centerList={['Amount']}
-              rightList={['Amount']}
+              linkTo={txLinkTo}
+              centerList={txCenterList}
+              rightList={txRightList}
+              copyList={txCopyList}
             />
           )
         }
@@ -86,6 +97,9 @@ class TxList extends Component {
               data={listMapper(type === 'block' ? txs.slice(from, to) : txs, 'tx')}
               spacing={spaceMapper([1])}
               linkTo={['tx/hash']}
+              centerList={txCenterList}
+              rightList={txRightList}
+              copyList={txCopyList}
             />
           )
         }
@@ -106,9 +120,10 @@ class TxList extends Component {
               titles={titles}
               data={listMapper(txList, 'tx')}
               spacing={spaceMapper(spaces)}
-              linkTo={['tx/hash', 'account/from', 'account/to']}
-              centerList={['Amount']}
-              rightList={['Amount']}
+              linkTo={txLinkTo}
+              centerList={txCenterList}
+              rightList={txRightList}
+              copyList={txCopyList}
             />
           )
         }
@@ -126,6 +141,7 @@ TxList.propTypes = {
   lang: PropTypes.string.isRequired,
   mode: PropTypes.number.isRequired,
   page: PropTypes.number.isRequired,
+  countPerPage: PropTypes.number.isRequired,
   type: PropTypes.string.isRequired,
 };
 

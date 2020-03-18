@@ -37,7 +37,7 @@ const Footer = ({language, mode}) => (
         </div>
         {
           countryList.map(lang => (
-            <div className={language === lang ? 'on' : ''} onClick={() => changeLanguage(lang)}>{countryName[lang]}</div>
+            <div key={lang} className={language === lang ? 'on' : ''} onClick={() => changeLanguage(lang)}>{countryName[lang]}</div>
           ))
         }
       </div>

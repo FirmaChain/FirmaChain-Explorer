@@ -21,12 +21,14 @@ export const blockConverter = (data) => {
 };
 
 export const txConverter = (data) => {
-  try {
-    return data.tx.value.msg.map((m, i) => {
-      let amount = null;
-      let fromAccount = null;
-      let toAccount = null;
+  let fromAccount = null;
+  let toAccount = null;
+  let amount = null;
 
+  try {
+    if(data.tx.value.msg.length > 0) {
+
+      const m = data.tx.value.msg[0];
       switch (m.type) {
         case 'cosmos-sdk/MsgBeginRedelegate':
         case 'cosmos-sdk/MsgUndelegate':
@@ -55,19 +57,22 @@ export const txConverter = (data) => {
         default:
           break;
       }
+    }
 
-      return ({
-        blockHeight: +data.height,
-        executed: data.logs[0].success,
-        fromAccount,
-        toAccount,
-        onChain: true,
-        txHash: `${data.txhash}:${i}`,
-        type: m.type,
-        memo: data.tx.value.memo,
-        amount,
-      });
-    });
+    return [{
+      blockHeight: +data.height,
+      executed: data.logs[0].success,
+      fromAccount,
+      toAccount,
+      onChain: true,
+      txHash: `${data.txhash}`,
+      memo: data.tx.value.memo,
+      fee: data.tx.value.fee,
+      msgs: data.tx.value.msg,
+      amount,
+      gasUsed: data.gas_used,
+      gasLimit: data.gas_wanted
+    }];
   } catch (e) {
     return ({});
   }
@@ -96,7 +101,7 @@ export const totalSupplyConverter = async (data) => {
 
     const notBonded = new BigNumber(data.not_bonded_tokens);
     const bonded = new BigNumber(data.bonded_tokens);
-    
+
     return {
       notBondedTokens: data.not_bonded_tokens,
       bondedTokens: data.bonded_tokens,

@@ -1,6 +1,6 @@
-import { createAction, handleActions } from 'redux-actions';
-import { searcher, searchTextSetter, searchWorker } from '../helpers/global';
-import { maxResult } from '../../config';
+import {createAction, handleActions} from 'redux-actions';
+import {searcher, searchTextSetter, searchWorker} from '../helpers/global';
+import {maxResult, contentsInPage} from '../../config';
 
 
 // ACTION TYPES
@@ -21,7 +21,7 @@ const OPEN_MODAL = 'global/OPEN_MODAL';
 const CHANGE_LANGUAGE = 'global/CHANGE_LANGUAGE';
 
 const MOVE_PAGE = 'global/MOVE_PAGE';
-
+const SET_COUNT_PER_PAGE = 'global/SET_COUNT_PER_PAGE';
 const MOVE_URL = 'global/MOVE_URL';
 
 const initialState = {
@@ -44,6 +44,7 @@ const initialState = {
   language: 'en',
 
   page: 1,
+  countPerPage: contentsInPage,
 
   currentUrl: '/',
 };
@@ -69,7 +70,7 @@ const reducer = handleActions({
     };
   },
 
-  [REMOVE_SEARCH_RESULT]: state => ({ ...state, searchResult: [] }),
+  [REMOVE_SEARCH_RESULT]: state => ({...state, searchResult: []}),
   [SEARCH]: (state, action) => {
     let result = [];
     if (state.searchResult.length >= maxResult) {
@@ -90,10 +91,10 @@ const reducer = handleActions({
     searchResult: [],
   }),
 
-  [CLOSE_LANGUAGE]: state => ({ ...state, languageOpen: false }),
-  [CLOSE_NAVBAR]: state => ({ ...state, navBarOpen: false, modalOpen: false }),
-  [OPEN_LANGUAGE]: state => ({ ...state, languageOpen: !state.languageOpen }),
-  [OPEN_NAVBAR]: state => ({ ...state, navBarOpen: true, modalOpen: false }),
+  [CLOSE_LANGUAGE]: state => ({...state, languageOpen: false}),
+  [CLOSE_NAVBAR]: state => ({...state, navBarOpen: false, modalOpen: false}),
+  [OPEN_LANGUAGE]: state => ({...state, languageOpen: !state.languageOpen}),
+  [OPEN_NAVBAR]: state => ({...state, navBarOpen: true, modalOpen: false}),
 
   [CLOSE_MODAL]: state => ({
     ...state,
@@ -119,7 +120,14 @@ const reducer = handleActions({
   [MOVE_PAGE]: (state, action) => {
     let page = action.payload;
     if (page < 1) page = 1;
-    return { ...state, page };
+    return {...state, page};
+  },
+
+  [SET_COUNT_PER_PAGE]: (state, action) => {
+    return {
+      ...state,
+      countPerPage: action.payload
+    };
   },
 
   [MOVE_URL]: (state, action) => ({
@@ -135,6 +143,7 @@ export const closeLanguage = createAction(CLOSE_LANGUAGE);
 export const closeModal = createAction(CLOSE_MODAL);
 export const closeNavBar = createAction(CLOSE_NAVBAR);
 export const movePage = createAction(MOVE_PAGE);
+export const setCountPerPage = createAction(SET_COUNT_PER_PAGE);
 export const moveUrl = createAction(MOVE_URL);
 export const openLanguage = createAction(OPEN_LANGUAGE);
 export const openModal = createAction(OPEN_MODAL); // { modalData, modalType }

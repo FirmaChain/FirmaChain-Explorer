@@ -203,6 +203,7 @@
     width: 100%;
 
     &.wallet {
+      min-width: $desktop-width;
       height: 200px;
       background-color: #0d0d0d;
       display: flex;
@@ -262,7 +263,6 @@
   width: 100%;
   margin-bottom: 30px;
 }
-
 
 .block {
   margin: auto;
@@ -329,7 +329,8 @@
   margin-top: 30px;
 
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 // 404page
@@ -354,5 +355,26 @@
     font-stretch: normal;
     line-height: normal;
     color: #0b0b0b;
+  }
+}
+
+.copyButton {
+  background-image: url(/image/icon/ico_copy.svg);
+  width: 11px;
+  height: 12px;
+  background-repeat: no-repeat;
+  margin: 0 8px;
+  cursor: pointer;
+
+  &:hover {
+    background-image: url(/image/icon/ico_copy_h.svg);
+  }
+
+  &.copied {
+    background-image: url(/image/icon/ico_copied.svg);
+
+    &:hover {
+      background-image: url(/image/icon/ico_copied.svg);
+    }
   }
 }

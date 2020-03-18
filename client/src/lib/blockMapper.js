@@ -1,4 +1,5 @@
 import { adder } from './bigNumCalculator';
+import BigNumber from "bignumber.js";
 
 const blockMapper = (block) => {
   let amount = '0';
@@ -11,6 +12,7 @@ const blockMapper = (block) => {
     block.transactions = [];
   }
 
+  amount =  new BigNumber(amount).shiftedBy(-6);
   amount = `${amount} FIRMA`;
 
   return {

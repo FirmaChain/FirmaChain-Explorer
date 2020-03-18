@@ -25,7 +25,7 @@ const en = {
   marketCap: 'Market Cap',
   firmaPrice: 'FIRMA Price',
   firmaSupply: 'FIRMA Supply',
-  message: 'Message',
+  memo: 'Memo',
   name: 'Name',
   nonce: 'Nonce',
   noTx: 'No.Tx',

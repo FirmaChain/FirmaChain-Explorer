@@ -9,7 +9,6 @@ import morgan from 'morgan';
 import route from './route';
 import logger, { stream } from './logger';
 
-
 const ENV = process.env.NODE_ENV;
 
 const sendError = (err, req, res) => {

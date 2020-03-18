@@ -69,6 +69,8 @@ class AccountList extends Component {
           titles={accountListConfig.titles}
           data={mappedAccounts(accountList, totalSupply)}
           spacing={spaceMapper(accountListConfig.spaces)}
+          centerList={accountListConfig.centerList}
+          rightList={accountListConfig.rightList}
           linkTo={accountListConfig.linkTo}
         />
       ) : (

@@ -13,6 +13,7 @@ const ko = {
   amount: '값',
   balance: 'FIRMA 보유량',
   block: '블록',
+  blockCount: '블록 수',
   blockDetailInfo: 'Block Details',
   blockHash: '블록 해시',
   blockHeight: '블록 번호',
@@ -23,9 +24,10 @@ const ko = {
   collateral: '담보 FIRMA',
   from: '지갑 주소',
   marketCap: '시장 가격',
-  firmaPrice: '피르마 시장 가격',
+  firmaPrice: 'FIRMA 가격',
   firmaSupply: '피르마 총 개수',
-  message: '메모',
+  memo: '메모',
+  message: '메시지',
   name: '이름',
   nonce: '생성한 거래 수',
   noTx: '포함된 거래',
@@ -46,11 +48,17 @@ const ko = {
   transactionsList: 'Transactions',
   type: '유형',
   tx: '거래',
+  txCount: '거래 수',
   txHash: '거래 코드',
   url: 'URL',
   viewAll: '더보기',
   votes: '투표량',
   voterate: '투표지분',
+  fee: '수수료',
+  pageRange10: '10개씩',
+  pageRange25: '25개씩',
+  pageRange50: '50개씩',
+  pageRange100: '100개씩'
 };
 
 export default ko;

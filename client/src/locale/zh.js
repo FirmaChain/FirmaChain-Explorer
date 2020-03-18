@@ -25,7 +25,7 @@ const zh = {
   marketCap: '市场价格',
   firmaPrice: 'FIRMA市场价格',
   firmaSupply: 'FIRMA总量',
-  message: 'Message',
+  memo: 'Memo',
   name: '姓名',
   nonce: '账户的随机数',
   noTx: '所有交易',

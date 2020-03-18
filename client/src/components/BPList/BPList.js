@@ -40,16 +40,21 @@ class BPList extends Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    const { mode, page, bpList } = this.props;
+    const { mode, page, countPerPage, bpList } = this.props;
     if (mode !== nextProps.mode) return true;
     if (page !== nextProps.page) return true;
+    if (countPerPage !== nextProps.countPerPage) return true;
     if (bpList !== nextProps.bpList) return true;
     return false;
   }
 
   componentWillUpdate(nextProps) {
-    const { location: { search } } = this.props;
+    const { countPerPage, location: { search } } = this.props;
     if (nextProps.location.search !== search) {
+      this.getBPs(nextProps);
+    }
+
+    if(nextProps.countPerPage !== countPerPage) {
       this.getBPs(nextProps);
     }
   }
@@ -110,6 +115,7 @@ BPList.propTypes = {
   totalSupply: PropTypes.string.isRequired,
   bondedTokens: PropTypes.string.isRequired,
   location: PropTypes.object.isRequired,
+  countPerPage: PropTypes.number.isRequired,
 };
 
 export default BPList;

@@ -1,5 +1,5 @@
 // export const NODE_ENDPOINT = '/api/v1';
-export const NODE_ENDPOINT = 'http://api.testnet.firmachain.org/api/v1';
+export const NODE_ENDPOINT = 'http://localhost:4000/api/v1';
 
 // SNS
 export const sns = ['duite', 'telegram', 'medium', 'twitter', 'github'];
@@ -19,8 +19,8 @@ export const privacyPolicyLink = {
 export const blindAddress = '000000000000000000000000000000000000000000000000000000000000000000';
 
 // INTERNAL CONFIG
-export const contentsInPage = 20;
-export const bpsInPage = 30;
+export const contentsInPage = 25;
+export const bpsInPage = 25;
 export const subscribeMaxResponse = 4;
 
 // STYLING CONFIG
@@ -39,28 +39,37 @@ export const maxResult = 15;
 
 // SPACE_LIST (component_page)
 export const txSpaceList = {
-  account: [15, 8, 10, 10, 12],
-  block: [28, 28, 28, 16],
-  txs: [15, 10, 8, 10, 10, 12],
+  account: [2, 6, 3, 4],
+  block: [2, 6, 3, 4],
+  txs: [2, 6, 3, 4],
 };
 
+export const txCenterList = ['Block Height'];
+export const txRightList = ['Time Stamp'];
+export const txLinkTo = ['block/height', 'tx/hash', 'account/from', 'account/to'];
+export const txCopyList = ['Transaction Hash', 'From'];
+
 export const txTitleList = {
-  account: ['Transaction Hash', 'Block Height', 'From', 'To', 'Amount'],
-  block: ['Transaction Hash', 'From', 'To', 'Amount'],
-  txs: ['Transaction Hash', 'Type', 'Block Height', 'From', 'To', 'Amount'],
+  account: ['Block Height', 'Transaction Hash', 'From', 'Time Stamp'],
+  block: ['Block Height', 'Transaction Hash', 'From', 'Time Stamp'],
+  txs: ['Block Height', 'Transaction Hash', 'From', 'Time Stamp'],
 };
 
 export const accountListConfig = {
   titles: ['Account', 'Balance', 'Percentage', 'Transactions'],
   linkTo: ['account/account'],
-  spaces: [8, 2, 2, 2],
+  centerList: ['Percentage', 'Transactions'],
+  rightList: ['Balance'],
+  spaces: [6, 3, 3, 2],
 };
 
 export const blockListConfig = {
-  titles: ['Block Height', 'Time Stamp', 'Block Hash', 'No.Tx', 'BP'],
+  titles: ['Block Height', 'Block Hash', 'Time Stamp', 'No.Tx', 'BP'],
   linkTo: ['block/height', 'block/hash', 'bp/bp'],
+  copy: ['Block Hash'],
   centerList: ['Block Height', 'No.Tx'],
-  spaces: [2, 4, 9, 2, 3],
+  rightList: ['Time Stamp'],
+  spaces: [2, 8, 4, 2, 3],
 };
 
 export const bpListConfig = {
@@ -74,7 +83,7 @@ export const bpListConfig = {
 export const detailWrapperConfig = {
   titles: {
     block: ['Block Height', 'Time Stamp', 'Block Hash', 'Prev Hash', 'Amount', 'No.Tx', 'BP'],
-    tx: ['Block Height', 'Transaction Hash', 'Status', 'From', 'Message'],
+    tx: ['Block Height', 'Time Stamp', 'Transaction Hash', 'Status', 'From', 'Fee', 'Memo', 'Message'],
     account: ['Account', 'Balance', 'Staking', 'Transactions'],
     bp: [
       'Address', 'Consensus PublicKey', 'Consensus Address', 'Votes', 'url', 'Alias',
@@ -83,10 +92,16 @@ export const detailWrapperConfig = {
   },
   linkTo: {
     block: ['block/Prev Hash', 'bp/BP'],
-    tx: ['account/From', 'account/To'],
+    tx: ['account/From', 'account/To', 'account/from_address', 'account/to_address'],
     account: [],
     bp: ['url'],
   },
+  copy: {
+    block: [],
+    account: [],
+    tx: ['Block Height', 'Transaction Hash', 'From', 'To', 'from_address', 'to_address'],
+    bp: []
+  }
 };
 
 export const tableWithIconConfig = {

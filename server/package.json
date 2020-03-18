@@ -8,7 +8,7 @@
     "start": "babel-node src/server",
     "startdev": "NODE_ENV=development babel-node src/server",
     "syncdb": "babel-node src/db/sync",
-    "syncdb:test": "NODE_ENV=test babel-node src/db/sync",
+    "syncdb:test": "NODE_ENV=development babel-node src/db/sync",
     "resetdb": "babel-node src/db/reset",
     "test": "NODE_ENV=test mocha --require babel-register src/**/test.js"
   },

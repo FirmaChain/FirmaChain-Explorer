@@ -14,6 +14,7 @@ const parseTx = (block, tx) => ({
   onChain: tx.onChain,
   toAccount: tx.toAccount,
   txHash: tx.txHash,
+  timestamp: block.data.timestamp,
 });
 
 const parseAccount = account => ({

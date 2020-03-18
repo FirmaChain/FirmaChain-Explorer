@@ -1,10 +1,10 @@
 import { merge } from 'lodash';
 
 import defaultConfig from './default';
-import test from './test';
+import development from './development';
 
 const configs = {
-  test,
+  development,
 };
 
 export default merge({}, defaultConfig, configs[process.env.NODE_ENV] || {});

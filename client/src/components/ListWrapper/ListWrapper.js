@@ -1,6 +1,6 @@
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, {useState} from 'react';
 import { FormattedMessage } from 'react-intl';
 import { NavLink } from 'react-router-dom';
 
@@ -8,7 +8,24 @@ import { timeConverter, titleConverter } from '../../lib';
 import { blindAddress } from '../../config';
 
 import './ListWrapper.scss';
+import {CopyToClipboard} from "react-copy-to-clipboard";
 
+const CopyButton = (value) => {
+  const [isCopied, setCopied] = useState(false);
+  const onCopy = () => {
+    setCopied(true);
+
+    setTimeout(() => {
+      setCopied(false)
+    }, 3000);
+  };
+
+  return (
+    <CopyToClipboard text={value} onCopy={onCopy}>
+      <div className={`copyButton${isCopied ? ' copied' : ''}`}></div>
+    </CopyToClipboard>
+  )
+}
 
 const linkDistributor = ({
   centerList,
@@ -16,6 +33,7 @@ const linkDistributor = ({
   lang,
   linkTo,
   rightList,
+  copyList,
   spacing,
   titles,
 }) => titles.map((title, i) => {
@@ -58,7 +76,10 @@ const linkDistributor = ({
       </span>
     );
   }
-  return content;
+  return <React.Fragment>
+    {content}
+    {(copyList.indexOf(title) !== -1) && CopyButton(datum[title])}
+  </React.Fragment>;
 });
 
 const ListWrapperTitle = ({ titles, spacing, centerList }) => (
@@ -78,7 +99,7 @@ const ListWrapperTitle = ({ titles, spacing, centerList }) => (
 );
 
 const ListWrapperContents = ({
-  centerList, data, lang, linkTo, rightList, spacing, titles,
+  centerList, data, lang, linkTo, rightList, copyList, spacing, titles,
 }) => {
   const className = (datum) => {
     if (datum.Ranking >= 1 && datum.Ranking <= 21) {
@@ -94,7 +115,7 @@ const ListWrapperContents = ({
           // eslint-disable-next-line react/no-array-index-key
           <div className={className(datum)} key={i}>
             { linkDistributor({
-              centerList, datum, lang, linkTo, rightList, spacing, titles,
+              centerList, datum, lang, linkTo, rightList, copyList, spacing, titles,
             }) }
           </div>
         ))
@@ -109,6 +130,7 @@ const ListWrapper = ({
   lang,
   linkTo,
   rightList,
+  copyList,
   spacing,
   titles,
 }) => (
@@ -120,6 +142,7 @@ const ListWrapper = ({
       lang={lang}
       linkTo={linkTo}
       rightList={rightList}
+      copyList={copyList}
       spacing={spacing}
       titles={titles}
     />
@@ -138,6 +161,7 @@ ListWrapperContents.propTypes = {
   lang: PropTypes.string.isRequired,
   linkTo: PropTypes.array.isRequired,
   rightList: PropTypes.array.isRequired,
+  copyList: PropTypes.array,
   spacing: PropTypes.array.isRequired,
   titles: PropTypes.array.isRequired,
 };
@@ -148,6 +172,7 @@ ListWrapper.propTypes = {
   data: PropTypes.array.isRequired,
   linkTo: PropTypes.array,
   rightList: PropTypes.array,
+  copyList: PropTypes.array,
   spacing: PropTypes.array.isRequired,
   titles: PropTypes.array.isRequired,
   lang: PropTypes.string.isRequired,
@@ -157,6 +182,7 @@ ListWrapper.defaultProps = {
   centerList: [],
   linkTo: [],
   rightList: [],
+  copyList: []
 };
 
 export default ListWrapper;

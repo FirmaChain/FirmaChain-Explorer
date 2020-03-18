@@ -33,8 +33,8 @@ switch(process.argv[2]) {
     // Load customizations from the config-overrides.testing file.
     // That file should export a single function that takes a config and returns a config
     let customizer = loadCustomizer(configDir + '/config-overrides.testing');
-    proxyquire('react-scripts/scripts/test.js', {
-      // When test.js asks for '../utils/createJestConfig' it will get this instead:
+    proxyquire('react-scripts/scripts/development.js', {
+      // When development.js asks for '../utils/createJestConfig' it will get this instead:
       '../utils/createJestConfig': (...args) => {
         // Use the existing createJestConfig function to create a config, then pass
         // it through the customizer
@@ -57,7 +57,7 @@ function loadCustomizer(module) {
       throw e;
     }
   }
-  
+
   // If the module doesn't exist, return a
   // noop that simply returns the config it's given.
   return config => config;
@@ -67,7 +67,7 @@ function rewireModule(modulePath, customizer) {
   // Load the module with `rewire`, which allows modifying the
   // script's internal variables.
   let defaults = rewire(modulePath);
-  
+
   // Reach into the module, grab its global 'config' variable,
   // and pass it through the customizer function.
   // The customizer should *mutate* the config object, because

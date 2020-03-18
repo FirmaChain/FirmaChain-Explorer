@@ -15,6 +15,7 @@ import {
 import { handleBlocksResponse, getBlocks, getLastBlock } from '../block/handler';
 import { blockConverter } from '../converter';
 import { updateCandidates } from '../candidate/handler';
+import { updateAnalytics } from '../analytics/handler';
 
 const { TOPICS, TENDERMINT_URL, MEM_FIELDS } = config.BLOCKCHAIN;
 const WebSocket = websocket.client;
@@ -48,7 +49,9 @@ TOPICS.newTailBlock.onEvent = async (block, onReset) => {
   if (+lastHeight + 2 < +block.height) return onReset();
 
   logger.debug('[T1] start to get FIRMA price');
-  const medxPrice = await requestMedXPrice();
+  const medxPrice = await requestMedXPrice().catch(e => {
+    logger.error('[T1] fail to get FIRMA price. ' + e.message);
+  });
   logger.debug('[T1] success to get FIRMA price');
   logger.debug('[T1] start to get block detail from blockchain');
   const detailedBlock = await requestBlockByHeight(block.height - 1);
@@ -64,13 +67,20 @@ TOPICS.newTailBlock.onEvent = async (block, onReset) => {
   detailedBlock.txs = await requestTransactionsByHeight(block.height - 1);
   logger.debug('[T1] success to get transactions from blockchain');
 
+  console.log(detailedBlock);
   return db
     .transaction(async (t) => {
       logger.debug('[T1] start to get candidates from blockchain');
       await updateCandidates(t);
       logger.debug('[T1] success to get candidates from blockchain');
+
+      logger.debug('[T1] start to insert analytics data');
+      await updateAnalytics(t, block.height, detailedBlock.txs, medxPrice);
+      logger.debug('[T1] success to insert analytics data');
+
       logger.debug('[T1] start to handle block response from blockchain');
       return handleBlocksResponse([detailedBlock], t);
+
     })
     .then(dbBlocks => {
       logger.debug('[T1] success to handle block response from blockchain');

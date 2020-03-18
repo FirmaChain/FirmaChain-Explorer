@@ -25,7 +25,7 @@ const ja = {
   marketCap: '市場価格',
   firmaPrice: 'FIRMA成行値段',
   firmaSupply: 'FIRMA総数',
-  message: 'メッセージ',
+  memo: 'メッセージ',
   name: '名前',
   nonce: 'ナンス',
   noTx: '含まれた取引',

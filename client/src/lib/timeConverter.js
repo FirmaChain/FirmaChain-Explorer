@@ -15,14 +15,14 @@ const timeConverter = (time) => {
       return `${Math.floor(timeGap / 60)} min ago`;
     case (timeGap < 60 * 60 * 24):
       return `${Math.floor(timeGap / 60 / 60)} hr ago`;
-    case (timeGap < 60 * 60 * 24 * 30):
-      return `${Math.floor(timeGap / 60 / 60 / 24)} day ago`;
-    case (timeGap < 60 * 60 * 24 * 30 * 12):
-      return `${Math.floor(timeGap / 60 / 60 / 24 / 30)} mo ago`;
-    case (timeGap >= 60 * 60 * 24 * 30 * 12):
-      return `${Math.floor(timeGap / 60 / 60 / 24 / 30 / 12)} yr ago`;
+    // case (timeGap < 60 * 60 * 24 * 30):
+    //   return `${Math.floor(timeGap / 60 / 60 / 24)} day ago`;
+    // case (timeGap < 60 * 60 * 24 * 30 * 12):
+    //   return `${Math.floor(timeGap / 60 / 60 / 24 / 30)} mo ago`;
+    // case (timeGap >= 60 * 60 * 24 * 30 * 12):
+    //   return `${Math.floor(timeGap / 60 / 60 / 24 / 30 / 12)} yr ago`;
     default:
-      return 'ERROR';
+      return new Date(timeString * 1000).toLocaleString();
   }
 };
 
