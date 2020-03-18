@@ -18,7 +18,7 @@ const LiveInfoWrapper = ({
     <div className="liveInfoWrapperInfo">
       <span>{title}</span>
       <NavLink to={`/${lang}/${type}s`}>
-        <img src="/image/icon/arrow_notice.svg" alt=""/>
+        <img src="/image/icon/arrow_next.svg" alt=""/>
       </NavLink>
     </div>
     <div className="liveInfoWrapperContentBox">
