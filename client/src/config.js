@@ -1,5 +1,13 @@
-// export const NODE_ENDPOINT = '/api/v1';
-export const NODE_ENDPOINT = 'http://localhost:4000/api/v1';
+let api = '/api/v1';
+if (process.env.NODE_ENV === 'production') {
+  api = 'http://api.firmachain.org/api/v1';
+} else if (process.env.NODE_ENV === 'testnet') {
+  api = 'http://api.testnet.firmachain.org/api/v1';
+} else if (process.env.NODE_ENV === 'dev') {
+  api = 'http://localhost:4000/api/v1';
+}
+
+export const NODE_ENDPOINT = endpoint;
 
 // SNS
 export const sns = ['duite', 'telegram', 'medium', 'twitter', 'github'];
