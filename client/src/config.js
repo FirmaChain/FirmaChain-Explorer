@@ -1,11 +1,13 @@
 let api = '/api/v1';
-if (process.env.NODE_ENV === 'production') {
+if (process.env.REACT_APP_ENV === 'production') {
   api = 'http://api.firmachain.org/api/v1';
-} else if (process.env.NODE_ENV === 'testnet') {
+} else if (process.env.REACT_APP_ENV === 'testnet') {
   api = 'http://api.testnet.firmachain.org/api/v1';
-} else if (process.env.NODE_ENV === 'dev') {
+} else if (process.env.REACT_APP_ENV === 'dev') {
   api = 'http://localhost:4000/api/v1';
 }
+
+console.log(process.env.REACT_APP_ENV);
 
 export const NODE_ENDPOINT = api;
 

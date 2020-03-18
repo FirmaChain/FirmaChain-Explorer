@@ -40,9 +40,9 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "start": "NODE_ENV=dev node scripts/customized-config start",
-    "build": "NODE_ENV=production node --max-old-space-size=6144 scripts/customized-config build && rm -rf ../server/build && mv build ../server",
-    "testnet": "NODE_ENV=testnet node --max-old-space-size=6144 scripts/customized-config build && rm -rf ../server/build && mv build ../server",
+    "start": "REACT_APP_ENV=dev node scripts/customized-config start",
+    "build": "REACT_APP_ENV=production node --max-old-space-size=6144 scripts/customized-config build && rm -rf ../server/build && mv build ../server",
+    "testnet": "REACT_APP_ENV=testnet node --max-old-space-size=6144 scripts/customized-config testnet && rm -rf ../server/build && mv build ../server",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
