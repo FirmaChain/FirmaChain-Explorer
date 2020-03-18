@@ -1,5 +1,8 @@
 import React from 'react';
 import lottie from 'lottie-web';
+
+import './loading.scss';
+
 import loadingJson from '../../lottie/loading/lottie.json';
 
 class Loading extends React.Component {
@@ -22,7 +25,9 @@ class Loading extends React.Component {
   }
 
   render() {
-      return (<div ref={r => this.ref = r}/>);
+      return (<div className="loading">
+        <div ref={r => this.ref = r}/>
+      </div>);
   }
 }
 
