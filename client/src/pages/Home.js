@@ -20,7 +20,7 @@ const Home = ({intl, analytics}) => (
         <div className="notice">
           <img src="/image/icon/ico_notice.svg" alt="" />
           <span>토큰스왑에 대해 알려드립니다.</span>
-          <img src="/image/icon/arrow_notice.svg" alt="" />
+          <img src="/image/icon/arrow_next.svg" alt="" />
         </div>
       </div>
     </div>
