@@ -7,7 +7,7 @@ if (process.env.NODE_ENV === 'production') {
   api = 'http://localhost:4000/api/v1';
 }
 
-export const NODE_ENDPOINT = endpoint;
+export const NODE_ENDPOINT = api;
 
 // SNS
 export const sns = ['duite', 'telegram', 'medium', 'twitter', 'github'];
