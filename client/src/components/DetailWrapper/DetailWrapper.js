@@ -134,7 +134,9 @@ const DetailWrapperValue = ({titleList, linkList, copyList, data, lang}) => (
             content = timeConverter(data[title]) // timezoneMatcher(data[title]);
             break;
           case 'Fee':
-            content = JSON.stringify(data[title]).replace(/[{}"]/g, '').replace(/:/g, ': ').replace(/,/g, ', ')
+            if(data[title]) {
+              content = JSON.stringify(data[title]).replace(/[{}"]/g, '').replace(/:/g, ': ').replace(/,/g, ', ')
+            }
             break;
           default:
             content = data[title]
