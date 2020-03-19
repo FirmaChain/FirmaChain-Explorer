@@ -19,7 +19,6 @@ export const updateAnalytics = async (t, height, txs, price) => {
       {
         transaction: t,
         where: Sequelize.literal('`date` = DATE(NOW())'),
-        logging: console.log
       }
     )
   } else {
