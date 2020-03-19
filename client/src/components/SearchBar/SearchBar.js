@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, {useState} from 'react';
 
 import SimpleWrapper from '../SimpleWrapper';
 import { GlobalActions } from '../../redux/actionCreators';
@@ -16,25 +16,19 @@ const SearchBar = ({
   searchResult,
   type,
 }) => {
-  const { setSearchText } = GlobalActions;
+  // const { setSearchText } = GlobalActions;
+  let [searchText, setSearchText] = useState('');
 
   return (
     <div className="searchBar" id={type}>
       <div className="searchBarSearch">
         <input
-          autoFocus={focus} // eslint-disable-line
           placeholder={intl.formatMessage({id: 'searchLabel'})}
-          onClick={() => {
-            if (type === 'side') GlobalActions.openModal({ modalType: 'Search' });
-          }}
           onChange={(e) => {
-            setSearchText(e.target.value, type);
-          }}
-          onBlur={(e) => {
-            e.target.value = '';
+            setSearchText(e.target.value);
           }}
         />
-        <div className="searchBarIcon">
+        <div className="searchBarIcon" onClick={() => {GlobalActions.setSearchText(searchText, type)}}>
           {
             type === 'mobile' ?
               <img

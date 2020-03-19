@@ -4,6 +4,7 @@ if (process.env.REACT_APP_ENV === 'production') {
 } else if (process.env.REACT_APP_ENV === 'testnet') {
   api = 'http://api.testnet.firmachain.org/api/v1';
 } else if (process.env.REACT_APP_ENV === 'dev') {
+  //api = 'http://api.testnet.firmachain.org/api/v1';
   api = 'http://localhost:4000/api/v1';
 }
 

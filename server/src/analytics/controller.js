@@ -14,17 +14,13 @@ export const data = async (req, res) => {
 
     let v = await Analytics.findOne({
       attributes: [
-        [Sequelize.fn('COUNT', Sequelize.col('*')), 'block'],
-        [Sequelize.fn('SUM', Sequelize.col('tx')), 'tx'],
+        'date',
+        'last',
+        'block',
+        'tx',
         [Sequelize.fn('AVG', Sequelize.col('price')), 'price'],
       ],
-      where: Sequelize.where(
-        Sequelize.fn('DATE', Sequelize.col('createdAt')),
-        Sequelize.fn('DATE', Sequelize.fn('FROM_UNIXTIME', timestamp))
-      ),
-      order: [
-        ['height', 'DESC']
-      ]
+      where: {date: Sequelize.fn('DATE', Sequelize.fn('FROM_UNIXTIME', timestamp))}
     });
 
     if(!v || !v.dataValues || v.dataValues.tx === null)
@@ -36,6 +32,5 @@ export const data = async (req, res) => {
     });
   }
 
-  console.log(arr)
   res.json({data: arr});
 };

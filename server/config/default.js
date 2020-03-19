@@ -13,6 +13,7 @@ const config = {
       local: `http://localhost:4000/api/v1`,
     },
     COINMARKETCAP_URL: 'https://api.coinmarketcap.com/v2/ticker/4953/',
+    COINGEKCO_URL: 'https://api.coingecko.com/api/v3/simple/price?ids=firmachain&vs_currencies=usd',
     GENESIS_ACCOUNT: 'firma1ytleandjvn27kcpsfly3d39amw6n2znfpm5eg7',
     TOPICS: {
       newTailBlock: {},

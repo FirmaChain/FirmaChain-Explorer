@@ -52,22 +52,28 @@ TOPICS.newTailBlock.onEvent = async (block, onReset) => {
   const medxPrice = await requestMedXPrice().catch(e => {
     logger.error('[T1] fail to get FIRMA price. ' + e.message);
   });
+  MEM_FIELDS.price = medxPrice;
   logger.debug('[T1] success to get FIRMA price');
+
   logger.debug('[T1] start to get block detail from blockchain');
   const detailedBlock = await requestBlockByHeight(block.height - 1);
   logger.debug('[T1] success to get block detail from blockchain');
+
   logger.debug('[T1] start to get total supply from blockchain');
   const supplyData = await requestPoolData();
-  logger.debug('[T1] success to get total supply from blockchain');
-  MEM_FIELDS.notBondedTokens = supplyData.notBondedTokens;
-  MEM_FIELDS.bondedTokens = supplyData.bondedTokens;
-  MEM_FIELDS.totalSupply = supplyData.totalSupply;
-  MEM_FIELDS.price = medxPrice;
+  if(supplyData) {
+    MEM_FIELDS.notBondedTokens = supplyData.notBondedTokens;
+    MEM_FIELDS.bondedTokens = supplyData.bondedTokens;
+    MEM_FIELDS.totalSupply = supplyData.totalSupply;
+    logger.debug('[T1] success to get total supply from blockchain');
+  }else{
+    logger.error('[T1] fail to get total supply from blockchain');
+  }
+
   logger.debug('[T1] start to get transactions from blockchain');
   detailedBlock.txs = await requestTransactionsByHeight(block.height - 1);
   logger.debug('[T1] success to get transactions from blockchain');
 
-  console.log(detailedBlock);
   return db
     .transaction(async (t) => {
       logger.debug('[T1] start to get candidates from blockchain');
