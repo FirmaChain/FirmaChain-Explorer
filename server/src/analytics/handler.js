@@ -25,8 +25,8 @@ export const updateAnalytics = async (t, height, txs, price) => {
     query = Analytics.create({
         date: Sequelize.fn('now'),
         last: height,
-        block: row.block + 1,
-        tx: row.tx + txs.length,
+        block: 1,
+        tx: txs.length,
         price: price
       },
       {
