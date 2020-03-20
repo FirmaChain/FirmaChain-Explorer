@@ -95,9 +95,10 @@ $mobile_width: 800px;
   }
 
   .contentWrapperInfoTitle {
-    font-size: 13px;
+    font-size: 12px;
     color: #616161;
     margin-right: 20px;
+    line-height: 1.8;
 
     @media (max-width: $mobile_width) {
       margin-right: 4px;

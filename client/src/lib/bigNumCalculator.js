@@ -11,6 +11,9 @@ const adder = (target, addNums = [], fixed = 0) => {
 };
 
 const divider = (target, divideNums = [], fixed = 0) => {
+  if(!Array.isArray(divideNums))
+    return ;
+
   let targetNum = new BigNumber(target);
   divideNums.forEach((div) => {
     const dividerNum = new BigNumber(div);

@@ -1,7 +1,21 @@
+@import '../../variable';
+
 .navigation {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+
+  @media(max-width: $mobile_width) {
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    justify-content: flex-start;
+
+    >.Dropdown-root {
+      width: 100px;
+      margin-right: 0;
+    }
+  }
 
   a > button {
     min-width: 30px;

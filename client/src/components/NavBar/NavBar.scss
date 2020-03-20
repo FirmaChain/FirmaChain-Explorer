@@ -1,11 +1,9 @@
-$desktop-width: 1200px;
-$navBar-height: 80px;
-$navBar-side-width: 380px;
-$navBar-border-bottom: 1px;
-$mobile-navbar-height: 55px;
-$tablet_width: 1200px;
+@import '../../variable';
 
-@media (max-width: $tablet-width) {
+$navBar-side-width: 100%;
+$navBar-border-bottom: 1px;
+
+@media (max-width: $mobile_width) {
   .navBar {
     .navBarContainer {
       padding-left: 30px;
@@ -16,12 +14,15 @@ $tablet_width: 1200px;
 
 .navBar {
   width: 100%;
-  height: $navBar-height;
+  height: $navBar_height;
   background-color: #1e1e1e;
   display: flex;
   justify-content: center;
   align-items: center;
   border-bottom: none;
+  position: fixed;
+  z-index: 10;
+
 
   &.home {
     border-bottom: none;
@@ -65,7 +66,7 @@ $tablet_width: 1200px;
         }
       }
 
-      >div {
+      > div {
         margin-left: 20px;
         margin-right: 20px;
       }
@@ -74,7 +75,7 @@ $tablet_width: 1200px;
     .dimmer {
       position: absolute;
       z-index: 999;
-      top: $navBar-height;
+      top: $navBar_height;
       left: 0;
       width: 100%;
       height: 100%;
@@ -89,94 +90,6 @@ $tablet_width: 1200px;
       display: none;
     }
 
-    .navBarOpener {
-      border: none;
-      background: none;
-      min-width: 44px;
-    }
-
-    .navBarOpen {
-      transform: translateX(0);
-      visibility: visible;
-    }
-
-    .navBarClose {
-      transform: translateX(-$navBar-side-width);
-      visibility: hidden;
-    }
-
-    .navBarSide {
-      //position: absolute;
-      //z-index: 999;
-      //background-color: #ffffff;
-      //top: $navBar-height + $navBar-border-bottom;
-      //border-top: 1px solid rgba(0, 0, 0, 0.2);
-      //left: 0;
-      //right: 0;
-      max-width: $navBar-side-width;
-      width: 100%;
-      height: calc(100% - 85px);
-      padding: 30px;
-      padding-top: 10px;
-
-      transition: transform 0.5s ease-in-out;
-
-      display: flex;
-      flex-direction: column;
-
-      .searchBar {
-        max-width: $navBar-side-width;
-        margin: 0;
-      }
-
-      .navBarSideMenu {
-        margin-top: 20px;
-        height: 50px;
-        min-height: 50px;
-        border-top: 1px solid rgba(0, 0, 0, 0.8);
-        border-bottom: 1px solid rgba(0, 0, 0, 0.8);
-        font-size: 18px;
-        line-height: 2.22;
-        color: #0b0b0b;
-
-        display: flex;
-        align-items: center;
-
-        & > img {
-          margin-right: 12px;
-        }
-      }
-
-      .navBarSideNavList {
-        padding-left: 10px;
-
-        & > div {
-          margin-top: 10px;
-
-          a {
-            display: inline-block;
-            width: 100%;
-          }
-        }
-
-        .languageBox {
-          border: none;
-          marginTop: 10px;
-
-          button {
-            font-size: 16px;
-            padding-left: 0px;
-            margin-bottom: 5px;
-            border: none;
-
-            &:hover {
-              background: none;
-              color: #397ff4;
-            }
-          }
-        }
-      }
-    }
   }
 }
 
@@ -186,6 +99,8 @@ $tablet_width: 1200px;
 
   img {
     width: 180px;
+    margin-left: 16px;
+    margin-right: auto;
   }
 }
 
@@ -199,50 +114,154 @@ $tablet_width: 1200px;
   }
 }
 
-.navBar.tablet {
-  background-color: white;
-  border-bottom: $navBar-border-bottom solid rgba(0, 0, 0, 0.2);
-  //&.home {
-  //  background-color: white;
-  //}
+.navBar.mobile {
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+  height: $mobile-header-height;
+  flex-direction: column;
+  justify-content: flex-start;
 
   .navBarContainer {
-    padding: 0 20px;
-    justify-content: space-between;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+    padding: 18px 0;
+    height: $mobile-navbar-height;
+    justify-content: flex-start;
+    z-index: 100;
 
-    .navNavigator {
-      display: none;
+    .sidebar {
+      width: 100%;
+      height: calc(100% - #{$mobile_navbar-height});
+      top: $mobile_navbar-height;
+      right: -100%;
+      position: fixed;
+      z-index: 10;
+      transition: all 0.3s ease-out;
+      overflow: auto;
+
+      &.opened {
+        right: 0;
+      }
+
+      .navBarSide {
+        width: 100%;
+        min-height: 100%;
+        top: $mobile-navbar-height;
+        background-color: #1e1e1e;
+        box-shadow: inset 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+
+
+        display: flex;
+        flex-direction: column;
+        padding: 0 32px;
+        font-size: 14px;
+
+        .navBarSideMenu {
+          display: block;
+          width: 100%;
+          padding: 16px;
+          margin-top: 20px;
+          line-height: 1;
+          border-bottom: solid 1px #616161;
+          font-family: 'Chakra Petch', serif;
+          color: #616161;
+          text-align: center;
+        }
+
+        .navBarSideNavList {
+          text-align: center;
+          font-family: 'Noto Sans KR', sans-serif;
+
+          > div {
+            border-bottom: 1px solid #111111;
+
+            &:last-child {
+              border-bottom: none;
+            }
+
+            a {
+              padding: 16px;
+              display: block;
+              width: 100%;
+              color: #808080;
+              font-size: 14px;
+              transition: all 0.1s linear;
+
+              &:active {
+                color: #ffffff;
+                background-color: #1b1b1b;
+
+              }
+            }
+          }
+        }
+      }
     }
 
     .searchBtn {
       padding-right: 0;
       border: none;
     }
-  }
-}
 
-.navBar.mobile.home {
-  border-bottom: none;
-}
 
-.navBar.mobile {
-  height: $mobile-navbar-height;
-
-  .navBarContainer {
     .navBarOpener {
-      padding-left: 0;
-      min-width: 20px;
-      width: 20px;
+      border: none;
+      background: none;
+      min-width: 44px;
+      box-sizing: content-box;
+      padding: 0 16px;
 
-      img {
-        width: 20px;
+      .opener {
+        max-width: 20px;
+        height: 12px;
+        position: relative;
+        margin: auto;
+
+        > span {
+          position: absolute;
+          border-bottom: 2px solid #787878;
+          width: 100%;
+          right: 0;
+          transition: all 0.2s ease;
+
+          &:first-child {
+            top: 0;
+            right: 0;
+          }
+
+          &:last-child {
+            top: 10px;
+            right: 0;
+          }
+        }
+
+        &.opened {
+          > span {
+            &:first-child {
+              top: 5px;
+              transform: rotate(45deg);
+            }
+
+            &:last-child {
+              top: 5px;
+              transform: rotate(-45deg);
+            }
+          }
+        }
       }
     }
 
     .navBarLogo {
-      margin: auto;
+      height: 24px;
+      margin-left: 16px;
+      margin-right: auto;
+
+      a {
+        width: 104px;
+        height: 24px;
+      }
+
       img {
-        width: 140px;
+        width: 100%;
+        height: 100%;
       }
     }
 
@@ -250,8 +269,10 @@ $tablet_width: 1200px;
       top: $mobile-navbar-height;
     }
 
-    .navBarSide {
-      top: $mobile-navbar-height;
-    }
   }
+
+  .home {
+    border-bottom: none;
+  }
+
 }

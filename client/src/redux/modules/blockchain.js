@@ -56,15 +56,15 @@ const initialState = {
   medState: null,
 
   account: null, // specific account
-  accountList: Array(contentsInPage).fill({}), // accounts from rpc call
+  accountList: [], // accounts from rpc call
 
   block: null, // specific block
-  blockList: Array(contentsInPage).fill({}), // blocks from rpc call
+  blockList: [], // blocks from rpc call
   blocks: [], // blocks from event subscriber
   tailBlock: null, // tail block from event subscriber
 
   liveTxs: [],
-  txList: Array(contentsInPage).fill({}), // transaction list set from local
+  txList: [], // transaction list set from local
   txs: [], // executed txs from event subscriber
   txsFromBlock: [], // txs included in the specific block
 

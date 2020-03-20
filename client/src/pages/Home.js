@@ -7,6 +7,7 @@ import LiveInfoWrapper from '../components/LiveInfoWrapper';
 import LiveTxs from '../components/LiveTxs';
 
 import './pages.scss';
+import './mobile.scss';
 import Chart from "../components/Chart/Chart";
 import {connect} from "react-redux";
 

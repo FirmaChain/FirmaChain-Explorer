@@ -11,6 +11,7 @@ const mapStateToProps = ({ blockchain, global }) => ({
   lang: global.language,
   mode: global.mode,
   page: global.page,
+  countPerPage: global.countPerPage,
 });
 
 export default connect(mapStateToProps)(AccountList);

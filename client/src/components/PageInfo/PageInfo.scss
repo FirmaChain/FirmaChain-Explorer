@@ -10,8 +10,21 @@
   margin-bottom: 26px;
   text-transform: uppercase;
 
+
   display: flex;
   align-items: center;
+
+  .back {
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 10px;
+    height: 17px;
+    box-sizing: content-box;
+    padding: 0 10px;
+    background-image: url("/image/icon/back.svg");
+    background-repeat: no-repeat;
+  }
 
   img {
     width: 30px;
@@ -21,8 +34,13 @@
 }
 
 .pageInfo.mobile {
-  font-size: 18px;
-  margin-bottom: 10px;
+  display: block;
+  width: 100%;
+  font-size: 16px;
+  margin-bottom: 0;
+  margin-top: 40px;
+  text-align: center;
+  position: relative;
 
   img {
     width: 20px;

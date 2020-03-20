@@ -25,7 +25,7 @@ const SET_COUNT_PER_PAGE = 'global/SET_COUNT_PER_PAGE';
 const MOVE_URL = 'global/MOVE_URL';
 
 const initialState = {
-  // Mode - 0 : Desktop, 1 : Tablet, 2 : Mobile
+  // Mode - 0 : Desktop,  2 : Mobile
   mode: 0,
   width: null,
 

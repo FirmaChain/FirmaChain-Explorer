@@ -12,7 +12,7 @@ const Account = ({ location }) => {
   return (
     <div className="account content">
       <div className="bpDetail">
-        <PageInfo title="bp-detail" />
+        <PageInfo title="bp-detail" hasBack={true}/>
         { BPWrapper }
       </div>
     </div>

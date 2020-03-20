@@ -5,7 +5,7 @@ import Sequelize from "sequelize";
 
 // eslint-disable-next-line import/prefer-default-export
 export const updateAnalytics = async (t, height, txs, price) => {
-  let row = await Analytics.findOne({where: {date: Sequelize.fn('date', Sequelize.fn('now'))}, logging: console.log});
+  let row = await Analytics.findOne({where: {date: Sequelize.fn('date', Sequelize.fn('now'))}});
 
   let query;
 

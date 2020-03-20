@@ -22,7 +22,7 @@ const Block = ({ location }) => {
   return (
     <div className="block content">
       <div className="blockDetail">
-        <PageInfo title="block-detail-info" />
+        <PageInfo title="block-detail-info" hasBack={true}/>
         { BlockWrapper }
       </div>
       <div className="blockDetailTx">

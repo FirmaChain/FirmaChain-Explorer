@@ -12,7 +12,7 @@ const Tx = ({ location }) => {
   return (
     <div className="tx content">
       <div className="txDetail">
-        <PageInfo title="transaction-detail-info" />
+        <PageInfo title="transaction-detail-info" hasBack={true}/>
         { TxWrapper }
       </div>
     </div>

@@ -3,21 +3,21 @@ import BigNumber from "bignumber.js";
 import { divider } from './bigNumCalculator';
 
 const accountMapper = (account, totalSupply = undefined) => {
-  let balance = new BigNumber(account.balance);
-  let staking = new BigNumber(account.staking || '0');
+  const balance = new BigNumber(account.balance);
+  const staking = new BigNumber(account.staking || '0');
 
-  balance =  balance.shiftedBy(-6);
-  staking =  staking.shiftedBy(-6);
+  let percentage = new BigNumber('0')
+  if(totalSupply) {
+   percentage = balance.div(new BigNumber(totalSupply)).multipliedBy('100');
+  }
 
-  const Balance = `${balance} FIRMA`;
-  const Staking = `${staking} FIRMA`;
-
+  // console.log(account.address, account.balance, totalSupply, percentage)
   return {
     Account: account.address,
-    Balance,
+    Balance: `${balance.shiftedBy(-6).toString()} FIRMA`,
     Transactions: account.totalTxs,
-    Percentage: totalSupply ? `${divider(account.balance, totalSupply, 5)}` : 0,
-    Staking,
+    Percentage: percentage.toFixed(5) + '%',
+    Staking: `${staking.shiftedBy(-6).toString()} FIRMA`,
   };
 };
 

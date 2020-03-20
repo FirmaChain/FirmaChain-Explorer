@@ -72,6 +72,8 @@ class Pages extends Component {
         .then(() => BlockchainActions.subscribe())
         .then(() => GlobalActions.closeModal()),
     );
+
+    history.listen(() => {console.log('page moved');window.scrollTo(0, 0)})
   }
 
   render() {
@@ -81,6 +83,7 @@ class Pages extends Component {
       loading,
       mode,
     } = this.props;
+
     return (
       <IntlProvider
         locale={language}

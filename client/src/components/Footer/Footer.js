@@ -19,7 +19,7 @@ const changeLanguage = (lang) => {
 };
 
 const Footer = ({language, mode}) => (
-  <div className={cx('footer', {mobile: mode === 2, tablet: mode >= 1})}>
+  <div className={cx('footer', {mobile: mode >= 1})}>
     <div className="footerContent">
       <div className="footerLogo">
         <img src="/image/icon/logo_white.png" alt="footerLogo" />

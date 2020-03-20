@@ -1,9 +1,14 @@
 $title_font: 'Chakra Petch', sans-serif;
 
 // dimensions
-$mobile_width: 800px;
-$navBar_height: 85px;
+$mobile_width: 600px;
+$tablet_width: 800px;
 $desktop-width: 1040px;
+
+$navBar_height: 85px;
+$mobile-search-height: 72px;
+$mobile-navbar-height: 60px;
+$mobile-header-height: calc(#{$mobile_navbar-height} + #{$mobile_search-height});
 $footer-height: 100px;
 $footer-margin-height: 120px;
 $footer-mobile-margin-height: 80px;

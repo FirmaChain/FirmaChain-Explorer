@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import ListWrapper from '../ListWrapper';
 import TableWithIcon from '../TableWithIcon';
 import { BlockchainActions, GlobalActions, WidgetActions as w } from '../../redux/actionCreators';
-import { accountListConfig, contentsInPage } from '../../config';
+import { accountListConfig } from '../../config';
 import { accountMapper, ranger, spaceMapper } from '../../lib';
 
 import './accountList.scss';
@@ -14,8 +14,7 @@ import './accountList.scss';
 const mappedAccounts = (accs, totalSupply) => {
   const accList = [];
   accs.forEach((acc) => {
-    const convertedAcc = accountMapper(acc);
-    convertedAcc.Percentage = `${(convertedAcc.Balance.replace(/\s|,|FIRMA/g, '') / totalSupply * 100).toFixed(5)}%`;
+    const convertedAcc = accountMapper(acc, totalSupply);
     accList.push(convertedAcc);
   });
   return accList;
@@ -27,16 +26,21 @@ class AccountList extends Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    const { mode, page, accountList } = this.props;
+    const { mode, page, accountList, countPerPage } = this.props;
     if (mode !== nextProps.mode) return true;
     if (page !== nextProps.page) return true;
     if (accountList !== nextProps.accountList) return true;
+    if (countPerPage !== nextProps.countPerPage) return true;
     return false;
   }
 
   componentWillUpdate(nextProps) {
-    const { location: { search } } = this.props;
+    const { countPerPage, location: { search } } = this.props;
     if (nextProps.location.search !== search) {
+      this.getAccounts(nextProps);
+    }
+
+    if(nextProps.countPerPage !== countPerPage) {
       this.getAccounts(nextProps);
     }
   }
@@ -50,7 +54,7 @@ class AccountList extends Component {
     const { location: { search } } = props;
     const { page = 1 } = qs.parse(search);
     const { medState: { numAccount } } = props;
-    const { from, to } = ranger(page, numAccount, contentsInPage);
+    const { from, to } = ranger(page, numAccount, props.countPerPage);
     w.loader(BlockchainActions.getAccounts({ from, to }));
   }
 

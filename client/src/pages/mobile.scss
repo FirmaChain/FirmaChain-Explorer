@@ -5,41 +5,36 @@
   font-weight: bold;
   font-size: 20px;
 }
+@media (max-width: $mobile_width) {
+  .layout {
+    padding-top: $mobile-header-height;
 
-.layout {
-  width: 100%;
-  min-height: calc(100vh - 235px);
-  padding-top: $navBar_height;
+    .layoutInner {
+      .content {
+        width: 100%;
+        max-width: initial;
+        padding: 0 20px;
 
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  overflow: hidden;
+        .listTitle {
+          display: block;
+          margin-top: 36px;
+          margin-bottom: 20px;
+          text-align: center;
 
-  .layoutInner {
-    box-sizing: border-box;
-    width: 100%;
+          >.pageInfo {
+            display: block;
+            margin: 0;
+            text-align: center;
+            flex: initial;
+          }
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+          >.navigation {
+            justify-content: center;
 
-    .content {
-      width: 100%;
-      max-width: $content_max_width;
-      padding: 0 20px;
-
-      .listTitle {
-        display: flex;
-        align-items: flex-end;
-        margin-top: 120px;
-        margin-bottom: 26px;
-
-        >.pageInfo {
-          width: 100%;
-          flex: 1;
-          margin: 0;
+            .Dropdown-root {
+              display: none;
+            }
+          }
         }
       }
     }

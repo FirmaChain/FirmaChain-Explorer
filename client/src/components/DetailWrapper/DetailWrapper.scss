@@ -163,14 +163,26 @@ $mobile_width: 800px;
 }
 
 .detailWrapper.mobile {
-  border-radius: 10px;
   border-right: 1px solid rgba(0, 0, 0, 0.4);
+  margin-top: 20px;
+  display: block;
 
-  .detailWrapperKey {
-    border-radius: 10px 0 0 10px;
-  }
+  .row {
+    padding: 12px;
+    border-bottom: 1px dashed #393939;
+    font-size: 12px;
 
-  .detailWrapperValue {
-    padding-right: 15px;
+    .title {
+      color: #979797;
+      line-height: 1;
+    }
+
+    .content {
+      color: #616161;
+      padding: 0;
+      margin-top: 8px;
+      word-break: break-all;
+      line-height: 1.33;
+    }
   }
 }

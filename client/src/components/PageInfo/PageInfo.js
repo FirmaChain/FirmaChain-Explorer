@@ -1,10 +1,11 @@
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
+import {FormattedMessage} from 'react-intl';
+
+import history from "../../history";
 
 import './PageInfo.scss';
-
 
 const titlize = (string) => {
   let title = '';
@@ -15,8 +16,9 @@ const titlize = (string) => {
 };
 
 // title : block-list
-const PageInfo = ({ mode, title }) => (
-  <div className={cx('pageInfo', { mobile: mode === 2 })}>
+const PageInfo = ({mode, title, hasBack}) => (
+  <div className={cx('pageInfo', {mobile: mode === 2})}>
+    {hasBack && (<div className="back" onClick={() => history.goBack()}/>)}
     <FormattedMessage id={titlize(title)} />
   </div>
 );
@@ -24,6 +26,7 @@ const PageInfo = ({ mode, title }) => (
 PageInfo.propTypes = {
   mode: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
+  hasBack: PropTypes.bool
 };
 
 export default PageInfo;

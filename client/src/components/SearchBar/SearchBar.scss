@@ -12,10 +12,6 @@
     display: none;
   }
 
-  &.tablet input {
-    width: 100%;
-  }
-
   .searchBarSearch {
     width: 100%;
     height: 50px;
@@ -91,20 +87,28 @@
   }
 }
 
-#mobile {
-  .searchBarSearch {
-    border: none;
-    background-color: #ffffff;
-    flex-direction: row-reverse;
+.mobile {
+  .searchBar {
+    width: 100%;
+    height: 100%;
+    max-width: initial;
+    justify-content: center;
+    padding: 16px;
 
-    .searchBarIcon {
-      padding-left: 0;
+    .searchBarSearch {
+      height: 100%;
+      border: none;
+      flex-direction: row-reverse;
+
+      .searchBarIcon {
+        padding-left: 0;
+      }
     }
-  }
 
-  input {
-    background: none;
-    color: #000000;
-    font-size: 14px;
+    input {
+      background: none;
+      color: #000000;
+      font-size: 14px;
+    }
   }
 }
