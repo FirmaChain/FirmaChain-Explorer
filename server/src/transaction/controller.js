@@ -15,8 +15,9 @@ export const get = async (req, res) => {
   }
 
   if (!transaction) {
-    throw new NotFound('transaction not exists');
+    return res.json({})
   }
+
   res.json({transaction});
 };
 

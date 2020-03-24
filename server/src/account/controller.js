@@ -13,7 +13,7 @@ export const get = async (req, res) => {
     account = await Account.findOne({ where: { address: id } });
   }
   if (!account) {
-    throw new BadRequest('account not found');
+    return res.json({})
   }
 
   res.json({ account });

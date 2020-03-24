@@ -14,7 +14,7 @@ export const get = async (req, res) => {
   }
 
   if (!block) {
-    throw new NotFound('block not exists');
+    return res.json({})
   }
 
   const txList = [];
