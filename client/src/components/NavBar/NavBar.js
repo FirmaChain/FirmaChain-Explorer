@@ -8,7 +8,7 @@ import Modal from '../Modal';
 import NavList from './NavList';
 import SearchBar from '../SearchBar';
 import {GlobalActions} from '../../redux/actionCreators';
-import {navBarPages, countryName, countryList} from '../../config';
+import {navBarPages, countryName, countryList, sns, snsLink} from '../../config';
 
 import './NavBar.scss';
 
@@ -16,6 +16,10 @@ const changeLanguage = (lang) => {
   if (lang) {
     GlobalActions.changeLanguage(lang);
   }
+};
+
+const imgChange = (targetSNS, on) => (e) => {
+  e.currentTarget.src = `/image/icon/ico_${targetSNS}${on ? '_h' : ''}.svg`;
 };
 
 const NavBarSideContent = ({currentUrl, lang}) => (
@@ -31,8 +35,8 @@ const NavBarSideContent = ({currentUrl, lang}) => (
     </div>
     <div className="navBarSideNavList">
       {
-        countryList.map((code) => (
-          <div>
+        countryList.map((code, i) => (
+          <div key={i}>
             <a href="javascript:void(0)" onClick={() => {
               changeLanguage(code)
             }}>
@@ -45,17 +49,28 @@ const NavBarSideContent = ({currentUrl, lang}) => (
     <div className="navBarSideMenu">
       Related Links
     </div>
-    <div className="navBarSideNavList">
+    <div className="relatedLinks">
       {
-        countryList.map((code) => (
-          <div>
-            <a href="javascript:void(0)" onClick={() => {
-              changeLanguage(code)
-            }}>
-              {countryName[code]}
+        sns.map((service, i) => {
+          let snsRef = snsLink[service];
+          return (
+            <a
+              href={snsRef}
+              target="_blank"
+              rel="noopener noreferrer"
+              key={i}
+            >
+              <img
+                src={`/image/icon/ico_${service}.svg`}
+                alt="sns"
+                onMouseOver={imgChange(service, true)}
+                onFocus={imgChange(service, true)}
+                onMouseOut={imgChange(service, false)}
+                onBlur={imgChange(service, false)}
+              />
             </a>
-          </div>
-        ))
+          );
+        })
       }
     </div>
   </div>

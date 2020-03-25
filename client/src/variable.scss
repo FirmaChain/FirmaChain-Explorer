@@ -1,15 +1,39 @@
-$title_font: 'Chakra Petch', sans-serif;
+$title-font: 'Chakra Petch', sans-serif;
 
 // dimensions
-$mobile_width: 600px;
-$tablet_width: 800px;
+$mobile-width: 900px;
 $desktop-width: 1040px;
 
-$navBar_height: 85px;
+
+$navbar-height: 85px;
 $mobile-search-height: 72px;
 $mobile-navbar-height: 60px;
 $mobile-header-height: calc(#{$mobile_navbar-height} + #{$mobile_search-height});
 $footer-height: 100px;
 $footer-margin-height: 120px;
+$footer-mobile-height: 80px;
 $footer-mobile-margin-height: 80px;
-$content_max_width: 1140px;
+
+$page-height: calc(100vh - #{$navbar-height} - #{$footer_height});
+$page-mobile-height: calc(100vh - #{$mobile-header-height} - #{$footer-mobile-height});
+$content-max-width: 1140px;
+
+@media(min-width: $mobile-width) {
+  html {
+    --font0: 48px;
+    --font1: 24px;
+    --font2: 16px;
+    --font3: 14px;
+    --font4: 12px;
+  }
+}
+
+@media (max-width: $mobile-width) {
+  html {
+    --font0: 48px;
+    --font1: 24px;
+    --font2: 16px;
+    --font3: 12px;
+    --font4: 12px;
+  }
+}

@@ -3,9 +3,10 @@
 $navBar-side-width: 100%;
 $navBar-border-bottom: 1px;
 
-@media (max-width: $mobile_width) {
+@media (max-width: $mobile-width) {
   .navBar {
     .navBarContainer {
+      max-width: initial;
       padding-left: 30px;
       padding-right: 30px;
     }
@@ -14,7 +15,7 @@ $navBar-border-bottom: 1px;
 
 .navBar {
   width: 100%;
-  height: $navBar_height;
+  height: $navbar-height;
   background-color: #1e1e1e;
   display: flex;
   justify-content: center;
@@ -59,7 +60,7 @@ $navBar-border-bottom: 1px;
 
       > div > a {
         color: #808080;
-        font-size: 16px;
+        font-size: var(--font2);
 
         &:hover {
           color: white;
@@ -75,7 +76,7 @@ $navBar-border-bottom: 1px;
     .dimmer {
       position: absolute;
       z-index: 999;
-      top: $navBar_height;
+      top: $navbar-height;
       left: 0;
       width: 100%;
       height: 100%;
@@ -98,7 +99,8 @@ $navBar-border-bottom: 1px;
   align-items: center;
 
   img {
-    width: 180px;
+    width: 173px;
+    margin-top: 4px;
     margin-left: 16px;
     margin-right: auto;
   }
@@ -191,6 +193,23 @@ $navBar-border-bottom: 1px;
 
               }
             }
+          }
+        }
+        .relatedLinks {
+          text-align: center;
+          padding: 30px 34px;
+
+          a {
+            margin-right: 16px;
+
+            &:last-child {
+              margin-right: 0;
+            }
+          }
+
+          img {
+            width: 38px;
+            height: 38px;
           }
         }
       }

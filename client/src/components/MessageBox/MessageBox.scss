@@ -1,0 +1,101 @@
+.message {
+  padding: 40px 40px;
+
+  .card {
+    background-color: #141414;
+
+    .type {
+      background-color: #222222;
+      padding: 17px 24px;
+      color: #b6b6b6;
+      font-size: var(--font3);
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+    }
+
+    .table {
+      display: flex;
+      font-size: var(--font3);
+      overflow: auto;
+
+      >* {
+        line-height: 2.8;
+      }
+
+      .keys {
+        background-color: #171717;
+        min-width: 140px;
+        padding: 5px 24px;
+        color: #979797;
+        font-family: 'Noto Sans KR', sans-serif;
+      }
+
+      .values {
+        flex: 1;
+        padding: 5px 24px;
+        color: #616161 ;
+        font-family: 'Poppins', 'Noto Sans KR', sans-serif;
+
+        > div {
+          display: flex;
+          align-items: center;
+
+          a {
+            color: #616161;
+            transition: all 0.1s linear;
+
+            &:hover {
+              color: #979797;
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.message.mobile {
+  padding: 0;
+  margin-top: 16px;
+  width: 100%;
+
+  .card {
+    background-color: #141414;
+  }
+
+  .type {
+    padding: 12px;
+  }
+
+  .table {
+    display: block;
+
+    .messageRow {
+      padding: 12px;
+
+      .key {
+        color: #979797;
+        line-height: 1;
+      }
+
+      .value {
+        display: flex;
+        line-height: 1.33;
+        margin-top: 6px;
+        align-items: center;
+
+        a {
+          color: #616161;
+          transition: all 0.1s linear;
+
+          &:hover {
+            color: #979797;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+
+  }
+}

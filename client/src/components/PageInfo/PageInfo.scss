@@ -2,14 +2,13 @@
 
 .pageInfo {
   align-self: flex-start;
-  font-size: 24px;
+  font-size: var(--font1);
   font-weight: 600;
-  font-family: $title_font;
+  font-family: $title-font;
   color: #d8d8d8;
   margin-top: 120px;
   margin-bottom: 26px;
   text-transform: uppercase;
-
 
   display: flex;
   align-items: center;
@@ -33,18 +32,21 @@
   }
 }
 
-.pageInfo.mobile {
-  display: block;
-  width: 100%;
-  font-size: 16px;
-  margin-bottom: 0;
-  margin-top: 40px;
-  text-align: center;
-  position: relative;
+@media (max-width: $mobile-width) {
+  .pageInfo {
+    display: block;
+    width: 100%;
+    font-size: var(--font2);
+    margin-bottom: 0;
+    margin-top: 40px;
+    text-align: center;
+    position: relative;
 
-  img {
-    width: 20px;
-    height: 21px;
-    margin-right: 10px;
+    img {
+      width: 20px;
+      height: 21px;
+      margin-right: 10px;
+    }
   }
 }
+

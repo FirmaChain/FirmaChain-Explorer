@@ -14,7 +14,7 @@ const connect = ({
   const sequelize = new Sequelize(database, user, password, {
     dialect,
     host,
-    logging: console.log,
+    logging: false,
     pool: {
       acquire: 30000,
       idle: 10000,

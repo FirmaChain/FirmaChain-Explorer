@@ -34,6 +34,8 @@ const en = {
   ranking: 'Ranking',
   recentBlock: 'Recent Block',
   recentTx: 'Recent Transaction',
+  searchLabel: 'Search (Block, Transaction, Address)',
+  searchNoResult: 'No matches found',
   staking: 'Staking',
   status: 'Status',
   timeStamp: 'Time Stamp',
@@ -50,6 +52,10 @@ const en = {
   viewAll: 'View All',
   votes: 'Votes',
   voterate: 'Votes Weight',
+  pageRange10: '10 Rows',
+  pageRange25: '25 Rows',
+  pageRange50: '50 Rows',
+  pageRange100: '100 Rows'
 };
 
 export default en;

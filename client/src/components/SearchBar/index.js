@@ -4,6 +4,7 @@ import SearchBar from './SearchBar';
 
 
 const mapStateToProps = ({ global }) => ({
+  lang: global.language,
   modalType: global.modalType,
   search: global.search,
   searchFrom: global.searchFrom,

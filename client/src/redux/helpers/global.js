@@ -3,18 +3,17 @@ import { NODE_ENDPOINT } from '../../config';
 
 
 export const searcher = (dispatch, actionType, ERROR, query) => {
+  let type;
+
+  if(query.length >= 44 && query.indexOf('firma') === 0)
+    type = 'accounts';
+  else if(!Number.isNaN(Number(query.toString())))
+    type = 'blocks';
+  else
+    type = 'transactions';
+
   simpleRequester(dispatch, {
-    url: `${NODE_ENDPOINT}/blocks?q=${query}&limit=5`,
-    actionType,
-    ERROR,
-  });
-  simpleRequester(dispatch, {
-    url: `${NODE_ENDPOINT}/accounts?q=${query}&limit=5`,
-    actionType,
-    ERROR,
-  });
-  simpleRequester(dispatch, {
-    url: `${NODE_ENDPOINT}/transactions?q=${query}&limit=5`,
+    url: `${NODE_ENDPOINT}/${type}/${query}`,
     actionType,
     ERROR,
   });
@@ -32,21 +31,21 @@ export const searchTextSetter = (dispatch, actionType, ERROR, query, searchFrom)
 
 export const searchWorker = (result) => {
   const netResult = [];
-  if ('blocks' in result) {
-    result.blocks.data.forEach(block => netResult.push({
+  if ('block' in result) {
+    netResult.push({
       type: 'block',
-      data: block.hash,
-    }));
-  } else if ('transactions' in result) {
-    result.transactions.forEach(tx => netResult.push({
+      data: result.block.height,
+    });
+  } else if ('transaction' in result) {
+    netResult.push({
       type: 'tx',
-      data: tx.txHash,
-    }));
-  } else if ('accounts' in result) {
-    result.accounts.forEach(acc => netResult.push({
+      data: result.transaction.data.txHash,
+    });
+  } else if ('account' in result) {
+    netResult.push({
       type: 'account',
-      data: acc.address,
-    }));
+      data: result.account.address,
+    });
   }
   return netResult;
 };

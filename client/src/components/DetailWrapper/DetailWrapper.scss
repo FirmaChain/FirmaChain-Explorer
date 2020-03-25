@@ -1,9 +1,7 @@
 @import '../../variable';
 
-$mobile_width: 800px;
-
 .detailWrapper {
-  max-width: $content_max_width;
+  max-width: $content-max-width;
   width: 100%;
   border-top: 1px solid #616161;
   border-bottom: 1px solid #616161;
@@ -17,8 +15,8 @@ $mobile_width: 800px;
 
   span {
     border-bottom: 1px dashed #393939;
-    font-size: 14px;
-    height: 44px;
+    font-size: var(--font3);
+    min-height: 44px;
     display: flex;
     align-items: center;
 
@@ -32,7 +30,7 @@ $mobile_width: 800px;
   }
 
   .detailWrapperKey {
-    font-size: 16px;
+    font-size: var(--font2);
     font-weight: bold;
     color: #979797;
     white-space: nowrap;
@@ -80,67 +78,10 @@ $mobile_width: 800px;
     .failure {
       color: #c8922e;
     }
-
-    .message {
-      padding: 40px 40px;
-
-      .card {
-        background-color: #141414;
-
-        .type {
-          background-color: #222222;
-          padding: 17px 24px;
-          color: #b6b6b6;
-          font-size: 14px;
-          border-top-left-radius: 4px;
-          border-top-right-radius: 4px;
-        }
-
-        .table {
-          display: flex;
-          font-size: 14px;
-          overflow: auto;
-
-          >* {
-            line-height: 2.8;
-          }
-
-          .keys {
-            background-color: #171717;
-            min-width: 140px;
-            padding: 5px 24px;
-            color: #979797;
-            font-family: 'Noto Sans KR', sans-serif;
-          }
-
-          .values {
-            flex: 1;
-            padding: 5px 24px;
-            color: #616161 ;
-            font-family: 'Poppins', 'Noto Sans KR', sans-serif;
-
-            > div {
-              display: flex;
-              align-items: center;
-
-              a {
-                color: #616161;
-                transition: all 0.1s linear;
-
-                &:hover {
-                  color: #979797;
-                  text-decoration: underline;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
   }
 }
 
-@media (max-width: $mobile_width) {
+@media (max-width: $mobile-width) {
   .detailWrapper {
     .detailWrapperKey {
       font-size: 13px;
@@ -170,7 +111,7 @@ $mobile_width: 800px;
   .row {
     padding: 12px;
     border-bottom: 1px dashed #393939;
-    font-size: 12px;
+    font-size: var(--font4);
 
     .title {
       color: #979797;
@@ -183,6 +124,17 @@ $mobile_width: 800px;
       margin-top: 8px;
       word-break: break-all;
       line-height: 1.33;
+      display: flex;
+      align-items: center;
+
+      a {
+        transition: all 0.1s linear;
+        color: #616161;
+
+        &:hover {
+          color: #979797;
+        }
+      }
     }
   }
 }

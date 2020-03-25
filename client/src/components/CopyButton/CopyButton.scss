@@ -1,0 +1,20 @@
+.copyButton {
+  background-image: url(/image/icon/ico_copy.svg);
+  width: 11px;
+  height: 12px;
+  background-repeat: no-repeat;
+  margin: 0 8px;
+  cursor: pointer;
+
+  &:hover {
+    background-image: url(/image/icon/ico_copy_h.svg);
+  }
+
+  &.copied {
+    background-image: url(/image/icon/ico_copied.svg);
+
+    &:hover {
+      background-image: url(/image/icon/ico_copied.svg);
+    }
+  }
+}

@@ -50,9 +50,8 @@ export const maxResult = 15;
 
 // SPACE_LIST (component_page)
 export const txSpaceList = {
-  account: [2, 6, 3, 4],
-  block: [2, 6, 3, 4],
-  txs: [2, 6, 3, 4],
+  desktop: [2, 6, 3, 4],
+  mobile: [6, 4]
 };
 
 export const txCenterList = ['Block Height'];
@@ -61,34 +60,39 @@ export const txLinkTo = ['block/height', 'tx/hash', 'account/from', 'account/to'
 export const txCopyList = ['Transaction Hash', 'From'];
 
 export const txTitleList = {
-  account: ['Block Height', 'Transaction Hash', 'From', 'Time Stamp'],
-  block: ['Block Height', 'Transaction Hash', 'From', 'Time Stamp'],
-  txs: ['Block Height', 'Transaction Hash', 'From', 'Time Stamp'],
+  desktop: ['Block Height', 'Transaction Hash', 'From', 'Time Stamp'],
+  mobile: ['Transaction Hash', 'Time Stamp']
 };
 
 export const accountListConfig = {
   titles: ['Account', 'Balance', 'Percentage', 'Transactions'],
+  mtitles: ['Account', 'Balance'],
   linkTo: ['account/account'],
   centerList: ['Percentage', 'Transactions'],
   rightList: ['Balance'],
   spaces: [6, 3, 3, 2],
+  mspaces: [6, 4],
 };
 
 export const blockListConfig = {
   titles: ['Block Height', 'Block Hash', 'Time Stamp', 'No.Tx', 'BP'],
+  mtitles: ['Block Height', 'No.Tx', 'Time Stamp'],
   linkTo: ['block/height', 'block/hash', 'bp/bp'],
   copy: ['Block Hash'],
-  centerList: ['Block Height', 'No.Tx'],
-  rightList: ['Time Stamp'],
+  centerList: ['Block Height', 'Time Stamp', 'No.Tx'],
+  rightList: [],
   spaces: [2, 8, 4, 2, 3],
+  mspaces: [30, 15, 30]
 };
 
 export const bpListConfig = {
   titles: ['Ranking', 'Alias', 'Account', 'votes', 'voteRate'],
+  mtitles: ['Ranking', 'Account', 'voteRate'],
   linkTo: ['bp/account'],
   centerList: ['Ranking'],
   rightList: ['voteRate'],
   spaces: [10, 10, 65, 20, 15],
+  mspaces: [10, 50, 20],
 };
 
 export const detailWrapperConfig = {
@@ -103,7 +107,7 @@ export const detailWrapperConfig = {
   },
   linkTo: {
     block: ['block/Prev Hash', 'bp/BP'],
-    tx: ['account/From', 'account/To', 'account/from_address', 'account/to_address'],
+    tx: ['block/Block Height', 'account/From', 'account/To', 'account/from_address', 'account/to_address'],
     account: [],
     bp: ['url'],
   },

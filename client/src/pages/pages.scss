@@ -8,13 +8,12 @@
 
 .layout {
   width: 100%;
-  min-height: calc(100vh - 235px);
-  padding-top: $navBar_height;
+  min-height: $page-height;
+  padding-top: $navbar-height;
 
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  overflow: hidden;
 
   .layoutInner {
     box-sizing: border-box;
@@ -27,7 +26,7 @@
 
     .content {
       width: 100%;
-      max-width: $content_max_width;
+      max-width: $content-max-width;
       padding: 0 20px;
 
       .listTitle {
@@ -36,7 +35,7 @@
         margin-top: 120px;
         margin-bottom: 26px;
 
-        >.pageInfo {
+        > .pageInfo {
           width: 100%;
           flex: 1;
           margin: 0;
@@ -96,16 +95,16 @@
       margin-bottom: 30px;
 
       .title {
-        font-size: 48px;
+        font-size: var(--font0);
         font-weight: 600;
         line-height: 1;
-        font-family: $title_font;
+        font-family: $title-font;
         margin-bottom: 42px;
       }
 
       .notice {
         max-width: 550px;
-        font-size: 14px;
+        font-size: var(--font3);
         color: #616161;
         display: flex;
         transition: all 0.1s linear;
@@ -129,7 +128,7 @@
 
   .content {
     width: 100%;
-    max-width: $content_max_width;
+    max-width: $content-max-width;
     z-index: 2;
     padding: 0 20px;
     margin-bottom: 80px;
@@ -160,7 +159,7 @@
         }
 
         .name {
-          font-size: 16px;
+          font-size: var(--font2);
           color: #808080;
           margin-bottom: 20px;
         }
@@ -211,9 +210,10 @@
       display: flex;
       align-items: center;
 
-      >img {
+      > img {
         height: 100%;
       }
+
       > div:nth-child(2) {
         flex: 1;
         display: flex;
@@ -221,7 +221,7 @@
         justify-content: center;
         color: #b6b6b6;
         line-height: 1;
-        font-family: $title_font;
+        font-family: $title-font;
         padding: 0 20px;
 
         > :first-child {
@@ -235,14 +235,14 @@
 
           > span {
             flex: 1;
-            font-size: 14px;
+            font-size: var(--font3);
             color: #616161;
           }
 
-          >div {
+          > div {
             font-family: 'Poppins', sans-serif;
 
-            >span {
+            > span {
               margin-left: 24px;
               color: #393939;
               transition: all 0.1s linear;
@@ -335,6 +335,59 @@
   align-items: center;
 }
 
+.search {
+  height: $page-height;
+  .loading {
+    background-color: transparent;
+  }
+
+  > .content {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    color: white;
+    top: $navbar-height;
+    left: 0;
+    padding: 48px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    word-break: break-word;
+
+    > div {
+      text-align: center;
+
+      .q {
+        font-size: 20px;
+        font-weight: 600;
+        color: #d8d8d8;
+      }
+
+      .desc {
+        font-size: var(--font2);
+        color: #616161;
+        line-height: 1;
+        margin-top: 16px;
+      }
+
+
+      > button {
+        background-color: #000;
+        color: #b6b6b6;
+        font-size: var(--font3);
+        padding: 15px 26px;
+        margin-top: 48px;
+        cursor: pointer;
+
+        &:hover {
+          color: white;
+        }
+      }
+    }
+  }
+}
+
 // 404page
 .err404 {
   display: flex;
@@ -357,26 +410,5 @@
     font-stretch: normal;
     line-height: normal;
     color: #0b0b0b;
-  }
-}
-
-.copyButton {
-  background-image: url(/image/icon/ico_copy.svg);
-  width: 11px;
-  height: 12px;
-  background-repeat: no-repeat;
-  margin: 0 8px;
-  cursor: pointer;
-
-  &:hover {
-    background-image: url(/image/icon/ico_copy_h.svg);
-  }
-
-  &.copied {
-    background-image: url(/image/icon/ico_copied.svg);
-
-    &:hover {
-      background-image: url(/image/icon/ico_copied.svg);
-    }
   }
 }

@@ -70,9 +70,9 @@ class AccountList extends Component {
       mode !== 2 ? (
         <ListWrapper
           lang={lang}
-          titles={accountListConfig.titles}
+          titles={mode === 0 ? accountListConfig.titles : accountListConfig.mtitles}
           data={mappedAccounts(accountList, totalSupply)}
-          spacing={spaceMapper(accountListConfig.spaces)}
+          spacing={spaceMapper(mode === 0 ? accountListConfig.spaces : accountListConfig.mspaces)}
           centerList={accountListConfig.centerList}
           rightList={accountListConfig.rightList}
           linkTo={accountListConfig.linkTo}

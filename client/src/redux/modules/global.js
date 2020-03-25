@@ -9,6 +9,7 @@ const SET_WINDOW_SIZE = 'global/SET_WINDOW_SIZE';
 const REMOVE_SEARCH_RESULT = 'global/REMOVE_SEARCH_RESULT';
 const SEARCH = 'global/SEARCH';
 const SET_SEARCH_TEXT = 'global/SET_SEARCH_TEXT';
+const SET_SEARCHING = 'global/SET_SEARCHING';
 
 const CLOSE_LANGUAGE = 'global/CLOSE_LANGUAGE';
 const CLOSE_NAVBAR = 'global/CLOSE_NAVBAR';
@@ -29,6 +30,7 @@ const initialState = {
   mode: 0,
   width: null,
 
+  searching: false,
   search: '',
   // searchFrom : 'main', 'top', 'mobile', 'side'
   searchFrom: '',
@@ -54,9 +56,8 @@ const reducer = handleActions({
   [SET_WINDOW_SIZE]: (state, action) => {
     const width = action.payload;
     let mode = 0;
-    if (width <= 800) {
-      mode = 2;
-    } else if (width <= 1200) {
+
+    if (width <= 900) {
       mode = 1;
     } else {
       mode = 0;
@@ -81,11 +82,13 @@ const reducer = handleActions({
 
     return {
       ...state,
+      searching: false,
       searchResult: result,
     };
   },
   [SET_SEARCH_TEXT]: (state, action) => ({
     ...state,
+    searching: true,
     search: action.payload.searchText,
     searchFrom: action.payload.searchFrom,
     searchResult: [],
@@ -148,9 +151,12 @@ export const moveUrl = createAction(MOVE_URL);
 export const openLanguage = createAction(OPEN_LANGUAGE);
 export const openModal = createAction(OPEN_MODAL); // { modalData, modalType }
 export const openNavBar = createAction(OPEN_NAVBAR);
+export const setSearching = createAction(SET_SEARCHING);
 export const setSearchText = (searchText, searchFrom) => (dispatch) => {
   searchTextSetter(dispatch, SET_SEARCH_TEXT, null, searchText, searchFrom);
-  if (searchText !== '') searcher(dispatch, SEARCH, null, searchText);
+  if (searchText !== '') searcher(dispatch, SEARCH, () => {
+
+  }, searchText);
 };
 export const removeSearchResult = createAction(REMOVE_SEARCH_RESULT);
 export const setWindowSize = createAction(SET_WINDOW_SIZE);

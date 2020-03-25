@@ -2,64 +2,78 @@ import PropTypes from 'prop-types';
 import React, {useState} from 'react';
 
 import SimpleWrapper from '../SimpleWrapper';
-import { GlobalActions } from '../../redux/actionCreators';
-import { injectIntl, intlShape } from 'react-intl';
+import {GlobalActions} from '../../redux/actionCreators';
+import {injectIntl, intlShape} from 'react-intl';
+import history from '../../history';
 
 import './SearchBar.scss';
 
+const search = (query) => {
 
-const SearchBar = ({
-  intl,
-  focus = false,
-  search,
-  searchFrom,
-  searchResult,
-  type,
-}) => {
-  // const { setSearchText } = GlobalActions;
-  let [searchText, setSearchText] = useState('');
+}
 
-  return (
-    <div className="searchBar" id={type}>
-      <div className="searchBarSearch">
-        <input
-          placeholder={intl.formatMessage({id: 'searchLabel'})}
-          onChange={(e) => {
-            setSearchText(e.target.value);
-          }}
-        />
-        <div className="searchBarIcon" onClick={() => {GlobalActions.setSearchText(searchText, type)}}>
-          {
-            type === 'mobile' ?
-              <img
-                src="/image/icon/back-btn.svg"
-                alt="backBtn"
-                onClick={GlobalActions.closeModal}
-              />
-              : <div alt="searchLogo" />
-          }
+class SearchBar extends React.Component {
+  constructor(props) {
+    super(props);
+
+
+    this.intl = props.intl;
+    this.type = props.type;
+
+    this.state = {
+      searchText: '',
+    }
+  }
+
+  goSearch = () => {
+    history.push(`/${this.props.lang}/search/${this.state.searchText}`)
+
+    this.setSearchText('');
+  }
+
+  setSearchText = (text) => {
+    this.setState({searchText: text});
+  }
+
+  onKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      this.goSearch();
+    }
+  }
+
+  render() {
+    return (
+      <div className="searchBar" id={this.type}>
+        <div className="searchBarSearch">
+          <input
+            placeholder={this.intl.formatMessage({id: 'searchLabel'})}
+            onKeyPress={this.onKeyPress}
+            value={this.state.searchText}
+            onChange={(e) => {
+              this.setSearchText(e.target.value);
+            }}
+          />
+          <div className="searchBarIcon" onClick={this.goSearch}>
+            <div alt="searchLogo" />
+          </div>
         </div>
       </div>
-      <SimpleWrapper
-        data={searchResult}
-        search={search}
-        searchFrom={searchFrom}
-        type={type}
-      />
-    </div>
-  );
-};
+    );
+  }
+}
 
 SearchBar.propTypes = {
   intl: intlShape.isRequired,
+  lang: PropTypes.string.isRequired,
   focus: PropTypes.bool,
-  searchFrom: PropTypes.string.isRequired,
+  search: PropTypes.string.isRequired,
   searchResult: PropTypes.array,
   type: PropTypes.string,
 };
 
 SearchBar.defaultProps = {
   focus: false,
+  search: '',
   searchResult: [],
   type: null,
 };

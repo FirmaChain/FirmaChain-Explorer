@@ -70,9 +70,9 @@ class BlockList extends Component {
       mode !== 2 ? (
         <ListWrapper
           lang={lang}
-          titles={blockListConfig.titles}
+          titles={mode === 0 ? blockListConfig.titles : blockListConfig.mtitles}
           data={mappedBlocks(blockList)}
-          spacing={spaceMapper(blockListConfig.spaces)}
+          spacing={spaceMapper(mode === 0 ? blockListConfig.spaces : blockListConfig.mspaces)}
           linkTo={blockListConfig.linkTo}
           centerList={blockListConfig.centerList}
           rightList={blockListConfig.rightList}

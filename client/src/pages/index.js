@@ -24,6 +24,7 @@ import Home from './Home';
 import Layout from './Layout';
 import Tx from './Tx';
 import Txs from './Txs';
+import NoResult from "./Search";
 import Footer from '../components/Footer';
 import Modal from '../components/Modal';
 import NavBar from '../components/NavBar';
@@ -73,7 +74,7 @@ class Pages extends Component {
         .then(() => GlobalActions.closeModal()),
     );
 
-    history.listen(() => {console.log('page moved');window.scrollTo(0, 0)})
+    history.listen(() => {window.scrollTo(0, 0)})
   }
 
   render() {
@@ -109,6 +110,7 @@ class Pages extends Component {
                       <Route exact path="/:lang/bps" component={BPs} />
                       <Route path="/:lang/tx" component={Tx} />
                       <Route exact path="/:lang/txs" component={Txs} />
+                      <Route exact path="/:lang/search/:query" component={NoResult} />
                       <Route path="*" component={Err404} />
                     </Switch>
                   </Layout>

@@ -1,48 +1,32 @@
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 import React, {useState} from 'react';
-import { FormattedMessage } from 'react-intl';
-import { NavLink } from 'react-router-dom';
+import {FormattedMessage} from 'react-intl';
+import {NavLink} from 'react-router-dom';
 
-import { timeConverter, titleConverter } from '../../lib';
-import { blindAddress } from '../../config';
+import {timeConverter, titleConverter} from '../../lib';
+import {blindAddress} from '../../config';
+
+import CopyButton from '../CopyButton';
 
 import './ListWrapper.scss';
-import {CopyToClipboard} from "react-copy-to-clipboard";
-
-const CopyButton = (value) => {
-  const [isCopied, setCopied] = useState(false);
-  const onCopy = () => {
-    setCopied(true);
-
-    setTimeout(() => {
-      setCopied(false)
-    }, 3000);
-  };
-
-  return (
-    <CopyToClipboard text={value} onCopy={onCopy}>
-      <div className={`copyButton${isCopied ? ' copied' : ''}`}></div>
-    </CopyToClipboard>
-  )
-}
 
 const linkDistributor = ({
-  centerList,
-  datum,
-  lang,
-  linkTo,
-  rightList,
-  copyList,
-  spacing,
-  titles,
-}) => titles.map((title, i) => {
+                           centerList,
+                           datum,
+                           lang,
+                           linkTo,
+                           rightList,
+                           copyList,
+                           spacing,
+                           titles,
+                         }) => titles.map((title, i) => {
   let content = null;
   const className = cx({
     center: centerList.indexOf(title) !== -1 && rightList.indexOf(title) === -1,
     right: rightList.indexOf(title) !== -1,
   });
-  const style = { width: `${spacing[i]}%` };
+  const style = {width: `${spacing[i]}%`};
 
   linkTo.some((link) => {
     const separator = link.split('/');
@@ -65,7 +49,7 @@ const linkDistributor = ({
   });
 
   if (!content) {
-    const d = { ...datum, 'Time Stamp': datum['Time Stamp'] && timeConverter(datum['Time Stamp']) };
+    const d = {...datum, 'Time Stamp': datum['Time Stamp'] && timeConverter(datum['Time Stamp'])};
     content = (
       <span
         style={style}
@@ -76,19 +60,19 @@ const linkDistributor = ({
       </span>
     );
   }
-  return <React.Fragment>
+  return <React.Fragment key={i}>
     {content}
-    {(copyList.indexOf(title) !== -1) && CopyButton(datum[title])}
+    {(copyList.indexOf(title) !== -1) && <CopyButton value={datum[title]} />}
   </React.Fragment>;
 });
 
-const ListWrapperTitle = ({ titles, spacing, centerList }) => (
+const ListWrapperTitle = ({titles, spacing, centerList}) => (
   <div className="listWrapperTitles">
     {
       titles.map((title, i) => (
         <span
-          style={{ width: `${spacing[i]}%` }}
-          className={cx({ center: centerList.indexOf(title) !== -1 })}
+          style={{width: `${spacing[i]}%`}}
+          className={cx({center: centerList.indexOf(title) !== -1})}
           key={title}
         >
           <FormattedMessage id={titleConverter(title)} />
@@ -99,8 +83,8 @@ const ListWrapperTitle = ({ titles, spacing, centerList }) => (
 );
 
 const ListWrapperContents = ({
-  centerList, data, lang, linkTo, rightList, copyList, spacing, titles,
-}) => {
+                               centerList, data, lang, linkTo, rightList, copyList, spacing, titles,
+                             }) => {
   const className = (datum) => {
     if (datum.Ranking >= 1 && datum.Ranking <= 21) {
       return cx('listWrapperContentRow', 'special');
@@ -114,9 +98,9 @@ const ListWrapperContents = ({
         data.map((datum, i) => (
           // eslint-disable-next-line react/no-array-index-key
           <div className={className(datum)} key={i}>
-            { linkDistributor({
+            {linkDistributor({
               centerList, datum, lang, linkTo, rightList, copyList, spacing, titles,
-            }) }
+            })}
           </div>
         ))
       }
@@ -125,15 +109,15 @@ const ListWrapperContents = ({
 };
 
 const ListWrapper = ({
-  centerList,
-  data,
-  lang,
-  linkTo,
-  rightList,
-  copyList,
-  spacing,
-  titles,
-}) => (
+                       centerList,
+                       data,
+                       lang,
+                       linkTo,
+                       rightList,
+                       copyList,
+                       spacing,
+                       titles,
+                     }) => (
   <div className="listWrapper">
     <ListWrapperTitle titles={titles} spacing={spacing} centerList={centerList} />
     <ListWrapperContents

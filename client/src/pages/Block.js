@@ -26,7 +26,10 @@ const Block = ({ location }) => {
         { BlockWrapper }
       </div>
       <div className="blockDetailTx">
-        <PageInfo title="transactions-in-the-block" />
+        <div className="listTitle">
+          <PageInfo title="transactions-list" />
+          <Navigation type="account" />
+        </div>
         <TxList type="block" />
       </div>
       <div className="contentNavigation">

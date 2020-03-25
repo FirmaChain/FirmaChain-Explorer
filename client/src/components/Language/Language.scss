@@ -1,3 +1,5 @@
+@import '../../variable.scss';
+
 $navBar-height: 85px;
 
 .language {
@@ -15,7 +17,7 @@ $navBar-height: 85px;
     border: none;
     outline: none;
     letter-spacing: -0.6px;
-    font-size: 14px;
+    font-size: var(--font3);
     //color: #0b0b0b;
     color: white;
 
@@ -72,7 +74,7 @@ $navBar-height: 85px;
     height: 36px;
     flex: 1 1 auto;
     padding-left: 15px;
-    font-size: 14px;
+    font-size: var(--font3);
     letter-spacing: -0.6px;
     color: #0b0b0b;
 

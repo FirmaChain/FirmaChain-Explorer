@@ -1,3 +1,5 @@
+@import '../../variable.scss';
+
 .Dropdown-root {
   position: relative;
   margin-right: 15px;
@@ -7,7 +9,7 @@
   width: 100px;
   position: relative;
   overflow: hidden;
-  font-size: 12px;
+  font-size: var(--font4);
   background-color: #222222;
   border-radius: 4px;
   box-sizing: border-box;
@@ -55,7 +57,7 @@
   background-color: #222222;
   overflow: hidden;
   position: absolute;
-  font-size: 12px;
+  font-size: var(--font4);
   color: #616161;
   z-index: 1000;
   -webkit-overflow-scrolling: touch;

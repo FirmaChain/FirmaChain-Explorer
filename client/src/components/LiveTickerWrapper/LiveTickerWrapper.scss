@@ -1,5 +1,4 @@
-$desktop-width: 1000px;
-$tablet-width: 600px;
+@import '../../variable.scss';
 
 .liveTickerWrapperGuide {
   flex: 1;
@@ -63,7 +62,7 @@ $tablet-width: 600px;
         font-size: 26px;
 
         .liveTickerWrapperContentSuffix {
-          font-size: 24px;
+          font-size: var(--font1);
           padding-bottom: 0px;
         }
       }
@@ -86,7 +85,7 @@ $tablet-width: 600px;
 
     .liveTickerWrapperTitle {
       //margin: auto;
-      font-size: 16px;
+      font-size: var(--font2);
       font-weight: 300;
       letter-spacing: -0.4px;
     }

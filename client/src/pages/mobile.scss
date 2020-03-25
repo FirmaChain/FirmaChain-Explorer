@@ -5,9 +5,11 @@
   font-weight: bold;
   font-size: 20px;
 }
-@media (max-width: $mobile_width) {
+
+@media (max-width: $mobile-width) {
   .layout {
     padding-top: $mobile-header-height;
+    min-height: $page-mobile-height;
 
     .layoutInner {
       .content {
@@ -21,14 +23,14 @@
           margin-bottom: 20px;
           text-align: center;
 
-          >.pageInfo {
+          > .pageInfo {
             display: block;
             margin: 0;
             text-align: center;
             flex: initial;
           }
 
-          >.navigation {
+          > .navigation {
             justify-content: center;
 
             .Dropdown-root {
@@ -58,320 +60,241 @@
   }
 }
 
-// home
-.homeContentWrapper {
-  width: 100%;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  .top {
+@media (max-width: $mobile-width) {
+  // home
+  .homeContentWrapper {
     width: 100%;
-    height: 500px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    color: white;
-    position: relative;
-    background: #171718;
 
-    .logoBg {
+    > .top {
       width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      background: url(/image/bg/img_logo_bg.svg) no-repeat top center;
-    }
-
-    .content {
-      width: 100%;
-      text-align: center;
-      z-index: 1;
-      margin-bottom: 30px;
-
-      .title {
-        font-size: 48px;
-        font-weight: 600;
-        line-height: 1;
-        font-family: $title_font;
-        margin-bottom: 42px;
-      }
-
-      .notice {
-        max-width: 550px;
-        font-size: 14px;
-        color: #616161;
-        display: flex;
-        transition: all 0.1s linear;
-        cursor: pointer;
-        margin: 0 auto;
-
-        img {
-          padding: 0 24px;
-        }
-
-        span {
-          flex: 1;
-        }
-
-        &:hover {
-          color: white;
-        }
-      }
-    }
-  }
-
-  .content {
-    width: 100%;
-    max-width: $content_max_width;
-    z-index: 2;
-    padding: 0 20px;
-    margin-bottom: 80px;
-
-    > .chartWrapper {
-      display: flex;
-      width: 100%;
-      margin-top: -120px;
-
-      .card {
-        height: 260px;
-        flex: 1;
-        padding: 22px 40px;
-        background: #111111;
-        margin-right: 8px;
-        border-radius: 8px;
-
-        &:hover {
-          background-color: #1e1e1e;
-
-          > .name {
-            color: #b6b6b6;
-          }
-        }
-
-        &:last-child {
-          margin-right: 0;
-        }
-
-        .name {
-          font-size: 16px;
-          color: #808080;
-          margin-bottom: 20px;
-        }
-
-        .chart {
-          width: 100%;
-          height: 100%;
-
-          canvas {
-            width: 100%;
-          }
-        }
-      }
-    }
-
-    > .homeLive {
-      width: 100%;
+      height: auto;
       display: flex;
       justify-content: center;
-      color: #b6b6b6;
+      align-items: center;
+      color: white;
+      position: relative;
+      background-color: #000;
 
+      .logoBg {
+        display: none;
+      }
 
-      .divider {
-        min-width: 40px;
-        flex: 1;
-        position: relative;
-        padding-top: 54px;
+      .content {
+        width: 100%;
+        text-align: center;
+        z-index: 1;
+        margin: 0;
+        padding: 19px 5px 19px 0;
 
-        &::after {
-          content: ' ';
-          position: absolute;
-          width: 1px;
-          height: calc(100% - 54px);
-          left: calc(50% - 1px);
-          background-color: #222222;
+        .title {
+          display: none;
+        }
+
+        .notice {
+          max-width: initial;
+          font-size: var(--font4);
+          color: #616161;
+          display: flex;
+          transition: all 0.1s linear;
+          cursor: pointer;
+          margin: 0 auto;
+          justify-content: flex-start;
+
+          img {
+            padding: 0 24px;
+          }
+
+          span {
+            flex: 1;
+            text-align: left;
+            margin-left: -16px;
+          }
+
+          &:hover {
+            color: white;
+          }
         }
       }
     }
-  }
 
-  .banner {
-    width: 100%;
+    > .content {
+      width: 100%;
+      max-width: $content-max-width;
+      z-index: 2;
+      padding: 0 !important;
+      margin-bottom: 80px;
 
-    &.wallet {
-      min-width: $desktop-width;
-      height: 200px;
-      background-color: #0d0d0d;
-      display: flex;
-      align-items: center;
+      > .chartWrapper {
+        width: 100%;
+        margin-top: 0;
+        display: block;
 
-      >img {
-        height: 100%;
-      }
-      > div:nth-child(2) {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        color: #b6b6b6;
-        line-height: 1;
-        font-family: $title_font;
-        padding: 0 20px;
-
-        > :first-child {
-          font-size: 20px;
-          font-weight: 600;
-          margin-bottom: 12px;
-        }
-
-        > :last-child {
+        .tab {
           display: flex;
 
-          > span {
+          > * {
             flex: 1;
-            font-size: 14px;
+            background-color: #1e1e1e;
             color: #616161;
-          }
+            font-size: var(--font3);
+            padding: 13px;
+            text-align: center;
+            transition: all 0.1s linear;
 
-          >div {
-            font-family: 'Poppins', sans-serif;
-
-            >span {
-              margin-left: 24px;
-              color: #393939;
-              transition: all 0.1s linear;
-              cursor: pointer;
-
-              &:hover {
-                color: #808080;
-              }
+            &.selected {
+              color: #b6b6b6;
+              background-color: #111111;
             }
           }
         }
 
+        .card {
+          height: 240px;
+          max-height: 240px;
+          padding: 40px;
+          background: #111111;
+          margin: 0;
+          border-radius: 0;
+
+          &:hover {
+            background-color: #1e1e1e;
+
+            > .name {
+              color: #b6b6b6;
+            }
+          }
+
+          &:last-child {
+            margin-right: 0;
+          }
+
+          .name {
+            font-size: var(--font2);
+            color: #808080;
+            margin-bottom: 20px;
+          }
+
+          .chart {
+            width: 100%;
+            height: 100%;
+
+            canvas {
+              width: 100%;
+            }
+          }
+        }
+      }
+
+      > .homeLive {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        color: #b6b6b6;
+
+        .liveInfoWrapperInfo {
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+
+        .contentWrapper {
+          padding-left: 4px;
+          padding-right: 12px;
+        }
+
+
+        .divider {
+          min-width: 40px;
+          flex: 1;
+          position: relative;
+          padding-top: 54px;
+
+          &::after {
+            content: ' ';
+            position: absolute;
+            width: 1px;
+            height: calc(100% - 54px);
+            left: calc(50% - 1px);
+            background-color: #222222;
+          }
+        }
+      }
+    }
+
+    .banner {
+      width: 100%;
+
+      &.wallet {
+        width: 100%;
+        height: 80px;
+        min-width: initial;
+        background-color: #0d0d0d;
+        display: flex;
+        align-items: center;
+        position: relative;
+
+        > img {
+          position: absolute;
+          height: 100%;
+          top: 0;
+
+          &:first-child{
+            left: 0;
+          }
+
+          &:last-child {
+            right: -70px;
+          }
+        }
+
+        > div {
+          text-align: center;
+          z-index: 99;
+
+          >div:first-child {
+            margin-bottom: 10px !important;
+          }
+        }
+
+        span {
+          font-family: 'Noto Sans KR', sans-serif;
+          margin-bottom: -4px;
+
+          span {
+            line-height: 2;
+            opacity: 0.6;
+          }
+        }
+
+        .download {
+          display: none;
+        }
+
       }
     }
   }
-}
 
-// blocks
-.blocksContents {
-  width: 100%;
-  margin-bottom: 30px;
-}
+  .search {
+    height: $page-mobile-height;
 
-.block {
-  margin: auto;
-  width: 100%;
+    > .content {
+      top: $mobile-header-height;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+      > div {
+        > button {
+          margin-top: 148px;
 
-  .blockNavigation {
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-  }
-}
+          &:hover {
+            color: initial;
+          }
 
-// accounts
-.accountsContents {
-  width: 100%;
-}
-
-.accountsNavigation {
-  margin-top: 30px;
-  display: flex;
-  justify-content: center;
-}
-
-
-.verticalLine {
-  border: 1px solid #f4f4f4;
-  height: 100px;
-}
-
-// account
-.account {
-  width: 100%;
-}
-
-// transactions
-.txs {
-  width: 100%;
-}
-
-// transaction
-.tx {
-  width: 100%;
-}
-
-// bps
-.bpsContents {
-  width: 100%;
-  margin-bottom: 30px;
-}
-
-// txs
-.txsContents {
-  width: 100%;
-  margin-bottom: 30px;
-}
-
-// navigation
-.contentNavigation {
-  width: 100%;
-  margin-top: 30px;
-
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-// 404page
-.err404 {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10%;
-
-  img {
-    max-width: 60%;
-    margin-top: 20%;
-  }
-
-  span {
-    //font-family: NotoSansCJKkr;
-    margin-top: 45px;
-    font-size: 2em;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
-    color: #0b0b0b;
-  }
-}
-
-.copyButton {
-  background-image: url(/image/icon/ico_copy.svg);
-  width: 11px;
-  height: 12px;
-  background-repeat: no-repeat;
-  margin: 0 8px;
-  cursor: pointer;
-
-  &:hover {
-    background-image: url(/image/icon/ico_copy_h.svg);
-  }
-
-  &.copied {
-    background-image: url(/image/icon/ico_copied.svg);
-
-    &:hover {
-      background-image: url(/image/icon/ico_copied.svg);
+          &:active {
+            color: white;
+          }
+        }
+      }
     }
   }
 }

@@ -1,3 +1,5 @@
+@import '../../variable.scss';
+
 .listWrapper {
   width: 100%;
 
@@ -28,7 +30,7 @@
     align-items: center;
 
     span {
-      font-size: 14px;
+      font-size: var(--font3);
       font-weight: 500;
       color: #979797;
       padding-left: 20px;
@@ -67,7 +69,7 @@
       text-overflow: ellipsis;
       overflow: hidden;
       white-space: nowrap;
-      font-size: 14px;
+      font-size: var(--font3);
       font-weight: normal;
       color: #616161;
       margin: auto;
@@ -87,6 +89,17 @@
     span:first-child {
       font-weight: bold;
       color: #ff9f00;
+    }
+  }
+}
+
+@media (max-width: $mobile-width) {
+  .listWrapper {
+
+    listWrapperTitles {
+      span {
+        font-size: var(--font4);
+      }
     }
   }
 }

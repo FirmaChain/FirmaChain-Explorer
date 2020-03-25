@@ -15,7 +15,6 @@ export const updateTxToAccounts = async (rawTx, t) => {
   const {
     fromAccount: from, toAccount: to, executed,
   } = rawTx;
-  console.log(from);
   if(from == null) {
     return [];
   }

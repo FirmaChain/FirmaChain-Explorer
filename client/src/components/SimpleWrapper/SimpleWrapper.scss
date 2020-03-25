@@ -1,3 +1,5 @@
+@import '../../variable.scss';
+
 .simpleWrapper {
   width: 100%;
 
@@ -42,7 +44,7 @@
         white-space: nowrap;
         color: #808080;
         padding-right: 20px;
-        font-size: 12px;
+        font-size: var(--font4);
         font-weight: normal;
         font-style: normal;
         font-stretch: normal;

@@ -77,8 +77,6 @@ class Navigation extends Component {
     const qpage = this.getCurrentPage();
     const path = window.location.pathname;
 
-    console.log('count per page', countPerPage)
-
     return (
       <div className="navigation">
         <PageRangeDropdown

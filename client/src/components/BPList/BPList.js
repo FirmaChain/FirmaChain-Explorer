@@ -86,9 +86,9 @@ class BPList extends Component {
       mode !== 2 ? (
         <ListWrapper
           lang={lang}
-          titles={bpListConfig.titles}
+          titles={mode === 0 ? bpListConfig.titles :  bpListConfig.mtitles}
           data={mappedBPs(bpList, page, totalSupply, bondedTokens)}
-          spacing={spaceMapper(bpListConfig.spaces)}
+          spacing={spaceMapper(mode === 0 ? bpListConfig.spaces : bpListConfig.mspaces)}
           linkTo={bpListConfig.linkTo}
           centerList={bpListConfig.centerList}
           rightList={bpListConfig.rightList}

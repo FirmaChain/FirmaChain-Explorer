@@ -1,4 +1,4 @@
-$mobile_width: 800px;
+@import '../../variable.scss';
 
 .contentWrapperLinker {
   width: 100%;
@@ -74,7 +74,7 @@ $mobile_width: 800px;
     justify-content: center;
     text-align: center;
     padding: 0 20px;
-    @media (max-width: $mobile_width) {
+    @media (max-width: $mobile-width) {
       padding: 0 4px;
     }
 
@@ -95,12 +95,12 @@ $mobile_width: 800px;
   }
 
   .contentWrapperInfoTitle {
-    font-size: 12px;
+    font-size: var(--font4);
     color: #616161;
     margin-right: 20px;
     line-height: 1.8;
 
-    @media (max-width: $mobile_width) {
+    @media (max-width: $mobile-width) {
       margin-right: 4px;
       //max-width: 80px;
     }
@@ -111,7 +111,7 @@ $mobile_width: 800px;
   }
 
   .contentWrapperInfoContent {
-    font-size: 12px;
+    font-size: var(--font4);
     line-height: 1.8;
     color: #75777b;
     text-overflow: ellipsis;
@@ -119,7 +119,7 @@ $mobile_width: 800px;
     white-space: nowrap;
     transition: all 0.1s linear;
 
-    @media (max-width: $mobile_width) {
+    @media (max-width: $mobile-width) {
       margin-right: 0px;
     }
 

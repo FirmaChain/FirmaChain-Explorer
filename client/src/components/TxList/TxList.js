@@ -69,8 +69,8 @@ class TxList extends Component {
       lang,
       countPerPage
     } = this.props;
-    const titles = txTitleList[type];
-    const spaces = txSpaceList[type];
+    const titles = txTitleList[mode === 0 ? 'desktop' : 'mobile'];
+    const spaces = txSpaceList[mode === 0 ? 'desktop' : 'mobile'];
     const { from, to } = ranger(page, txs.length, countPerPage);
 
     return (

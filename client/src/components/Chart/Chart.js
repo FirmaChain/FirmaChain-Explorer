@@ -80,7 +80,7 @@ const initChart = (ref, target, data) => {
   });
 };
 
-const Chart = ({id, target, data}) => {
+const Chart = ({id, target, height, data}) => {
   let ref = null;
 
   useEffect(() => {
@@ -90,7 +90,7 @@ const Chart = ({id, target, data}) => {
   return (
     <canvas
       id={id}
-      height="170"
+      height={height}
       ref={(r) => {
         ref = r;
       }}
@@ -101,7 +101,8 @@ const Chart = ({id, target, data}) => {
 Chart.propTypes = {
   id: PropTypes.string.isRequired,
   key: PropTypes.string,
-  data: PropTypes.array
+  data: PropTypes.array,
+  height: PropTypes.number
 };
 
 export default Chart;

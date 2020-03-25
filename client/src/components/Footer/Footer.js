@@ -24,13 +24,9 @@ const Footer = ({language, mode}) => (
       <div className="footerLogo">
         <img src="/image/icon/logo_white.png" alt="footerLogo" />
       </div>
-      {
-        mode === 0 && (
-          <div className="footerRights">
-            <p>info@firmachain.org</p>
-          </div>
-        )
-      }
+      <div className="footerRights">
+        <p>info@firmachain.org</p>
+      </div>
       <div className="footerLang">
         <div>
           Language
@@ -65,9 +61,6 @@ const Footer = ({language, mode}) => (
           })
         }
       </div>
-    </div>
-    <div className="privacyPolicy">
-      Modified By FirmaChain.
     </div>
   </div>
 );

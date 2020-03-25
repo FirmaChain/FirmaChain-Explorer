@@ -5,6 +5,7 @@
   width: 100%;
   height: $footer-height;
   margin-top: $footer-margin-height;
+  min-width: $desktop-width;
 
   display: flex;
   justify-content: center;
@@ -35,7 +36,7 @@
     .footerRights {
       flex: 1;
       margin-left: 36px;
-      font-size: 14px;
+      font-size: var(--font3);
       font-weight: 300;
       color: #373737;
       margin-right: 15px;
@@ -46,10 +47,9 @@
     }
 
     .footerLang {
-      flex: 1;
       color: #393939;
-      font-size: 16px;
-      margin: 0 70px;
+      font-size: var(--font2);
+      margin: 0 5%;
       justify-content: flex-end;
 
       > div {
@@ -69,6 +69,7 @@
         }
       }
     }
+
 
     .footerSNS {
       align-items: center;
@@ -99,7 +100,7 @@
     .footerPrivacyPolicy {
       padding-left: 20px;
       border-left: 1px solid #d8d8d8;
-      font-size: 14px;
+      font-size: var(--font3);
       letter-spacing: -0.6px;
 
       a {
@@ -116,22 +117,33 @@
 .footer.mobile {
   overflow: hidden;
   flex-direction: column;
+  height: $footer-mobile-height;
   margin-top: $footer-mobile-margin-height;
 
   .footerContent {
     height: 80px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
-    .footerSNS {
-      img {
-        width: 22px;
-        height: 22px;
+    .footerLogo {
+      > img {
+        width: 100px;
       }
+    }
+    .footerRights {
+      font-size: var(--font4);
+    }
+
+    .footerLang {
+      display: none;
+    }
+
+    .footerSNS {
+      display: none;
     }
   }
 
   .privacyPolicy {
-    font-size: 14px;
+    font-size: var(--font3);
     letter-spacing: -0.6px;
     height: 38px;
     width: 100%;
