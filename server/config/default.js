@@ -1,6 +1,6 @@
 import path from 'path';
 
-const endpoint = '15.164.210.113';
+const endpoint = 'localhost';
 const config = {
   BLOCKCHAIN: {
     URL: 'http://localhost:9921',
