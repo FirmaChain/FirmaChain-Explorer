@@ -40,10 +40,10 @@ class Account extends Component {
   }
 
   render() {
-    const { account, language, mode } = this.props;
+    const { account, totalSupply, language, mode } = this.props;
     return account && (
       <DetailWrapper
-        data={accountMapper(account)}
+        data={accountMapper(account, totalSupply)}
         lang={language}
         mode={mode}
         type="account"
@@ -57,10 +57,12 @@ Account.propTypes = {
   address: PropTypes.string.isRequired,
   language: PropTypes.string.isRequired,
   mode: PropTypes.number.isRequired,
+  totalSupply: PropTypes.string
 };
 
 Account.defaultProps = {
   account: null,
+  totalSupply: null
 };
 
 export default Account;

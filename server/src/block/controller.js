@@ -17,14 +17,20 @@ export const get = async (req, res) => {
     return res.json({})
   }
 
+  block = JSON.parse(JSON.stringify(block));
+
   const txList = [];
   if (block && block.data.transactions.length === 0) {
     const txs = await Transaction.findAll({where: {blockHeight: block.data.height}});
     txs.forEach(tx => txList.push(tx.dataValues.data));
     block.data.transactions = txList;
-    res.json({block});
-    return;
   }
+
+  block.data.transactions = block.data.transactions.map(x => {
+    x.timestamp = block.data.timestamp;
+    return x;
+  });
+
   res.json({block});
 };
 
@@ -32,5 +38,6 @@ const searchColumns = [Block.tableAttributes.hash];
 
 export const list = async (req, res) => {
   const {data, pagination} = await listQueryWithCount(Block, req.query, searchColumns);
+
   res.json({blocks: data, pagination});
 };

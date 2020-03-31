@@ -28,7 +28,7 @@ const Block = ({ location }) => {
       <div className="blockDetailTx">
         <div className="listTitle">
           <PageInfo title="transactions-list" />
-          <Navigation type="account" />
+          <Navigation type="block" />
         </div>
         <TxList type="block" />
       </div>

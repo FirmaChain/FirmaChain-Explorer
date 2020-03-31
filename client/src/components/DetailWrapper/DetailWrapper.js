@@ -25,6 +25,9 @@ const DetailWrapperKey = ({titleList}) => (
 );
 
 const ValueConverter = (title, value, linkList, copyList, lang, isMobile) => {
+  if (title === 'url' && !value)
+    return <FormattedMessage id="noUrl" />;
+
   for (let i = 0; i < linkList.length; i += 1) {
     if (linkList[i].indexOf(title) !== -1) {
       const linkTo = `/${lang}/${linkList[i].split('/')[0]}/${value}`;
@@ -45,16 +48,24 @@ const ValueConverter = (title, value, linkList, copyList, lang, isMobile) => {
   let content = '';
   switch (title) {
     case 'Time Stamp':
-      content = timeConverter(value) // timezoneMatcher(value);
+      content = <FormattedMessage {...timeConverter(value, true)} />; // timezoneMatcher(value);
       break;
     case 'Fee':
       if (value) {
         content = JSON.stringify(value).replace(/[{}"]/g, '').replace(/:/g, ': ').replace(/,/g, ', ')
       }
       break;
-    case 'Message':
+    case 'Memo':
       if (!value)
+        content = <FormattedMessage id="noMemo" />;
+    case 'Details':
+      if (!value)
+        content = <FormattedMessage id="noDetails" />;
+    case 'Message':
+      if (!value) {
+        content = <FormattedMessage id="noMessage" />;
         break;
+      }
 
       content = <MessageBox msgs={value}
                             linkList={linkList}
@@ -62,6 +73,11 @@ const ValueConverter = (title, value, linkList, copyList, lang, isMobile) => {
                             lang={lang}
                             title={title}
                             isMobile={isMobile} />;
+      break;
+    case 'Jailed':
+      content = value === 'No' ?
+        <div style={{color: '#389b52'}}><FormattedMessage id="statusActive" /></div> :
+        <div style={{color: '#c8922e'}}><FormattedMessage id="statusJailed" /></div>;
       break;
     default:
       if (!value)
@@ -86,24 +102,6 @@ const DetailWrapperValue = ({titleList, linkList, copyList, data, lang}) => (
   <div className="detailWrapperValue">
     {
       titleList.map((title) => {
-        for (let i = 0; i < linkList.length; i += 1) {
-          if (linkList[i].indexOf(title) !== -1) {
-            const linkTo = `/${lang}/${linkList[i].split('/')[0]}/${data[title]}`;
-            return (
-              <span key={title}>
-                {
-                  title === 'url'
-                    ? (<a href={data[title]}>{data[title]}</a>)
-                    : (<NavLink to={linkTo}>{data[title]}</NavLink>)
-                }
-                {
-                  (copyList.indexOf(title) !== -1 && data[title]) && <CopyButton value={data[title]} />
-                }
-              </span>
-            );
-          }
-        }
-
         let classNames = {
           memo: title === 'memo',
           success: title === 'Status' && data[title] === 'Success',
@@ -120,9 +118,6 @@ const DetailWrapperValue = ({titleList, linkList, copyList, data, lang}) => (
               {
                 content
               }
-            {
-              (copyList.indexOf(title) !== -1 && data[title]) && <CopyButton value={data[title]} />
-            }
           </span>
         );
       })

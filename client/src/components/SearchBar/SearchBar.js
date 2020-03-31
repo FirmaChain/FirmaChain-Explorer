@@ -26,6 +26,9 @@ class SearchBar extends React.Component {
   }
 
   goSearch = () => {
+    if(!this.state.searchText.trim()) {
+      return alert(this.props.intl.formatMessage({id: 'pleaseKeyword'}));
+    }
     history.push(`/${this.props.lang}/search/${this.state.searchText}`)
 
     this.setSearchText('');

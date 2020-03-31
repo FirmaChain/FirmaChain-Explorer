@@ -44,7 +44,8 @@ $navBar-border-bottom: 1px;
   }
 
   .navBarContainer {
-    max-width: $desktop-width;
+    min-width: $desktop-width;
+    max-width: calc(100% - 300px);
     width: 100%;
 
     display: flex;
@@ -68,8 +69,8 @@ $navBar-border-bottom: 1px;
       }
 
       > div {
-        margin-left: 20px;
-        margin-right: 20px;
+        margin-left: 30px;
+        margin-right: 30px;
       }
     }
 
@@ -123,11 +124,13 @@ $navBar-border-bottom: 1px;
   justify-content: flex-start;
 
   .navBarContainer {
+    min-width: initial;
+    max-width: initial;
     box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
     padding: 18px 0;
     height: $mobile-navbar-height;
     justify-content: flex-start;
-    z-index: 100;
+    z-index: 10;
 
     .sidebar {
       width: 100%;
@@ -197,7 +200,7 @@ $navBar-border-bottom: 1px;
         }
         .relatedLinks {
           text-align: center;
-          padding: 30px 34px;
+          padding: 30px 0;
 
           a {
             margin-right: 16px;

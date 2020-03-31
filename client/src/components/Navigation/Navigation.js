@@ -7,7 +7,7 @@ import PageRangeDropdown from "./PageRangeDropdown";
 import history from '../../history';
 
 import {GlobalActions} from '../../redux/actionCreators';
-import {navigationDisplay} from '../../config';
+import {navigationDisplay, navigationDisplayMobile} from '../../config';
 
 import './Navigation.scss';
 import {connect} from "react-redux";
@@ -15,6 +15,13 @@ import {connect} from "react-redux";
 const moveToPage = pageNum => GlobalActions.movePage(pageNum);
 const pages = (currentPage, lastPage, pageDisplay, countPerPage, curPath) => {
   // eslint-disable-next-line no-param-reassign
+
+  if(lastPage === 0) {
+    lastPage = 1;
+    pageDisplay = 1;
+    currentPage = 1;
+  }
+
   if (lastPage < pageDisplay) pageDisplay = lastPage;
   const pageNation = [];
   let startPage = currentPage - Math.floor(pageDisplay / 2);
@@ -72,7 +79,7 @@ class Navigation extends Component {
   }
 
   render() {
-    const {page, countPerPage} = this.props;
+    const {page, countPerPage, mode} = this.props;
     const lastPage = this.lastPage();
     const qpage = this.getCurrentPage();
     const path = window.location.pathname;
@@ -95,7 +102,7 @@ class Navigation extends Component {
             </button>
           </NavLink>
           {
-            pages(page, lastPage, navigationDisplay, countPerPage, path)
+            pages(page, lastPage, mode === 0 ? navigationDisplay : navigationDisplayMobile, countPerPage, path)
           }
           <NavLink to={`${path}?page=${qpage === lastPage ? lastPage : qpage + 1}`}>
             <button onClick={() => moveToPage(page + 1)} type="button" disabled={page === lastPage}>
@@ -122,6 +129,7 @@ Navigation.propTypes = {
   txs: PropTypes.array,
   page: PropTypes.number.isRequired,
   countPerPage: PropTypes.number.isRequired,
+  mode: PropTypes.number.isRequired,
   type: PropTypes.oneOf([
     'account',
     'accounts',

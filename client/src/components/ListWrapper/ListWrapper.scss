@@ -38,6 +38,14 @@
     }
   }
 
+  .listWrapperContents.empty {
+    width: 100%;
+    padding: 40px;
+    color: #808080;
+    font-size: 20px;
+    text-align: center;
+  }
+
   .listWrapperContentRow {
     // padding-left: 15px;
     width: 100%;
@@ -55,7 +63,12 @@
     &:hover {
       background: #171718;
       box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.3);
-      text-decoration: underline;
+      > a {
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
       color: white !important;
 
       >* {
@@ -84,17 +97,19 @@
   }
 
   .special {
-    background-color: rgba(214, 205, 99, 0.05);
 
-    span:first-child {
-      font-weight: bold;
-      color: #ff9f00;
-    }
   }
 }
 
 @media (max-width: $mobile-width) {
   .listWrapper {
+    .listWrapperContents.empty {
+      width: 100%;
+      padding: 40px;
+      color: #808080;
+      font-size: 14px;
+      text-align: center;
+    }
 
     listWrapperTitles {
       span {

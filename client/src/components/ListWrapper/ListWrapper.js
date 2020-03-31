@@ -28,6 +28,9 @@ const linkDistributor = ({
   });
   const style = {width: `${spacing[i]}%`};
 
+  if(title === 'voteRate')
+    style.paddingRight = '16px';
+
   linkTo.some((link) => {
     const separator = link.split('/');
     if (title.toLowerCase().indexOf(separator[1]) !== -1) {
@@ -49,7 +52,7 @@ const linkDistributor = ({
   });
 
   if (!content) {
-    const d = {...datum, 'Time Stamp': datum['Time Stamp'] && timeConverter(datum['Time Stamp'])};
+    const d = {...datum, 'Time Stamp': datum['Time Stamp'] && <FormattedMessage {...timeConverter(datum['Time Stamp'])}/>};
     content = (
       <span
         style={style}
@@ -91,6 +94,12 @@ const ListWrapperContents = ({
     }
     return cx('listWrapperContentRow');
   };
+
+  if (data.length === 0) {
+    return (<div className="listWrapperContents empty">
+      <FormattedMessage id="listEmpty" />
+    </div>)
+  }
 
   return (
     <div className="listWrapperContents">

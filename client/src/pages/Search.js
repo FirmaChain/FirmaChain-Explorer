@@ -4,6 +4,8 @@ import {connect} from "react-redux";
 import {GlobalActions} from "../redux/actionCreators";
 
 import history from '../history';
+import lottie from 'lottie-web';
+import loadingJson from '../lottie/loading/lottie.json';
 
 class Search extends React.Component {
   constructor(props) {
@@ -13,6 +15,7 @@ class Search extends React.Component {
   componentDidMount() {
     const params = this.props.match.params;
     this.searchQuery(params.query)
+
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
@@ -26,6 +29,20 @@ class Search extends React.Component {
       const search = this.props.searchResult[0];
       history.push(`/${this.props.lang}/${search.type}/${search.data}`);
     }
+
+    if(this.props.searching) {
+      this.lottie = lottie.loadAnimation({
+        container: this.ref, // the dom element that will contain the animation
+        renderer: 'svg',
+        loop: true,
+        animationData: loadingJson // the path to the animation json
+      });
+
+      this.lottie.setSpeed(1.3);
+      this.lottie.play()
+    }else{
+      this.lottie.stop();
+    }
   }
 
   searchQuery = (query) => {
@@ -38,9 +55,7 @@ class Search extends React.Component {
         <div className="content">
           {
             this.props.searching && (
-              <div className="loading">
-                Loading...
-              </div>
+              <div ref={r => this.ref = r}/>
             )
           }
           {
@@ -50,7 +65,9 @@ class Search extends React.Component {
                 <div className="desc">
                   <FormattedMessage id="searchNoResult" />
                 </div>
-                <button>메인으로 돌아가기</button>
+                <button onClick={() => {history.push(`/${this.props.lang}/`)}}>
+                  <FormattedMessage id="returnToMain" />
+                </button>
               </div>
             )
           }

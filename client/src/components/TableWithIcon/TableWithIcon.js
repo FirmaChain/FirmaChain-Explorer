@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import {FormattedMessage} from 'react-intl';
+
 import ContentWrapper from '../ContentWrapper';
 import {
   accountMapper,
@@ -42,7 +44,7 @@ const TableWithIcon = ({
       {
         dataList.map((datum, i) => {
           const d = datum['Time Stamp']
-            ? { ...datum, 'Time Stamp': timeConverter(datum['Time Stamp']) }
+            ? { ...datum, 'Time Stamp': <FormattedMessage {...timeConverter(datum['Time Stamp'])}/> }
             : datum;
 
           return (

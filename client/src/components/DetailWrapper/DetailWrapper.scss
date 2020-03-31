@@ -5,6 +5,7 @@
   width: 100%;
   border-top: 1px solid #616161;
   border-bottom: 1px solid #616161;
+  margin-bottom: 120px;
 
   display: flex;
 
@@ -58,7 +59,8 @@
         color: #616161;
 
         &:hover {
-          color: #979797;
+          color: white;
+          text-decoration: underline;
         }
       }
     }

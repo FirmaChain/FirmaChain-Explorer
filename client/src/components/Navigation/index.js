@@ -10,7 +10,7 @@ const mapStateToProps = ({ blockchain, global }) => ({
   numCandidates: blockchain.medState.numCandidate,
   numTxs: blockchain.medState.numTx,
   txs: blockchain.txs,
-
+  mode: global.mode,
   page: global.page,
 });
 

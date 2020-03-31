@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import ListWrapper from '../ListWrapper';
 import TableWithIcon from '../TableWithIcon';
 import { BlockchainActions, GlobalActions, WidgetActions as w } from '../../redux/actionCreators';
-import { accountListConfig } from '../../config';
+import {accountListConfig, txCopyList} from '../../config';
 import { accountMapper, ranger, spaceMapper } from '../../lib';
 
 import './accountList.scss';
@@ -76,6 +76,7 @@ class AccountList extends Component {
           centerList={accountListConfig.centerList}
           rightList={accountListConfig.rightList}
           linkTo={accountListConfig.linkTo}
+          copyList={accountListConfig.copy}
         />
       ) : (
         <div className="accountList">

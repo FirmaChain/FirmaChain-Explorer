@@ -69,9 +69,15 @@ class TxList extends Component {
       lang,
       countPerPage
     } = this.props;
-    const titles = txTitleList[mode === 0 ? 'desktop' : 'mobile'];
-    const spaces = txSpaceList[mode === 0 ? 'desktop' : 'mobile'];
+    let titles = txTitleList[mode === 0 ? 'desktop' : 'mobile'];
+    let spaces = txSpaceList[mode === 0 ? 'desktop' : 'mobile'];
     const { from, to } = ranger(page, txs.length, countPerPage);
+
+    if(type === 'block') {
+      titles = titles.filter(x => x !== 'Block Height');
+      spaces = spaces.slice(1, spaces.length);
+      //spaces.splice(0, 1);
+    }
 
     return (
       <div className="txList">

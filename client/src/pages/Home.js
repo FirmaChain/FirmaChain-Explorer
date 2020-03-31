@@ -105,7 +105,7 @@ const Home = ({mode, intl, analytics}) => (
       <div>
         <div>{mode === 0 ? 'WALLET DOWNLOAD' : 'FIRMACHAIN WALLET'}</div>
         <div>
-          <span>{'안전하고 간단하게 FIRMA를 보내고 받을 수 있습니다.'}<br/><span> {mode !== 0 ? 'Wallet 다운로드는 PC에서만 가능합니다.' : ''}</span></span>
+          <span><FormattedMessage id="walletDown1"/><br/><span> {mode !== 0 ? <FormattedMessage id="walletDown2"/> : ''}</span></span>
           <div className="download">
             <span>WINDOWS</span>
             <span>MAC</span>

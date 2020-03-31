@@ -250,8 +250,8 @@
         }
 
         > div {
+          z-index: 1;
           text-align: center;
-          z-index: 99;
 
           >div:first-child {
             margin-bottom: 10px !important;

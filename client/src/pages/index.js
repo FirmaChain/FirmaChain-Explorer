@@ -8,7 +8,6 @@ import history from '../history';
 // Language Setting
 import {IntlProvider, addLocaleData} from 'react-intl';
 import en from 'react-intl/locale-data/en'; // English
-import ja from 'react-intl/locale-data/ja'; // Japanese
 import ko from 'react-intl/locale-data/ko'; // Korean
 import zh from 'react-intl/locale-data/zh'; // Chinese
 import locale from '../locale';
@@ -37,13 +36,13 @@ import {
   WidgetActions,
 } from '../redux/actionCreators';
 
-addLocaleData([...en, ...ja, ...ko, ...zh]);
+addLocaleData([...en, ...ko, ...zh]);
 ReactGA.initialize('UA-103757205-4');
 ReactGA.pageview(window.location.pathname + window.location.search);
 
 
 const setLocale = () => {
-  const LangList = ['ja', 'ko', 'zh'];
+  const LangList = ['ko', 'zh'];
   const browserLang = navigator.language || navigator.userLanguage;
   let lang = browserLang.split('-')[0];
   if (LangList.indexOf(lang) === -1) lang = 'en';
@@ -73,8 +72,6 @@ class Pages extends Component {
         .then(() => BlockchainActions.subscribe())
         .then(() => GlobalActions.closeModal()),
     );
-
-    history.listen(() => {window.scrollTo(0, 0)})
   }
 
   render() {

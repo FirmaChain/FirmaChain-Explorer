@@ -4,8 +4,8 @@ if (process.env.REACT_APP_ENV === 'production') {
 } else if (process.env.REACT_APP_ENV === 'testnet') {
   api = 'http://api.testnet.firmachain.org/api/v1';
 } else if (process.env.REACT_APP_ENV === 'dev') {
-  api = 'http://api.testnet.firmachain.org/api/v1';
-  //api = 'http://localhost:4000/api/v1';
+  //api = 'http://api.testnet.firmachain.org/api/v1';
+  api = 'http://localhost:4000/api/v1';
 }
 
 console.log(process.env.REACT_APP_ENV);
@@ -35,7 +35,8 @@ export const bpsInPage = 25;
 export const subscribeMaxResponse = 4;
 
 // STYLING CONFIG
-export const navigationDisplay = 5;
+export const navigationDisplay = 10;
+export const navigationDisplayMobile = 5;
 
 // LANGUAGE
 export const countryList = ['ko', 'en', 'zh'];
@@ -50,12 +51,12 @@ export const maxResult = 15;
 
 // SPACE_LIST (component_page)
 export const txSpaceList = {
-  desktop: [2, 6, 3, 4],
+  desktop: [2, 6, 3, 3],
   mobile: [6, 4]
 };
 
-export const txCenterList = ['Block Height'];
-export const txRightList = ['Time Stamp'];
+export const txCenterList = ['Block Height', 'Time Stamp'];
+export const txRightList = [];
 export const txLinkTo = ['block/height', 'tx/hash', 'account/from', 'account/to'];
 export const txCopyList = ['Transaction Hash', 'From'];
 
@@ -89,17 +90,17 @@ export const bpListConfig = {
   titles: ['Ranking', 'Alias', 'Account', 'votes', 'voteRate'],
   mtitles: ['Ranking', 'Account', 'voteRate'],
   linkTo: ['bp/account'],
-  centerList: ['Ranking'],
+  centerList: ['Alias', 'Ranking'],
   rightList: ['voteRate'],
-  spaces: [10, 10, 65, 20, 15],
-  mspaces: [10, 50, 20],
+  spaces: [10, 30, 55, 20, 15],
+  mspaces: [10, 60, 30],
 };
 
 export const detailWrapperConfig = {
   titles: {
-    block: ['Block Height', 'Time Stamp', 'Block Hash', 'Prev Hash', 'Amount', 'No.Tx', 'BP'],
+    block: ['Block Height', 'Time Stamp', 'Block Hash', 'Prev Hash', 'No.Tx', 'BP'],
     tx: ['Block Height', 'Time Stamp', 'Transaction Hash', 'Status', 'From', 'Fee', 'Memo', 'Message'],
-    account: ['Account', 'Balance', 'Staking', 'Transactions'],
+    account: ['Account', 'Balance', 'Percentage', 'Staking', 'Transactions'],
     bp: [
       'Address', 'Consensus PublicKey', 'Consensus Address', 'Votes', 'url', 'Alias',
       'Details', 'Commission Max Rate', 'Commission Rate', 'Jailed',
@@ -112,8 +113,8 @@ export const detailWrapperConfig = {
     bp: ['url'],
   },
   copy: {
-    block: [],
-    account: [],
+    block: ['Block Height', 'Block Hash', 'Prev Hash', 'BP'],
+    account: ['Account'],
     tx: ['Block Height', 'Transaction Hash', 'From', 'To', 'from_address', 'to_address'],
     bp: []
   }
@@ -122,7 +123,7 @@ export const detailWrapperConfig = {
 export const tableWithIconConfig = {
   titles: {
     block: ['Block Height', 'Block Hash', 'BP', 'Time Stamp'],
-    tx: ['Block Height', 'Transaction Hash', 'Type'],
+    tx: ['Block Height', 'Transaction Hash', 'Type', 'Time Stamp'],
     account: ['Account', 'Balance', 'Percentage', 'Transactions'],
     bp: ['Ranking', 'Account', 'Alias', 'votes'],
   },

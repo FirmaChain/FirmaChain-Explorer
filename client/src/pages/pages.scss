@@ -99,6 +99,7 @@
         font-weight: 600;
         line-height: 1;
         font-family: $title-font;
+        color: #d8d8d8;
         margin-bottom: 42px;
       }
 
@@ -117,6 +118,7 @@
 
         span {
           flex: 1;
+          text-align: left;
         }
 
         &:hover {
@@ -220,8 +222,8 @@
         flex-direction: column;
         justify-content: center;
         color: #b6b6b6;
-        line-height: 1;
-        font-family: $title-font;
+        line-height: 1.2;
+        font-family: 'Chakra Petch', 'Noto Sans KR', sans-serif;
         padding: 0 20px;
 
         > :first-child {
@@ -336,7 +338,7 @@
 }
 
 .search {
-  height: $page-height;
+  width: 100%;
   .loading {
     background-color: transparent;
   }
@@ -344,6 +346,8 @@
   > .content {
     width: 100%;
     height: 100%;
+    height: $page-height;
+    max-width: initial !important;
     position: fixed;
     color: white;
     top: $navbar-height;
@@ -379,6 +383,7 @@
         padding: 15px 26px;
         margin-top: 48px;
         cursor: pointer;
+        border: none;
 
         &:hover {
           color: white;
@@ -397,18 +402,16 @@
   margin-top: 10%;
 
   img {
-    max-width: 60%;
+    max-width: 150px;
     margin-top: 20%;
   }
 
   span {
-    //font-family: NotoSansCJKkr;
     margin-top: 45px;
     font-size: 2em;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
+    font-weight: bold;
+    font-family: $title-font;
     line-height: normal;
-    color: #0b0b0b;
+    color: #d8d8d8;
   }
 }

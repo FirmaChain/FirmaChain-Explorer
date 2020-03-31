@@ -59,7 +59,7 @@ const initChart = (ref, target, data) => {
           ticks: {
             maxTicksLimit: 6,
             fontSize: 10,
-            padding: 4
+            padding: 8
           }
         }],
         yAxes: [{

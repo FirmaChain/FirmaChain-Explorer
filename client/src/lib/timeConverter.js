@@ -1,4 +1,22 @@
-const timeConverter = (time) => {
+
+
+const timeConverter = (time, showFull) => {
+  if(showFull) {
+    const d = new Date();
+    const year = d.getFullYear();
+    const month = d.getMonth() + 1;
+    const date = d.getDate();
+    const hours = d.getHours();
+    const minutes = d.getMinutes();
+    const seconds = d.getSeconds();
+
+    let str = `${year}/${month.toString().padStart(2, '0')}/${date.toString().padStart(2, '0')}`;
+    if(showFull)
+      str += ` ${hours}:${minutes}:${seconds}`;
+
+    return {id: '_text', values: {text: str}};
+  }
+
   // Incase that time unit is "ms"
   let timeString = new Date(time);
   timeString = timeString.getTime();
@@ -8,13 +26,13 @@ const timeConverter = (time) => {
 
   switch (true) {
     case (timeGap < 0):
-      return '0 sec ago';
+      return {id: 'secondsAgo', values: {num: 0}};
     case (timeGap < 60):
-      return `${timeGap} sec ago`;
+      return {id: 'secondsAgo', values: {num: timeGap}};
     case (timeGap < 60 * 60):
-      return `${Math.floor(timeGap / 60)} min ago`;
+      return {id: 'minutesAgo', values: {num: Math.floor(timeGap / 60)}};
     case (timeGap < 60 * 60 * 24):
-      return `${Math.floor(timeGap / 60 / 60)} hr ago`;
+      return {id: 'minutesAgo', values: {num: Math.floor(timeGap / 60 / 60)}};
     // case (timeGap < 60 * 60 * 24 * 30):
     //   return `${Math.floor(timeGap / 60 / 60 / 24)} day ago`;
     // case (timeGap < 60 * 60 * 24 * 30 * 12):
@@ -22,7 +40,14 @@ const timeConverter = (time) => {
     // case (timeGap >= 60 * 60 * 24 * 30 * 12):
     //   return `${Math.floor(timeGap / 60 / 60 / 24 / 30 / 12)} yr ago`;
     default:
-      return new Date(timeString * 1000).toLocaleString();
+      const d = new Date();
+      const year = d.getFullYear();
+      const month = d.getMonth() + 1;
+      const date = d.getDate();
+
+      let str = `${year}/${month.toString().padStart(2, '0')}/${date.toString().padStart(2, '0')}`;
+
+      return {id: '_text', values: {text: str}};
   }
 };
 

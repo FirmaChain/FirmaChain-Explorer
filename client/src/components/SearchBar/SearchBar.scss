@@ -5,7 +5,7 @@
   justify-content: flex-end;
   flex-direction: column;
   align-items: center;
-  max-width: 300px;
+  max-width: 380px;
   width: 100%;
   margin-left: 10px;
   margin-right: 10px;
@@ -39,6 +39,10 @@
     input:focus {
       outline: none;
       border: solid 1px #616161;
+
+      & + .searchBarIcon > div {
+        background-image: url(/image/icon/ico_search_h.svg);
+      }
     }
 
     input::placeholder {
@@ -60,6 +64,7 @@
         height: 100%;
         background-image: url(/image/icon/ico_search.svg);
         background-size: cover;
+        cursor: pointer;
 
         &:hover {
           background-image: url(/image/icon/ico_search_h.svg);
