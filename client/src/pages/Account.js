@@ -6,10 +6,35 @@ import Navigation from '../components/Navigation';
 import PageInfo from '../components/PageInfo';
 import TxList from '../components/TxList';
 
+import qs from 'query-string';
+import history from "../history";
 
-const Account = ({ location }) => {
+
+const Account = ({location}) => {
   const subject = location.pathname.split('/')[3];
   const AccountWrapper = <AccountContainer address={subject} />;
+
+  if (history.location.search) {
+    let query = qs.parse(history.location.search);
+
+    if (query.browser === 'explorer') {
+      let navbar = document.getElementsByClassName('navBar')[0];
+      let footer = document.getElementsByClassName('footer')[0];
+      let layout = document.getElementsByClassName('layout')[0];
+
+      if (navbar) {
+        navbar.remove();
+      }
+
+      if (layout) {
+        layout.setAttribute('style', 'padding-top: 0; padding-bottom: 120px;')
+      }
+
+      if (footer) {
+        footer.remove();
+      }
+    }
+  }
 
   return (
     <div className="account content">
@@ -17,7 +42,7 @@ const Account = ({ location }) => {
         <div className="listTitle">
           <PageInfo title="account-detail" />
         </div>
-        { AccountWrapper }
+        {AccountWrapper}
       </div>
       <div className="blockDetailTx">
         <div className="listTitle">
