@@ -28,7 +28,7 @@ const config = {
   DB: {
     database: 'explorer',
     dialect: 'mysql',
-    host: '127.0.0.1',
+    host: 'firma.c472buvbxhy6.ap-northeast-2.rds.amazonaws.com\n',
   },
   REQUEST: {
     REQUEST_STEP: 10,
