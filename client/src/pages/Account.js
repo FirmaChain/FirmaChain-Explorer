@@ -13,9 +13,7 @@ const Account = ({location, isWallet}) => {
   return (
     <div className={`account content${isWallet ? ' wallet' : ''}`}>
       <div className="accountDetail">
-        <div className="listTitle">
-          <PageInfo title="account-detail" />
-        </div>
+        <PageInfo title="account-detail" />
         {AccountWrapper}
       </div>
       <div className="blockDetailTx">
