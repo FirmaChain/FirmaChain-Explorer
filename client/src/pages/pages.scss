@@ -43,6 +43,25 @@
       }
     }
   }
+
+  &.wallet {
+    .layoutInner {
+      .content {
+        .listTitle {
+          margin-top: 0 !important;
+        }
+
+        .listTitle, .pageInfo {
+          margin-top: 26px;
+          position: relative;
+
+          .back {
+            position: initial;
+          }
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: $desktop-width) {

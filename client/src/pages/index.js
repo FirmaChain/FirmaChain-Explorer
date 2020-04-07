@@ -35,6 +35,7 @@ import {
   TickerActions,
   WidgetActions,
 } from '../redux/actionCreators';
+import qs from "query-string";
 
 addLocaleData([...en, ...ko, ...zh]);
 ReactGA.initialize('UA-103757205-4');
@@ -60,6 +61,18 @@ const setWindowSize = () => {
 };
 
 class Pages extends Component {
+  constructor(props) {
+    super(props);
+
+    if (history.location.search) {
+      let query = qs.parse(history.location.search);
+
+      if (query.browse === 'wallet') {
+        GlobalActions.setBrowseWallet();
+      }
+    }
+  }
+
   componentWillMount() {
     setLocale();
     setWindowSize();
@@ -74,13 +87,36 @@ class Pages extends Component {
     );
   }
 
+  componentDidMount() {
+
+  }
+
   render() {
     const {
       isFirstLoad,
       language,
       loading,
       mode,
+      isWallet
     } = this.props;
+
+    if (isWallet) {
+      let navbar = document.getElementsByClassName('navBar')[0];
+      let footer = document.getElementsByClassName('footer')[0];
+      let layout = document.getElementsByClassName('layout')[0];
+
+      if (navbar) {
+        navbar.remove();
+      }
+
+      if (layout) {
+        layout.setAttribute('style', 'padding-top: 0; padding-bottom: 120px;')
+      }
+
+      if (footer) {
+        footer.remove();
+      }
+    }
 
     return (
       <IntlProvider
@@ -96,7 +132,7 @@ class Pages extends Component {
               <Fragment>
                 <NavBar />
                 <Switch>
-                  <Layout loading={loading} lang={language} mode={mode}>
+                  <Layout loading={loading} lang={language} mode={mode} isWallet={isWallet}>
                     <Switch>
                       <Route exact path="/:lang/" component={Home} />
                       <Route path="/:lang/account" component={Account} />
@@ -127,11 +163,13 @@ Pages.propTypes = {
   language: PropTypes.oneOf(countryList).isRequired,
   loading: PropTypes.bool.isRequired,
   mode: PropTypes.number.isRequired,
+  isWallet: PropTypes.bool
 };
 
 const mapStateToProps = ({global, widget}) => ({
   language: global.language,
   mode: global.mode,
+  isWallet: global.isWallet,
 
   isFirstLoad: widget.isFirstLoad,
   loading: widget.loading,

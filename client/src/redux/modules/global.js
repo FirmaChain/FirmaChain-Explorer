@@ -5,6 +5,7 @@ import {maxResult, contentsInPage} from '../../config';
 
 // ACTION TYPES
 const SET_WINDOW_SIZE = 'global/SET_WINDOW_SIZE';
+const SET_BROWSE_WALLET = 'global/SET_BROWSE_WALLET';
 
 const REMOVE_SEARCH_RESULT = 'global/REMOVE_SEARCH_RESULT';
 const SEARCH = 'global/SEARCH';
@@ -26,8 +27,9 @@ const SET_COUNT_PER_PAGE = 'global/SET_COUNT_PER_PAGE';
 const MOVE_URL = 'global/MOVE_URL';
 
 const initialState = {
-  // Mode - 0 : Desktop,  2 : Mobile
+  // Mode - 0 : Desktop,  1 : Mobile
   mode: 0,
+  isWallet: false,
   width: null,
 
   searching: false,
@@ -69,6 +71,13 @@ const reducer = handleActions({
       languageOpen: mode === 2,
       navBarOpen: false,
     };
+  },
+
+  [SET_BROWSE_WALLET]: state => {
+    return {
+      ...state,
+      isWallet: true
+    }
   },
 
   [REMOVE_SEARCH_RESULT]: state => ({...state, searchResult: []}),
@@ -160,5 +169,6 @@ export const setSearchText = (searchText, searchFrom) => (dispatch) => {
 };
 export const removeSearchResult = createAction(REMOVE_SEARCH_RESULT);
 export const setWindowSize = createAction(SET_WINDOW_SIZE);
+export const setBrowseWallet = createAction(SET_BROWSE_WALLET);
 
 export default reducer;

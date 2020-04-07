@@ -7,7 +7,6 @@ import { Redirect, withRouter } from 'react-router-dom';
 import { BlockchainActions, GlobalActions } from '../redux/actionCreators';
 import { countryList } from '../config';
 
-
 class Layout extends Component {
   componentWillMount() {
     const { location: { pathname: path } } = this.props;
@@ -36,11 +35,11 @@ class Layout extends Component {
 
   render() {
     const currentPath = window.location.pathname.split('/')[1];
-    const { children, lang, mode } = this.props;
+    const { children, lang, mode, isWallet } = this.props;
     if (countryList.indexOf(currentPath) === -1) return <Redirect to={`/${lang}/`} />;
 
     return (
-      <div className={cx('layout', { mobile: mode === 2 })}>
+      <div className={cx('layout', { mobile: mode === 2, wallet: isWallet })}>
         <div className="layoutInner">
           { children }
         </div>
@@ -55,6 +54,7 @@ Layout.propTypes = {
   loading: PropTypes.bool.isRequired,
   location: PropTypes.object,
   mode: PropTypes.number.isRequired,
+  isWallet: PropTypes.bool
 };
 
 Layout.defaultProps = {
