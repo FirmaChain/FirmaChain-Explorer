@@ -45,6 +45,17 @@
   }
 
   &.wallet {
+    background-color: #1C1C24;
+
+    .Dropdown-root {
+      .Dropdown-control, .Dropdown-menu {
+        background-color: #141419;
+      }
+
+      .Dropdown-option {
+        border-top: 1px dashed #212121;
+      }
+    }
     .layoutInner {
       .content {
         .listTitle {
