@@ -100,6 +100,7 @@ class Pages extends Component {
       isWallet
     } = this.props;
 
+
     if (isWallet) {
       let navbar = document.getElementsByClassName('navBar')[0];
       let footer = document.getElementsByClassName('footer')[0];

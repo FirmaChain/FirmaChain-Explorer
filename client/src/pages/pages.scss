@@ -51,12 +51,22 @@
           margin-top: 0 !important;
         }
 
-        .listTitle, .pageInfo {
+        .pageInfo {
           margin-top: 26px;
+          margin-bottom: 26px;
           position: relative;
+          display: flex;
+          justify-content: flex-start;
 
           .back {
             position: initial;
+          }
+        }
+
+        .listTitle {
+          .pageInfo {
+            margin-top: 0;
+            margin-bottom: 0;
           }
         }
       }

@@ -61,14 +61,13 @@ const reducer = handleActions({
 
     if (width <= 900) {
       mode = 1;
-    } else {
-      mode = 0;
     }
+
     return {
       ...state,
       width,
       mode,
-      languageOpen: mode === 2,
+      languageOpen: false,
       navBarOpen: false,
     };
   },

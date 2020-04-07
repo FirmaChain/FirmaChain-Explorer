@@ -52,6 +52,7 @@ class Block extends Component {
 
   render() {
     const { block, language, mode } = this.props;
+
     return block && (
       <DetailWrapper
         data={blockMapper(block)}

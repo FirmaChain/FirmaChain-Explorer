@@ -137,6 +137,22 @@
           color: #979797;
         }
       }
+
+      .memo {
+        white-space: normal;
+        overflow: visible;
+        text-overflow: clip;
+        height: auto;
+        word-wrap: break-word;
+      }
+
+      .success {
+        color: #389b52;
+      }
+
+      .failure {
+        color: #c8922e;
+      }
     }
   }
 }

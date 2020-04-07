@@ -1,13 +1,15 @@
-import { simpleRequester } from './common';
-import { NODE_ENDPOINT } from '../../config';
+import {simpleRequester} from './common';
+import {NODE_ENDPOINT} from '../../config';
 
 
 export const searcher = (dispatch, actionType, ERROR, query) => {
   let type;
 
-  if(query.length >= 44 && query.indexOf('firma') === 0)
+  if (query.length >= 51 && query.indexOf('firmavaloper') === 0)
+    type = 'candidates';
+  else if (query.length >= 44 && query.indexOf('firma') === 0)
     type = 'accounts';
-  else if(!Number.isNaN(Number(query.toString())))
+  else if (!Number.isNaN(Number(query.toString())))
     type = 'blocks';
   else
     type = 'transactions';
@@ -45,6 +47,11 @@ export const searchWorker = (result) => {
     netResult.push({
       type: 'account',
       data: result.account.address,
+    });
+  }else if ('candidate' in result) {
+    netResult.push({
+      type: 'bp',
+      data: result.candidate.address,
     });
   }
   return netResult;

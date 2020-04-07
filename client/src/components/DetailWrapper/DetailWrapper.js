@@ -10,6 +10,8 @@ import MessageBox from '../MessageBox';
 import {timeConverter, timezoneMatcher, titleConverter} from '../../lib';
 import {detailWrapperConfig} from '../../config';
 
+import BigNumber from "bignumber.js";
+
 import './DetailWrapper.scss';
 
 const DetailWrapperKey = ({titleList}) => (
@@ -51,13 +53,25 @@ const ValueConverter = (title, value, linkList, copyList, lang, isMobile) => {
       content = <FormattedMessage {...timeConverter(value, true)} />; // timezoneMatcher(value);
       break;
     case 'Fee':
-      if (value) {
-        content = JSON.stringify(value).replace(/[{}"]/g, '').replace(/:/g, ': ').replace(/,/g, ', ')
+      if (!value) {
+        content = '-'
+        break;
       }
+
+      let amount = ''
+      let gasPrice = '';
+      let gas = value.gas || 0;
+
+      if (Array.isArray(value.amount) && value.amount.length > 0) {
+        amount = new BigNumber(value.amount[0].amount).shiftedBy(-6).toString();
+        gasPrice = new BigNumber(value.amount[0].amount).div(new BigNumber(value.gas)).toFixed(6);
+      }
+
+      content = `${amount} Firma / gas: ${gas}`;
       break;
     case 'Memo':
       if (!value)
-        content = <FormattedMessage id="noMemo" />;
+        content = <div className="memo"><FormattedMessage id="noMemo" /></div>;
     case 'Details':
       if (!value)
         content = <FormattedMessage id="noDetails" />;
@@ -78,6 +92,9 @@ const ValueConverter = (title, value, linkList, copyList, lang, isMobile) => {
       content = value === 'No' ?
         <div style={{color: '#389b52'}}><FormattedMessage id="statusActive" /></div> :
         <div style={{color: '#c8922e'}}><FormattedMessage id="statusJailed" /></div>;
+      break;
+    case 'Status':
+      content = <div className={value.toLowerCase()}>{value}</div>
       break;
     default:
       if (!value)
@@ -102,19 +119,10 @@ const DetailWrapperValue = ({titleList, linkList, copyList, data, lang}) => (
   <div className="detailWrapperValue">
     {
       titleList.map((title) => {
-        let classNames = {
-          memo: title === 'memo',
-          success: title === 'Status' && data[title] === 'Success',
-          failure: title === 'Status' && data[title] !== 'Success'
-        }
-
-        if (title === 'Status')
-          classNames[data[title] === 'Success' ? 'success' : 'failure'] = true;
-
         let content = ValueConverter(title, data[title], linkList, copyList, lang);
 
         return (
-          <span key={title} className={cx(classNames)}>
+          <span key={title}>
               {
                 content
               }
@@ -127,6 +135,7 @@ const DetailWrapperValue = ({titleList, linkList, copyList, data, lang}) => (
 
 
 const DetailWrapper = ({data, lang, mode, type}) => {
+
   const titleList = type ? detailWrapperConfig.titles[type] : [];
   const linkList = type ? detailWrapperConfig.linkTo[type] : [];
   const copyList = type ? detailWrapperConfig.copy[type] : [];
@@ -136,7 +145,7 @@ const DetailWrapper = ({data, lang, mode, type}) => {
 
   if (mode === 0) {
     return (
-      <div className={cx('detailWrapper')}>
+      <div className={cx('detailWrapper', {mobile: false})}>
         <DetailWrapperKey titleList={titleList} />
         <DetailWrapperValue titleList={titleList} linkList={linkList} copyList={copyList} data={data} lang={lang} />
       </div>
@@ -149,7 +158,9 @@ const DetailWrapper = ({data, lang, mode, type}) => {
             let content = ValueConverter(title, data[title], linkList, copyList, lang, true);
             return (
               <div className="row" key={i}>
-                <div className="title">{title}</div>
+                <div className="title">
+                  <FormattedMessage id={titleConverter(title)} />
+                </div>
                 <div className="content">{content}</div>
               </div>
             )

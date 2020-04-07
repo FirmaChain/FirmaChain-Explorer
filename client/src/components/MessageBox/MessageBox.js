@@ -1,6 +1,7 @@
 import {NavLink} from "react-router-dom";
 import CopyButton from "../CopyButton";
 import React from "react";
+import BigNumber from "bignumber.js";
 
 import './MessageBox.scss'
 
@@ -94,7 +95,7 @@ const MessageBoxMobile = (msgs, linkList, copyList, lang, key) => (
 
                           return (
                             <div key={i}>
-                              {typeof value === 'object' ? JSON.stringify(value) : value}
+                              { ValueConverter(key, value) }
                               {
                                 (copyList.indexOf(key) !== -1 && msg.value[key]) &&
                                 <CopyButton value={msg.value[key]} />
@@ -114,6 +115,19 @@ const MessageBoxMobile = (msgs, linkList, copyList, lang, key) => (
     }
   </div>
 );
+
+const ValueConverter = (key, value) => {
+  switch(key) {
+    case 'amount':
+      if(Array.isArray(value) && value.length > 0) {
+        return `${new BigNumber(value[0].amount).shiftedBy(-6).toString()} Firma`
+      }
+
+      return '-';
+    default:
+      return typeof value === 'object' ? JSON.stringify(value) : value;
+  }
+}
 
 const MessageBox = ({msgs, linkList, copyList, lang, key, isMobile}) => {
   if (isMobile)
