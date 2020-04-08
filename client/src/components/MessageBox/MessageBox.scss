@@ -3,6 +3,7 @@
 
   .card {
     background-color: #141414;
+    border-radius: 4px;
 
     .type {
       background-color: #222222;
@@ -59,10 +60,6 @@
   padding: 0;
   margin-top: 16px;
   width: 100%;
-
-  .card {
-    background-color: #141414;
-  }
 
   .type {
     padding: 12px;

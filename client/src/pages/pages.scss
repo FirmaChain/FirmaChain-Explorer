@@ -56,6 +56,20 @@
         border-top: 1px dashed #212121;
       }
     }
+
+    .message {
+      .card {
+        background-color: #15151b;
+
+        .type {
+          background-color: #262631;
+        }
+
+        .table .keys {
+          background-color: #1e1e27;
+        }
+      }
+    }
     .layoutInner {
       .content {
         .listTitle {
@@ -71,6 +85,7 @@
 
           .back {
             position: initial;
+            cursor: pointer;
           }
         }
 
