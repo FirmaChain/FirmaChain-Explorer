@@ -1,4 +1,4 @@
-import { conn, close } from './index';
+import conn, { close } from './index';
 
 
 
