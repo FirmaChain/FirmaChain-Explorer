@@ -3,7 +3,7 @@ import Sequelize from 'sequelize';
 import db from '../db';
 
 export default db.define('analytics', {
-  date: {type: Sequelize.DATE, primaryKey: true},
+  date: {type: Sequelize.DATEONLY, primaryKey: true},
   last: {type: Sequelize.INTEGER, defaultValue: '0'},
   block: {type: Sequelize.INTEGER, defaultValue: '0'},
   tx: {type: Sequelize.INTEGER, defaultValue: '0'},
