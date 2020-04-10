@@ -72,9 +72,11 @@ const ValueConverter = (title, value, linkList, copyList, lang, isMobile) => {
     case 'Memo':
       if (!value)
         content = <div className="memo"><FormattedMessage id="noMemo" /></div>;
+      break;
     case 'Details':
       if (!value)
         content = <FormattedMessage id="noDetails" />;
+      break;
     case 'Message':
       if (!value) {
         content = <FormattedMessage id="noMessage" />;

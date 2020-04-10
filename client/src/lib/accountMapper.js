@@ -11,7 +11,6 @@ const accountMapper = (account, totalSupply = undefined) => {
    percentage = balance.div(new BigNumber(totalSupply)).multipliedBy('100');
   }
 
-  // console.log(account.address, account.balance, totalSupply, percentage)
   return {
     Account: account.address,
     Balance: `${balance.shiftedBy(-6).toString()} FIRMA`,

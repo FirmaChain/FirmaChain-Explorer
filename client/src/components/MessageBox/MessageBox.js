@@ -130,6 +130,9 @@ const ValueConverter = (key, value) => {
 }
 
 const MessageBox = ({msgs, linkList, copyList, lang, key, isMobile}) => {
+  if(!msgs)
+    return;
+
   if (isMobile)
     return MessageBoxMobile(msgs, linkList, copyList, lang, key);
   else
