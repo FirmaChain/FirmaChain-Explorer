@@ -125,7 +125,7 @@ const ValueConverter = (key, value) => {
 
       return '-';
     default:
-      return typeof value === 'object' ? JSON.stringify(value) : value;
+      return <div>{typeof value === 'object' ? JSON.stringify(value) : value}</div>;
   }
 }
 

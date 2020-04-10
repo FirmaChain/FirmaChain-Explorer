@@ -113,9 +113,9 @@ export const detailWrapperConfig = {
     bp: ['url'],
   },
   copy: {
-    block: ['Block Height', 'Block Hash', 'Prev Hash', 'BP'],
+    block: ['Block Hash', 'Prev Hash', 'BP'],
     account: ['Account'],
-    tx: ['Block Height', 'Transaction Hash', 'From', 'To', 'from_address', 'to_address'],
+    tx: ['Transaction Hash', 'From', 'To', 'from_address', 'to_address'],
     bp: []
   }
 };

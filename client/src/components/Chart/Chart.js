@@ -39,6 +39,13 @@ const initChart = (ref, target, data) => {
       },
       tooltips: {
         displayColors: false,
+        titleFontStyle: 'normal',
+        titleAlign: 'center',
+        titleFontSize: 12,
+        bodyFontColor: "rgba(255, 255, 255, 0.7)",
+        bodyFontSize: 12,
+        bodyAlign: 'center',
+        xPadding: 10,
         callbacks: {
           title(item) {
             if (item.length > 0)

@@ -94,15 +94,14 @@ const ValueConverter = (title, value, linkList, copyList, lang, isMobile) => {
         <div style={{color: '#c8922e'}}><FormattedMessage id="statusJailed" /></div>;
       break;
     case 'Status':
-      content = <div className={value.toLowerCase()}>{value}</div>
+      content = <div className={value.toLowerCase()}><FormattedMessage id={value.toLowerCase()} /></div>
       break;
     default:
       if (!value)
         value = '-';
 
-      content = value;
       content = <React.Fragment>
-        {typeof value === 'object' ? JSON.stringify(value) : value}
+        <div>{typeof value === 'object' ? JSON.stringify(value) : value}</div>
         {
           (copyList.indexOf(title) !== -1 && value) &&
           <CopyButton value={value} />

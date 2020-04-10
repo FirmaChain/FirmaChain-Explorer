@@ -129,6 +129,10 @@
       display: flex;
       align-items: center;
 
+      >*:first-child {
+        flex: 1;
+      }
+
       a {
         transition: all 0.1s linear;
         color: #616161;

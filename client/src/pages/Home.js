@@ -75,7 +75,27 @@ const ChartView = (mode, intl, analytics) => {
   }
 }
 
-const Home = ({mode, intl, analytics}) => (
+const Notice = (lang) => {
+  if(lang !== 'ko')
+    lang = 'en';
+  
+  const notice = {
+    en: {
+      title: 'FCT Token Swap Guide',
+      link: 'https://medium.com/firmachain/notice-fct-token-swap-guide-c007c847a99f'
+    },
+    ko: {
+      title: 'FCT Token Swap 안내',
+      link: 'https://medium.com/firmachain/%EA%B3%B5%EC%A7%80-fct-token-swap%EC%95%88%EB%82%B4-df423720aae1'
+    }
+  }
+
+  return <div onClick={() => {window.open(notice[lang].link)}}>
+    {notice[lang].title}
+  </div>
+}
+
+const Home = ({mode, intl, analytics, lang}) => (
   <div className="homeContentWrapper">
     <div className="top">
       <div className="logoBg" />
@@ -83,7 +103,7 @@ const Home = ({mode, intl, analytics}) => (
         <div className="title">BLOCKCHAIN EXPLORER</div>
         <div className="notice">
           <img src="/image/icon/ico_notice.svg" alt="" />
-          <span>토큰스왑에 대해 알려드립니다.</span>
+          <span>{Notice(lang)}</span>
           <img src="/image/icon/arrow_next.svg" alt="" />
         </div>
       </div>
@@ -107,8 +127,8 @@ const Home = ({mode, intl, analytics}) => (
         <div>
           <span><FormattedMessage id="walletDown1"/><br/><span> {mode !== 0 ? <FormattedMessage id="walletDown2"/> : ''}</span></span>
           <div className="download">
-            <span>WINDOWS</span>
-            <span>MAC</span>
+            <span onClick={() => {window.open('https://drive.google.com/open?id=1813q4KlS7A6QUfImhpDqF1bJEfTdzJtG')}}>WINDOWS</span>
+            <span onClick={() => {window.open('https://drive.google.com/open?id=1G2fd-spRIBbNcvOz47pA6uyw44E9UKpS')}}>MAC</span>
           </div>
         </div>
       </div>
@@ -121,13 +141,15 @@ const Home = ({mode, intl, analytics}) => (
 Home.propTypes = {
   intl: intlShape.isRequired,
   mode: PropTypes.number,
-  analytics: PropTypes.array
+  analytics: PropTypes.array,
+  lang: PropTypes.string
 };
 
 const mapStateToProps = ({global, ticker}) => {
   return {
     analytics: ticker.analytics,
     mode: global.mode,
+    lang: global.language,
   };
 };
 

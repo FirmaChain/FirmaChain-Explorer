@@ -82,6 +82,10 @@
         margin-top: 6px;
         align-items: center;
 
+        *:first-child {
+          flex: 1;
+        }
+
         a {
           color: #616161;
           transition: all 0.1s linear;

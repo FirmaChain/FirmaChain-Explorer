@@ -13,7 +13,7 @@ const Account = ({location, isWallet}) => {
   return (
     <div className={`account content${isWallet ? ' wallet' : ''}`}>
       <div className="accountDetail">
-        <PageInfo title="account-detail" />
+        <PageInfo title="account-detail" hasBack={true}/>
         {AccountWrapper}
       </div>
       <div className="blockDetailTx">

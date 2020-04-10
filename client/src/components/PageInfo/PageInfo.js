@@ -18,7 +18,7 @@ const titlize = (string) => {
 // title : block-list
 const PageInfo = ({mode, title, hasBack}) => (
   <div className={cx('pageInfo', {mobile: mode === 2})}>
-    {hasBack && (<div className="back" onClick={() => history.goBack()}/>)}
+    {(hasBack && history.length > 2) && (<div className="back" onClick={() => history.goBack()}/>)}
     <FormattedMessage id={titlize(title)} />
   </div>
 );
