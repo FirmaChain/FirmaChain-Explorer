@@ -35,6 +35,8 @@ const initChart = (ref, target, data) => {
       }],
     },
     options: {
+      aspectRatio: 1.8,
+      maintainAspectRatio: false,
       legend: {
         display: false
       },
@@ -98,7 +100,6 @@ const Chart = ({id, target, height, data}) => {
   return (
     <canvas
       id={id}
-      height={height}
       ref={(r) => {
         ref = r;
       }}
