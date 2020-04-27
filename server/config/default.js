@@ -24,6 +24,7 @@ const config = {
       totalSupply: null,
       price: null,
     },
+    RECONNECT_INTERVAL: 5000,
   },
   DB: {
     database: 'explorer',

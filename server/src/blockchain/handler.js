@@ -17,7 +17,7 @@ import { blockConverter } from '../converter';
 import { updateCandidates } from '../candidate/handler';
 import { updateAnalytics } from '../analytics/handler';
 
-const { TOPICS, TENDERMINT_URL, MEM_FIELDS } = config.BLOCKCHAIN;
+const { TOPICS, TENDERMINT_URL, MEM_FIELDS, RECONNECT_INTERVAL } = config.BLOCKCHAIN;
 const WebSocket = websocket.client;
 
 
@@ -171,7 +171,11 @@ export const startSubscribe = (promise) => {
     const client = new WebSocket();
     client.on('connectFailed', err => {
       console.log('connection failed : ', err);
-      reset();
+
+      setTimeout(() => {
+        console.log('Try to reconnect...');
+        reset();
+      }, RECONNECT_INTERVAL || 1000);
     });
 
     client.on('connect', (conn) => {
