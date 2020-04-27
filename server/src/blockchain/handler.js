@@ -169,7 +169,11 @@ export const startSubscribe = (promise) => {
 
   return new Promise((resolve, reject) => {
     const client = new WebSocket();
-    client.on('connectFailed', err => console.log('connection failed : ', err));
+    client.on('connectFailed', err => {
+      console.log('connection failed : ', err);
+      reset();
+    });
+
     client.on('connect', (conn) => {
       console.log('connected to the blockchain');
       conn.on('error', (err) => {
@@ -177,11 +181,13 @@ export const startSubscribe = (promise) => {
         logger.error(err.stack);
         reject(err);
       });
+
       conn.on('close', () => {
         isConnected = false;
         logger.debug('close websocket');
         return reset();
       });
+
       conn.on('message', ({ utf8Data }) => {
         if (initialResponse) {
           initialResponse = false; // to ignore initial setup response

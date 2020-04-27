@@ -11,6 +11,12 @@ import logger, { stream } from './logger';
 
 const ENV = process.env.NODE_ENV;
 
+addEventListener('unhandledrejection', function(event) {
+  // the event object has two special properties:
+  console.log(event.promise); // [object Promise] - the promise that generated the error
+  console.log(event.reason); // Error: Whoops! - the unhandled error object
+});
+
 const sendError = (err, req, res) => {
   logger.error(err.stack);
   const code = err.status || 500;
