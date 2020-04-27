@@ -129,7 +129,8 @@ $navBar-border-bottom: 1px;
     max-width: initial;
     box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
     padding: 18px 0;
-    height: $mobile-navbar-height;
+    min-height: $mobile-navbar-height;
+    max-height: $mobile-navbar-height;
     justify-content: flex-start;
     z-index: 10;
 
