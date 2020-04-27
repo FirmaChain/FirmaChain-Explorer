@@ -70,6 +70,7 @@
         }
       }
     }
+
     .layoutInner {
       .content {
         .listTitle {
@@ -261,13 +262,24 @@
 
     &.wallet {
       min-width: $desktop-width;
-      height: 200px;
+      max-width: 1300px;
+      height: 140px;
       background-color: #0d0d0d;
       display: flex;
       align-items: center;
 
       > img {
         height: 100%;
+
+        &:first-child {
+          padding: 32px 83px;
+          margin-right: -142px;
+        }
+
+        &:last-child {
+          margin-left: -170px;
+          padding-top: 10px;
+        }
       }
 
       > div:nth-child(2) {
@@ -279,6 +291,7 @@
         line-height: 1.2;
         font-family: 'Chakra Petch', 'Noto Sans KR', sans-serif;
         padding: 0 20px;
+        z-index: 1;
 
         > :first-child {
           font-size: 20px;
@@ -393,6 +406,7 @@
 
 .search {
   width: 100%;
+
   .loading {
     background-color: transparent;
   }

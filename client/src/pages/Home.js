@@ -78,7 +78,7 @@ const ChartView = (mode, intl, analytics) => {
 const Notice = (lang) => {
   if(lang !== 'ko')
     lang = 'en';
-  
+
   const notice = {
     en: {
       title: 'FCT Token Swap Guide',
@@ -121,19 +121,19 @@ const Home = ({mode, intl, analytics, lang}) => (
       </div>
     </div>
     <div className="banner wallet">
-      <img src="/image/bg/wallet_left.png" alt="" />
+      <img src="/image/bg/wallet_left.svg" alt="" />
       <div>
         <div>{mode === 0 ? 'WALLET DOWNLOAD' : 'FIRMACHAIN WALLET'}</div>
         <div>
           <span><FormattedMessage id="walletDown1"/><br/><span> {mode !== 0 ? <FormattedMessage id="walletDown2"/> : ''}</span></span>
           <div className="download">
             <span onClick={() => {window.open('https://drive.google.com/open?id=1813q4KlS7A6QUfImhpDqF1bJEfTdzJtG')}}>WINDOWS</span>
-            <span onClick={() => {window.open('https://drive.google.com/open?id=1G2fd-spRIBbNcvOz47pA6uyw44E9UKpS')}}>MAC</span>
+            <span onClick={() => {window.open('https://drive.google.com/open?id=1G2fd-spRIBbNcvOz47pA6uyw44E9UKpS')}}>MACOS</span>
           </div>
         </div>
       </div>
 
-      <img src="/image/bg/wallet_right.png" alt="" />
+      <img src="/image/bg/wallet_right.svg" alt="" />
     </div>
   </div>
 );
