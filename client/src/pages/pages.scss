@@ -260,6 +260,7 @@
 
   .banner {
     width: 100%;
+    user-select: none;
 
     &.wallet {
       min-width: $desktop-width;
@@ -314,12 +315,12 @@
 
             > span {
               margin-left: 24px;
-              color: #393939;
+              color: #808080;
               transition: all 0.1s linear;
               cursor: pointer;
 
               &:hover {
-                color: #808080;
+                color: #b6b6b6;
               }
             }
           }

@@ -128,7 +128,7 @@ const Home = ({mode, intl, analytics, lang}) => (
           <span><FormattedMessage id="walletDown1"/><br/><span> {mode !== 0 ? <FormattedMessage id="walletDown2"/> : ''}</span></span>
           <div className="download">
             <span onClick={() => {window.open('https://drive.google.com/open?id=1813q4KlS7A6QUfImhpDqF1bJEfTdzJtG')}}>WINDOWS</span>
-            <span onClick={() => {window.open('https://drive.google.com/open?id=1G2fd-spRIBbNcvOz47pA6uyw44E9UKpS')}}>MACOS</span>
+            <span onClick={() => {window.open('https://drive.google.com/open?id=1G2fd-spRIBbNcvOz47pA6uyw44E9UKpS')}}>MACINTOSH</span>
           </div>
         </div>
       </div>

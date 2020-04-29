@@ -21,6 +21,9 @@
     display: flex;
 
     .footerLogo {
+      cursor: pointer;
+      user-select: none;
+
       img {
         width: 140px;
         opacity: 0.4;
@@ -51,10 +54,12 @@
       font-size: var(--font2);
       margin: 0 5%;
       justify-content: flex-end;
+      user-select: none;
 
       > div {
         padding: 0 8px;
         cursor: pointer;
+        transition: all 0.1s linear;
 
         &:hover, &.on {
           color: #b6b6b6
@@ -72,6 +77,7 @@
 
 
     .footerSNS {
+      user-select: none;
       align-items: center;
 
       a {
