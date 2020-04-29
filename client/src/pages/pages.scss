@@ -279,7 +279,7 @@
         }
 
         &:last-child {
-          margin-left: -170px;
+          margin-left: -120px;
           padding-top: 10px;
         }
       }
@@ -314,13 +314,17 @@
             font-family: 'Poppins', sans-serif;
 
             > span {
-              margin-left: 24px;
+              margin-left: 14px;
               color: #808080;
-              transition: all 0.1s linear;
               cursor: pointer;
+              transition: all 0.1s linear;
 
-              &:hover {
+              &:not(.divider):hover {
                 color: #b6b6b6;
+              }
+
+              &.divider {
+                cursor: initial;
               }
             }
           }

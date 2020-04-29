@@ -99,7 +99,7 @@ const NavBar = ({
           mode === 0 && (
             <div className="navBarLogo">
               <NavLink to={`/${lang}/`}>
-                <img src="/image/icon/firmachain-tracker.svg" alt="TRACKER" />
+                <img src="/image/icon/img_logo.svg" alt="TRACKER" />
               </NavLink>
             </div>
           )
