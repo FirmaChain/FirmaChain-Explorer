@@ -188,7 +188,7 @@
     width: 100%;
     max-width: $content-max-width;
     z-index: 2;
-    padding: 0 20px;
+    padding: 0 !important;
     margin-bottom: 80px;
 
     > .chartWrapper {
@@ -237,6 +237,7 @@
       display: flex;
       justify-content: center;
       color: #b6b6b6;
+      padding: 0 20px;
 
 
       .divider {
@@ -262,7 +263,7 @@
 
     &.wallet {
       min-width: $desktop-width;
-      max-width: 1174px;
+      max-width: $content-max-width;
       height: 140px;
       background-color: #0d0d0d;
       display: flex;

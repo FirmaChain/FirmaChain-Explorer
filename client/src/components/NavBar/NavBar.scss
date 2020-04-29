@@ -45,12 +45,14 @@ $navBar-border-bottom: 1px;
 
   .navBarContainer {
     min-width: $desktop-width;
-    max-width: calc(100% - 300px);
+    max-width: calc(#{$content-max-width} + 40px);
     width: 100%;
 
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
+
+    padding: 0 20px;
 
     .navNavigator {
       flex: 1 1 auto;
@@ -71,6 +73,10 @@ $navBar-border-bottom: 1px;
       > div {
         margin-left: 30px;
         margin-right: 30px;
+
+        &:last-child {
+          margin-right: 0;
+        }
       }
     }
 
@@ -99,12 +105,14 @@ $navBar-border-bottom: 1px;
   display: flex;
   align-items: center;
 
+  > a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   img {
-    width: 122px;
-    height: 28px;
-    margin-top: 4px;
-    margin-left: 16px;
-    margin-right: auto;
+    width: 140px;
   }
 }
 
