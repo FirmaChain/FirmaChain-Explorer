@@ -120,7 +120,7 @@ const ValueConverter = (key, value) => {
   switch(key) {
     case 'amount':
       if(Array.isArray(value) && value.length > 0) {
-        return `${new BigNumber(value[0].amount).shiftedBy(-6).toFormat(3)} Firma`
+        return `${new BigNumber(value[0].amount).shiftedBy(-6).toString().comma()} Firma`
       }
 
       return '-';

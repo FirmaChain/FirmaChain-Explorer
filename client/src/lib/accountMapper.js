@@ -13,10 +13,10 @@ const accountMapper = (account, totalSupply = undefined) => {
 
   return {
     Account: account.address,
-    Balance: `${balance.shiftedBy(-6).toFormat(3)} FIRMA`,
+    Balance: `${balance.shiftedBy(-6).toString().comma()} FIRMA`,
     Transactions: account.totalTxs,
     Percentage: percentage.toFixed(5) + '%',
-    Staking: `${staking.shiftedBy(-6).toFormat(3)} FIRMA`,
+    Staking: `${staking.shiftedBy(-6).toString().comma()} FIRMA`,
   };
 };
 
