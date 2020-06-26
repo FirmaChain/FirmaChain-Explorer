@@ -19,8 +19,7 @@ const bpMapper = (bp) => {
   return {
     Address: bp.address,
     Account: bp.address,
-    votes: bp.votes,
-    Votes: `${bp.votes} FIRMA`,
+    Votes: `${bp.votes.shiftedBy(-6).toString()} FIRMA`,
     'Consensus PublicKey': bp.consensusPubKey,
     'Consensus Address': bp.consensusAddr,
     Jailed: bp.jailed ? 'Yes' : 'No',
