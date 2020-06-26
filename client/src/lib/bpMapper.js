@@ -1,3 +1,5 @@
+import BigNumber from "bignumber.js";
+
 const bpMapper = (bp) => {
   const additionalInfo = {
     url: null,
@@ -16,10 +18,12 @@ const bpMapper = (bp) => {
     additionalInfo['Commission Rate'] = `${(parseFloat(bp.data.commission.commission_rates.rate) * 100).toFixed(2)} %`;
   }
 
+  const votes = new BigNumber(bp.votes);
+
   return {
     Address: bp.address,
     Account: bp.address,
-    Votes: `${bp.votes.shiftedBy(-6).toString()} FIRMA`,
+    Votes: `${votes.shiftedBy(-6).toString()} FIRMA`,
     'Consensus PublicKey': bp.consensusPubKey,
     'Consensus Address': bp.consensusAddr,
     Jailed: bp.jailed ? 'Yes' : 'No',
