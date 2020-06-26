@@ -63,7 +63,7 @@ const ValueConverter = (title, value, linkList, copyList, lang, isMobile) => {
       let gas = value.gas || 0;
 
       if (Array.isArray(value.amount) && value.amount.length > 0) {
-        amount = new BigNumber(value.amount[0].amount).shiftedBy(-6).toString();
+        amount = new BigNumber(value.amount[0].amount).shiftedBy(-6).toFormat(3);
         gasPrice = new BigNumber(value.amount[0].amount).div(new BigNumber(value.gas)).toFixed(6);
       }
 
