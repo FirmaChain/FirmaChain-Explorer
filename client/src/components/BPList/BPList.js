@@ -15,20 +15,22 @@ import {
 } from '../../lib';
 
 import './BPList.scss';
-import BigNumber from "bignumber.js";
 
 
 const mappedBPs = (BPs = [], page, totalSupply, bondedTokens) => {
   const BPList = [];
   BPs.forEach((preBP, i) => {
+    if(Object.keys(preBP).length === 0)
+        return;
+
     const BP = bpMapper(preBP);
-    const votes = new BigNumber(BP.votes);
 
     BP.Ranking = (page - 1) * bpsInPage + i + 1;
-    BP.voteRate = `${divider(BP.votes, [bondedTokens / 100], 2)}%`;
-    BP.votes = `${votes.shiftedBy(-6).toString()} FIRMA`;
+    BP.voteRate = `${divider(preBP.votes, [bondedTokens / 100], 2)}%`;
+    BP.votes = BP.Votes;
     BPList.push(BP);
   });
+
   return BPList;
 };
 
