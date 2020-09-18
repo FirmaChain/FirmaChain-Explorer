@@ -4,6 +4,7 @@ import { URLSearchParams } from 'url';
 import config from '../../config';
 import db from '../db';
 import logger from '../logger';
+import {emit} from '../stuckwatcher'
 import {
   requestMedXPrice,
   requestBlockByHeight,
@@ -87,6 +88,7 @@ TOPICS.newTailBlock.onEvent = async (block, onReset) => {
       logger.debug('[T1] start to handle block response from blockchain');
       return handleBlocksResponse([detailedBlock], t);
 
+      emit();
     })
     .then(dbBlocks => {
       logger.debug('[T1] success to handle block response from blockchain');

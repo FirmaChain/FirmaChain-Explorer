@@ -27,7 +27,7 @@ const reducer = handleActions({
     ...state,
     loaded: false,
     loading: false,
-    error: action.paylod,
+    error: action.payload,
   }),
 }, initialState);
 
