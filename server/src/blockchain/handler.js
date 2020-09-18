@@ -42,6 +42,8 @@ const pushEventToClient = (e) => {
 };
 
 TOPICS.newTailBlock.onEvent = async (block, onReset) => {
+  emit();
+
   logger.debug('[T1] start to get last block from DB');
   const { height: lastHeight } = await getLastBlock();
   logger.debug('[T1] success to get last block from DB');
@@ -87,8 +89,6 @@ TOPICS.newTailBlock.onEvent = async (block, onReset) => {
 
       logger.debug('[T1] start to handle block response from blockchain');
       return handleBlocksResponse([detailedBlock], t);
-
-      emit();
     })
     .then(dbBlocks => {
       logger.debug('[T1] success to handle block response from blockchain');

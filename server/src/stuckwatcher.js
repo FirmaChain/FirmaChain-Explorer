@@ -5,6 +5,8 @@ export const emit = () => {
 };
 
 export default () => {
+    console.log('Stuck watcher started.');
+
     const timeout = 1000 * 30;
     lastFired = 0;
 
