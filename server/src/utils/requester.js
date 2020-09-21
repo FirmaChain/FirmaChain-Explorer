@@ -26,6 +26,7 @@ const requestTransactionsByHeight = height => axios({
   method: 'get',
   params: {
     'tx.height': height,
+    'limit': 9999,
   },
   url: `${SERVER_URL.http}/txs`,
 }).then(({ data }) => data.txs.reduce((acc, tx) => [...acc, ...txConverter(tx)], []));
