@@ -123,6 +123,10 @@ const MessageBoxMobile = (msgs, linkList, copyList, lang, key) => (
 const ValueConverter = (key, value) => {
     switch (key) {
         case 'value':
+            if (!typeof value === 'object' || !value.hasOwnProperty('amount'))
+                return ValueConverter('', value);
+
+            value = [value];
         case 'amount':
             if (Array.isArray(value) && value.length > 0)
                 return `${new BigNumber(value[0].amount).shiftedBy(-6).toString().comma()} ${value[0].denom.substr(1).toUpperCase()}`
