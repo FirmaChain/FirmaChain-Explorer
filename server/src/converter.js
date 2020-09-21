@@ -48,11 +48,8 @@ export const txConverter = (data) => {
           toAccount = m.value.to_address;
           amount = m.value.amount ? m.value.amount[0].amount : 0;
           break;
-        case 'aol/MsgCreateTopic':
-        case 'aol/MsgAddWriter':
-        case 'aol/MsgDeleteWriter':
-        case 'aol/MsgAddRecord':
-          fromAccount = m.value.owner_address;
+        case 'contract/AddContract':
+          fromAccount = m.value.owner;
           break;
         default:
           break;

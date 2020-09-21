@@ -34,6 +34,7 @@
   "noUrl":["등록된 URL이 없습니다.","No URL registered.","当前页面的URL未注册。"],
   "blockHeight":["블록 번호","Block Height","区块号码"],
   "failure":["실패","Failure","失败"],
+  "fail":["실패","Failure","失败"],
   "consensusAddress":["블록 생성자 주소","Block Producer Address","区块生产者的地址"],
   "success":["성공","Success","成功"],
   "statusActive":["활동 중","Active","活动中"],

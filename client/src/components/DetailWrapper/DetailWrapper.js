@@ -54,11 +54,11 @@ const ValueConverter = (title, value, linkList, copyList, lang, isMobile) => {
       break;
     case 'Fee':
       if (!value) {
-        content = '-'
+        content = '-';
         break;
       }
 
-      let amount = ''
+      let amount = '';
       let gasPrice = '';
       let gas = value.gas || 0;
 
