@@ -101,11 +101,11 @@ const Home = ({mode, intl, analytics, lang}) => (
       <div className="logoBg" />
       <div className="content">
         <div className="title">BLOCKCHAIN EXPLORER</div>
-        <div className="notice">
-          <img src="/image/icon/ico_notice.svg" alt="" />
-          <span>{Notice(lang)}</span>
-          <img src="/image/icon/arrow_next.svg" alt="" />
-        </div>
+        {/*<div className="notice">*/}
+        {/*  <img src="/image/icon/ico_notice.svg" alt="" />*/}
+        {/*  <span>{Notice(lang)}</span>*/}
+        {/*  <img src="/image/icon/arrow_next.svg" alt="" />*/}
+        {/*</div>*/}
       </div>
     </div>
     <div className="content">
