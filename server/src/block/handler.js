@@ -69,7 +69,7 @@ export const handleBlocksResponse = async (blocks, t) => {
         let accounts = [];
 
         if (genesis.app_state.auth.hasOwnProperty('accounts')) {
-            accounts = genesis.app_state.auth.accounts;
+            accounts = genesis.app_state.auth.accounts.map((cdc) => cdc.value);
         } else if (genesis.app_state.hasOwnProperty('accounts')) {
             accounts = genesis.app_state.accounts;
         }

@@ -10,7 +10,7 @@ export const blockConverter = (data) => {
     return ({
       height: +data.block.header.height,
       timestamp: data.block.header.time,
-      hash: data.block_meta ? data.block_meta.block_id.hash : null,
+      hash: data.block_id ? data.block_id.hash : null,
       prevHash: data.block.header.last_block_id.hash,
       txs: data.block.data.txs || [],
       validator: data.block.header.proposer_address,
